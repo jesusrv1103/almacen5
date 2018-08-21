@@ -28,7 +28,9 @@
                 <b>
 
                   <div class="btn-group" style="margin-right: 10px;">
+                    @can('almacenes.create')
                     <a class="btn btn-sm btn-success tooltips" href="almacenes/create" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registrar nuevo Almacén"> <i class="fa fa-plus"></i> Registrar </a>
+                    @endcan
 
                   </div>
 
@@ -38,6 +40,11 @@
           </div>
         </div>
 
+        @if(session('info'))
+        <div class="alert alert-success">
+          <strong>{{ session('info')}}</strong> 
+        </div>
+        @endif
 
         <div class="porlets-content">
           <div class="table-responsive">
@@ -57,7 +64,7 @@
                  <tr class="gradeA">
                   <td> {{$almacen->nombre}}</td>
                   <td class="center">
-                  <a href="{{URL::action('AlmacenController@edit',$almacen->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>                    
+                    <a href="{{URL::action('AlmacenController@edit',$almacen->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>                    
                   </td>
                   <td class="center">
                     <a class="btn btn-danger btn-sm" href="#modalEliminar" style="margin-right: 10px;"  
@@ -88,4 +95,4 @@
   </div><!--/row-->
 
 
-@endsection
+  @endsection

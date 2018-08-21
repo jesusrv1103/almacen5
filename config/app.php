@@ -180,6 +180,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Milon\Barcode\BarcodeServiceProvider::class,
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+        Caffeinated\Shinobi\ShinobiServiceProvider::class,
 
         ],
 

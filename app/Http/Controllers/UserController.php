@@ -4,16 +4,7 @@ namespace Almacen\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Almacen\Http\Requests;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Input;
-use Almacen\Http\Controllers\Controller;
-use Almacen\Almacen;
-use DB;
-use Maatwebsite\Excel\Facades\Excel;
-
-
-class AlmacenController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,10 +13,9 @@ class AlmacenController extends Controller
      */
     public function index()
     {
-        $almacenes= DB::table('almacenes')->where('estado','Activo')->get();
-        return view('almacen.index',['almacenes' => $almacenes]);
-        
+        //
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -33,7 +23,7 @@ class AlmacenController extends Controller
      */
     public function create()
     {
-        return view('almacen.create');
+        //
     }
 
     /**
@@ -44,11 +34,7 @@ class AlmacenController extends Controller
      */
     public function store(Request $request)
     {
-        $almacenes= new Almacen();
-        $almacenes->nombre=$request->get('nombre');
-        $almacenes->estado='Activo';
-        $almacenes->save();
-        return Redirect::to('almacenes')->with('info','Almacen Guardado con exito');
+        //
     }
 
     /**
@@ -70,7 +56,7 @@ class AlmacenController extends Controller
      */
     public function edit($id)
     {
-         return view("almacen.edit",["almacenes"=>Almacen::findOrFail($id)]);
+        //
     }
 
     /**
@@ -82,11 +68,7 @@ class AlmacenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $almacenes=Almacen::findOrFail($id);
-        $almacenes->nombre=$request->get('nombre');
-        
-        $almacenes->update();
-        return Redirect::to('almacenes')->with('info','Almacen Editado con exito');
+        //
     }
 
     /**
@@ -97,15 +79,6 @@ class AlmacenController extends Controller
      */
     public function destroy($id)
     {
-        $almacenes=Almacen::findOrFail($id);
-        $almacenes->estado="Inactivo";
-        $almacenes->update();
-        return Redirect::to('almacenes')->with('info','Almacen eliminado con exito');;
+        //
     }
 }
-
-
-
-
-
-

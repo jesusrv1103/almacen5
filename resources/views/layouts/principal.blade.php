@@ -93,77 +93,93 @@
           </div>
           <div class="top_right_bar">
             <div style="margin-top: -33%;">
-              <span class="user_adminname">Hola </span>
-              <span class="user_adminname"><a href="?c=Login&a=Index"><i class="fa fa-power-off"></i> Salir</span></a>
+              <span class="user_adminname"> <br><br>  <span class="caret"></span>{{ Auth::user()->name }}   </span>
+              <span class="user_adminname"><a href="{{ route('logout') }}" 
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"
+                ><i class="fa fa-power-off"></i> Salir</span></a>
+              </div>
             </div>
           </div>
+          <!--\\\\\\\ header top bar end \\\\\\-->
         </div>
-        <!--\\\\\\\ header top bar end \\\\\\-->
-      </div>
-      <!--\\\\\\\ header end \\\\\\-->
-      <div class="inner">
-        <!--\\\\\\\ inner start \\\\\\-->
-        <div class="left_nav">
-          <!--\\\\\\\left_nav start \\\\\\-->
-          <br>
-          <div class="left_nav_slidebar">
-           <ul>
-             <li class="left_nav_active theme_border"><a href="javascript:void(0);"><i class="fa fa-home"></i> Control de Almacen <span class="left_nav_pointer"></span> <span class="plus"><i class="fa fa-plus" ></i></span> </a>
-               <ul class="opened" style="display:block">
-                 <li> <a href="{{url('almacenes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b class="theme_color" >Almacenes</b> </a> </li>
+        <!--\\\\\\\ header end \\\\\\-->
+        <div class="inner">
+          <!--\\\\\\\ inner start \\\\\\-->
+          <div class="left_nav">
+            <!--\\\\\\\left_nav start \\\\\\-->
+            <br>
+            <div class="left_nav_slidebar">
+             <ul>
+               <li class="left_nav_active theme_border"><a href="javascript:void(0);"><i class="fa fa-home"></i> Control de Almacen <span class="left_nav_pointer"></span> <span class="plus"><i class="fa fa-plus" ></i></span> </a>
+                 <ul class="opened" style="display:block">
 
-                 <li> <a href="{{url('events')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Calendario</b> </a> </li>
-
-
-               </ul>
-
-             </li>
-
-
-             <li> <a href="javascript:void(0);"> <i class="fa fa-shopping-cart"></i> Artículos<span class="plus"><i class="fa fa-plus"></i></span> </a>
-
-               <ul >
-                <li> <a href="{{url('articulos')}}"> <span>&nbsp;</span> <i class="fa fa-circle theme_color"></i> <b >Artículos</b> </a> </li>
-               <li> <a href="{{url('entradas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Entrada de Artículos</b> </a> </li>
-                 <li> <a href="{{url('proveedores')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b >Proveedores</b> </a> </li>
-                 <li> <a href="{{url('inventarios')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Inventario</b> </a> </li>
                  
-               </ul>
-             </li>
+                   <li> <a href="{{ route('almacenes.index')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b class="theme_color" >Almacenes</b> </a> </li>
+                 
 
-             <li > <a href="javascript:void(0);"> <i class="fa fa-users"></i> Usuarios<span class="plus"><i class="fa fa-plus"></i></span> </a>
+                   @can('users.index')
+                   <li> <a href="{{ route('users.index')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b class="theme_color" >Usuarios</b> </a> </li>
+                   @endcan
+
+
+                   @can('roles.index')
+
+                   <li> <a href="{{ route('roles.index')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b class="theme_color" >Roles</b> </a> </li>
+                   @endcan
+
+                   <li> <a href="{{url('events')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Calendario</b> </a> </li>
+
+
+                 </ul>
+
+               </li>
+
+
+               <li> <a href="javascript:void(0);"> <i class="fa fa-shopping-cart"></i> Artículos<span class="plus"><i class="fa fa-plus"></i></span> </a>
+
+                 <ul >
+                  <li> <a href="{{url('articulos')}}"> <span>&nbsp;</span> <i class="fa fa-circle theme_color"></i> <b >Artículos</b> </a> </li>
+                  <li> <a href="{{url('entradas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Entrada de Artículos</b> </a> </li>
+                  <li> <a href="{{url('proveedores')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b >Proveedores</b> </a> </li>
+                  <li> <a href="{{url('inventarios')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Inventario</b> </a> </li>
+
+                </ul>
+              </li>
+
+              <li > <a href="javascript:void(0);"> <i class="fa fa-users"></i> Usuarios<span class="plus"><i class="fa fa-plus"></i></span> </a>
                <ul>
                 <li> <a href="{{url('usuarios')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Usuarios</b> </a> </li>
                 <li> <a href="{{url('direcciones')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Departamento</b> </a> </li>
 
-              
+
               </ul>
             </li>
 
             <li > <a href="javascript:void(0);"> <i class="fa fa-money"></i> Partidas<span class="plus"><i class="fa fa-plus"></i></span> </a>
              <ul>
-               
+
                <li> <a href="{{url('partidas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Partidas</b> </a> </li>
 
              </ul>
            </li>
 
            <li > <a href="javascript:void(0);"> <i class="fa fa-envelope"></i> Solicitudes<span class="plus"><i class="fa fa-plus"></i></span> </a>
-               <ul>
-                <li> <a href="{{url('solicitudes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Recibidas</b> </a> </li>
-                
-                <li> <a href="{{url('solicitudes1')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Enviadas</b> </a> </li>
+             <ul>
+              <li> <a href="{{url('solicitudes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Recibidas</b> </a> </li>
 
-              </ul>
-            </li>
+              <li> <a href="{{url('solicitudes1')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Enviadas</b> </a> </li>
 
-         </ul>
+            </ul>
+          </li>
 
-       </div>
-     </div>
-   </div>
-   <!--\\\\\\\left_nav end \\\\\\-->
-   <div class="contentpanel">
+        </ul>
+
+      </div>
+    </div>
+  </div>
+  <!--\\\\\\\left_nav end \\\\\\-->
+  <div class="contentpanel">
     <!--\\\\\\\ contentpanel start\\\\\\-->
 
     @yield('contenido')
@@ -173,6 +189,10 @@
 </div>
 <!--\\\\\\\ inner end\\\\\\-->
 </div>
+
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+  {{ csrf_field() }}
+</form>
 
 {!!Html::script('js/jquery-2.1.0.js')!!}
 {!!Html::script('js/script.js')!!}
