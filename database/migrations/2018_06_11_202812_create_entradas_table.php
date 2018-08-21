@@ -22,7 +22,7 @@ class CreateEntradasTable extends Migration
             $table->integer('cantidad');
         
 
-            $table->string('fechaCaducidad');
+            $table->string('fechaCaducidad')->nullable($value = true);
             $table->string('estado');
             $table->timestamps();
         });

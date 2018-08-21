@@ -16,14 +16,91 @@ Route::get('/', function () {
 	return view('welcome');
 });
 Route::resource('home','HomeController');
-Route::resource('almacenes','AlmacenController');
+
+
+Route::middleware(['auth'])->group(function(){
+
+
+	Route::post('roles/store','RoleController@store')->name('roles.store')
+	->middleware('permission:roles.create');
+
+	Route::get('roles','RoleController@index')->name('roles.index')
+	->middleware('permission:roles.index');
+
+	Route::get('roles/create','RoleController@create')->name('roles.create')
+	->middleware('permission:roles.create');
+
+
+	Route::put('roles/{role}','RoleController@update')->name('roles.update')
+	->middleware('permission:roles.edit');
+
+
+	Route::delete('roles/{role}','RoleController@destroy')->name('roles.destroy')
+	->middleware('permission:roles.destroy');
+
+
+	Route::get('roles/{role}/edit','RoleController@edit')->name('roles.edit')
+	->middleware('permission:roles.edit');
+
+//almacenes
+
+
+	Route::post('almacenes/store','AlmacenController@store')->name('almacenes.store')
+	->middleware('permission:almacenes.create');
+
+	Route::get('almacenes','AlmacenController@index')->name('almacenes.index')
+	->middleware('permission:almacenes.index');
+
+	Route::get('almacenes/create','AlmacenController@create')->name('almacenes.create')
+	->middleware('permission:almacenes.create');
+
+
+	Route::put('almacenes/{almacen}','AlmacenController@update')->name('almacenes.update')
+	->middleware('permission:almacenes.edit');
+
+
+	Route::delete('almacenes/{almacen}','AlmacenController@destroy')->name('almacenes.destroy')
+	->middleware('permission:almacenes.destroy');
+
+
+	Route::get('almacenes/{Almacen}/edit','AlmacenController@edit')->name('almacenes.edit')
+	->middleware('permission:almacenes.edit');
+
+
+
+	//usuarios
+
+
+	Route::post('users/store','UserController@store')->name('users.store')
+	->middleware('permission:users.create');
+
+	Route::get('users','UserController@index')->name('users.index')
+	->middleware('permission:users.index');
+
+	Route::get('users/create','AlmacenController@create')->name('users.create')
+	->middleware('permission:users.create');
+
+
+	Route::put('users/{almacen}','UserController@update')->name('users.update')
+	->middleware('permission:users.edit');
+
+
+	Route::delete('users/{almacen}','UserController@destroy')->name('users.destroy')
+	->middleware('permission:users.destroy');
+
+
+	Route::get('users/{Almacen}/edit','UserController@edit')->name('users.edit')
+	->middleware('permission:users.edit');
+});
+
+
 Route::resource('partidas','PartidaController');
 Route::resource('direcciones','DireccionController');
 Route::resource('proveedores','ProveedorController');
 Route::resource('usuarios','UsuariosController');
 Route::resource('articulos','ArticulosController');
 Route::resource('partidas2','Partida2Controller');
-Route::resource('reportes','ReporteController');
+//Route::resource('reportes','ReporteController');
 Route::resource('events','EventController');
 Route::resource('solicitudes','SolicitudController');
 Route::resource('solicitudes1','Solicitud1Controller');
@@ -55,13 +132,8 @@ Route::get('adquisinet', function()
 Route::get('tipoUnidad/{id}', 'SolicitudController@tipoUnidad');
 
 
+Auth::routes();
 
-////////////////////
-// Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-// Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+

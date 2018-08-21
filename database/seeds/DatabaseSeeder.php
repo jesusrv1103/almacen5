@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Caffeinated\Shinobi\Models\Permission;
 
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +21,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(MesesTableSeeder::class);
         $this->call(UnidadMedidaTableSeeder::class);
+        $this->call(PermisosTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(AlmacenTableSeeder::class);
 
 
         Model::reguard();

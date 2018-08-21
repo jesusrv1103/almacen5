@@ -1,12 +1,23 @@
-@extends('layouts.principal')
-@section('contenido')
+@extends('layouts.app')
 
- <!--\\\\\\\ container  start \\\\\\-->
- <div class="row col-md-6 col-md-offset-3">
-     <img align="center" style="max-width: 100%; margin-top: 8%" src="{{asset('images/logozacatecas.png')}}">   
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Dashboard</div>
+
+                <div class="panel-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    You are logged in!
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<!--\\\\\\\ container  end \\\\\\-->
-
-
-
 @endsection
