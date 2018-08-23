@@ -21,13 +21,13 @@ class UserController extends Controller
      */
     public function index()
     {
-       $usuarios= DB::table('usuarios')
-       ->join( 'direcciones as d', 'usuarios.idDireccion','=','d.id')
-       ->select('usuarios.*','d.nombre')
-       ->where('usuarios.estado','Activo')
-       ->where('d.estado','Activo')->get();
-       return view('usuarios.index',['usuarios' => $usuarios]);
-   }
+     $usuarios= DB::table('usuarios')
+     ->join( 'direcciones as d', 'usuarios.idDireccion','=','d.id')
+     ->select('usuarios.*','d.nombre')
+     ->where('usuarios.estado','Activo')
+     ->where('d.estado','Activo')->get();
+     return view('usuarios.index',['usuarios' => $usuarios]);
+ }
 
     /**
      * Show the form for creating a new resource.
@@ -36,11 +36,11 @@ class UserController extends Controller
      */
     public function create()
     {
-     $direcciones=DB::table('direcciones')
-     ->where('estado','=','Activo')
-     ->get();
-     return view('usuarios.create',['direcciones'=>$direcciones]);
- }
+       $direcciones=DB::table('direcciones')
+       ->where('estado','=','Activo')
+       ->get();
+       return view('usuarios.create',['direcciones'=>$direcciones]);
+   }
 
     /**
      * Store a newly created resource in storage.
@@ -50,16 +50,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $usuarios= new Usuarios();
-        $usuarios->nombreCompleto=$request->get('nombreCompleto');
-        $usuarios->apellido=$request->get('apellido');
-        $usuarios->nombreusuario=$request->get('nombreusuario');
-        $usuarios->contraseña=$request->get('contraseña');
-        $usuarios->tipoUsuario=$request->get('tipoUsuario');
-        $usuarios->idDireccion=$request->get('idDireccion');
-        $usuarios->estado='Activo';
-        $usuarios->save();
-        return Redirect::to('usuarios');
+
+
+       echo "hola";
     }
 
     /**
@@ -81,12 +74,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-     $usuarios=Usuarios::findOrFail($id);
-     $direcciones=DB::table('direcciones')
-     ->where('estado','=','Activo')
-     ->get();
-     return view('usuarios.edit',['usuarios'=>$usuarios,'direcciones'=>$direcciones]);
- }
+       $usuarios=User::findOrFail($id);
+       $direcciones=DB::table('direcciones')
+       ->where('estado','=','Activo')
+       ->get();
+       return view('usuarios.edit',['usuarios'=>$usuarios,'direcciones'=>$direcciones]);
+   }
 
     /**
      * Update the specified resource in storage.
@@ -97,7 +90,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $usuarios=Usuarios::findOrFail($id);
+      $usuarios=User::findOrFail($id);
       $usuarios->nombreCompleto=$request->get('nombreCompleto');
       $usuarios->apellido=$request->get('apellido');
       $usuarios->nombreusuario=$request->get('nombreusuario');
@@ -117,7 +110,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $usuarios=Usuarios::findOrFail($id);
+        $usuarios=User::findOrFail($id);
         $usuarios->estado="Inactivo";
         $usuarios->update();
         return Redirect::to('usuarios');

@@ -12,6 +12,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+
+        factory(Almacen\Direccion::class,20)->create();
     	factory(Almacen\User::class,20)->create();
 
 
