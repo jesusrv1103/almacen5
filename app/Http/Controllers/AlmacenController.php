@@ -100,7 +100,7 @@ class AlmacenController extends Controller
         $almacenes=Almacen::findOrFail($id);
         $almacenes->estado="Inactivo";
         $almacenes->update();
-        return Redirect::to('almacenes')->with('info','Almacen eliminado con exito');;
+        return Redirect::to('almacenes')->with('info','Almacen eliminado con exito');
     }
 }
 

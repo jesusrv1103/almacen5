@@ -66,7 +66,7 @@ class EventController extends Controller
         
         $events->save();
         $events= DB::table('events') ->get();
-        return view('event.index',['events' => $events]);
+        return view('event.index',['events' => $events])->with('info','Calendario Guardado con exito');
     }
 
     public function update(Request $request, $id)
@@ -89,7 +89,7 @@ class EventController extends Controller
 
         $events->update();
         $events= DB::table('events') ->get();
-        return view('event.index',['events' => $events]);
+        return view('event.index',['events' => $events])->with('info','Calendario Editado con exito');
     }
 
 
@@ -120,7 +120,7 @@ public function destroy($id)
     $events=Event::findOrFail($id);
     $events->delete();
     $events= DB::table('events') ->get();
-    return view('event.index',['events' => $events]);
+    return view('event.index',['events' => $events])->with('info','Proveedor eliminado con exito');
 }
 
 

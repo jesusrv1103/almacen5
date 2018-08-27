@@ -69,7 +69,8 @@ class ArticulosController extends Controller
         $articulos->idPartida=$request->get('idPartida');
         $articulos->estado='Activo';
         $articulos->save();
-        return Redirect::to('articulos');
+        return Redirect::to('articulos')->with('info','Artículo Guardado con exito');
+
     }
 
     /**
@@ -122,7 +123,7 @@ class ArticulosController extends Controller
         $articulos->idPartida=$request->get('idPartida');
 
         $articulos->update();
-        return Redirect::to('articulos');
+        return Redirect::to('articulos')->with('info','Artículo Editado con exito');
     }
 
     /**
@@ -136,7 +137,7 @@ class ArticulosController extends Controller
         $articulos=Articulos::findOrFail($id);
         $articulos->estado="Inactivo";
         $articulos->update();
-        return Redirect::to('articulos');
+        return Redirect::to('articulos')->with('info','Artículo eliminado con exito');
     }
 
 

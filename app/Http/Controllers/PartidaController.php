@@ -51,7 +51,7 @@ class PartidaController extends Controller
         $partidas->ano=$request->get('ano');
         $partidas->estado='Activo';
         $partidas->save();
-        return Redirect::to('partidas');
+        return Redirect::to('partidas')->with('info','Partida Guardada con exito');
     }
 
     /**
@@ -90,7 +90,7 @@ class PartidaController extends Controller
         $partidas->concepto=$request->get('concepto');
         $partidas->ano=$request->get('ano');
         $partidas->update();
-        return Redirect::to('partidas');
+        return Redirect::to('partidas')->with('info','Partida Editada con exito');
     }
 
     /**
@@ -104,7 +104,7 @@ class PartidaController extends Controller
         $partidas=Partida::findOrFail($id);
         $partidas->estado="Inactivo";
         $partidas->update();
-        return Redirect::to('partidas');
+        return Redirect::to('partidas')->with('info','Partida eliminada con exito');
     }
 
 

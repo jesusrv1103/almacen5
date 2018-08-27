@@ -37,7 +37,11 @@
             </div>
           </div>
         </div>
-
+        @if(session('info'))
+        <div class="alert alert-success">
+          <strong>{{ session('info')}}</strong> 
+        </div>
+        @endif
 
         <div class="porlets-content">
           <div class="table-responsive">
@@ -63,7 +67,7 @@
                   <td> {{$entradas->cantidad}}</td>
                   <td> {{$entradas->fechaCaducidad}}</td>
 
-              
+                  
                   <td class="center">
                     <a href="{{URL::action('EntradasController@edit',$entradas->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>                    
                   </td>
