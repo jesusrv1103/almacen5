@@ -32,6 +32,8 @@
 
                   </div>
 
+
+
                   <div class="btn-group" style="margin-right: 10px;">
                     <a class="btn btn-sm btn-warning tooltips" href="{{URL::action('EventController@index')}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Ir al calaendario de Actividades"> <i class="fa fa-calendar-o"></i> Calendario </a>
 
@@ -42,6 +44,12 @@
             </div>
           </div>
         </div>
+
+          @if(session('info'))
+        <div class="alert alert-success">
+          <strong>{{ session('info')}}</strong> 
+        </div>
+        @endif
 
 
         <div class="porlets-content">
@@ -69,33 +77,33 @@
                 </td>
                 <td class="center">
                  <a class="btn btn-danger btn-sm" href="#modalEliminar" style="margin-right: 10px;"  
-                  data-target="#modal-delete-{{$calendario->id}}" data-toggle="modal" role="button"><i class="fa fa-eraser"></i></a></i></a>
-                </td>
+                 data-target="#modal-delete-{{$calendario->id}}" data-toggle="modal" role="button"><i class="fa fa-eraser"></i></a></i></a>
+               </td>
 
-              </tr>
-              @include('event.modal')
-              @endforeach
-
-
-
-            </tbody>
-            <tfoot>
-              <tr>
-                <th>Nombre</th>
-                <th>Inicio</th>
-                <th>Final</th>
+             </tr>
+             @include('event.modal')
+             @endforeach
 
 
-                <td><center><b>Editar</b></center></td>
-                <td><center><b>Borrar</b></center></td>
 
-              </tr>
-            </tfoot>
-          </table>
-        </div><!--/table-responsive-->
-      </div><!--/porlets-content-->
-    </div><!--/block-web-->
-  </div><!--/col-md-12-->
+           </tbody>
+           <tfoot>
+            <tr>
+              <th>Nombre</th>
+              <th>Inicio</th>
+              <th>Final</th>
+
+
+              <td><center><b>Editar</b></center></td>
+              <td><center><b>Borrar</b></center></td>
+
+            </tr>
+          </tfoot>
+        </table>
+      </div><!--/table-responsive-->
+    </div><!--/porlets-content-->
+  </div><!--/block-web-->
+</div><!--/col-md-12-->
 </div><!--/row-->
 
 

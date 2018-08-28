@@ -111,24 +111,15 @@
             <br>
             <div class="left_nav_slidebar">
              <ul>
-               <li class="left_nav_active theme_border"><a href="javascript:void(0);"><i class="fa fa-home"></i> Control de Almacen <span class="left_nav_pointer"></span> <span class="plus"><i class="fa fa-plus" ></i></span> </a>
+               <li class="left_nav_active theme_border"><a href="javascript:void(0);"> <i class="fa fa-home"></i> Control de Almacen <span class="left_nav_pointer"></span> <span class="plus"><i class="fa fa-plus" ></i></span> </a>
                  <ul class="opened" style="display:block">
 
 
-                   <li> <a href="{{ route('almacenes.index')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b class="theme_color" >Almacenes</b> </a> </li>
+                   <li> <a href="{{ route('almacenes.index')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Almacenes</b> </a> </li>
 
 
-                   @can('users.index')
-                   <li> <a href="{{ route('users.index')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b class="theme_color" >Usuarios</b> </a> </li>
-                   @endcan
 
-
-                   @can('roles.index')
-
-                   <li> <a href="{{ route('roles.index')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b class="theme_color" >Roles</b> </a> </li>
-                   @endcan
-
-                   <li> <a href="{{url('events')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Calendario</b> </a> </li>
+                   <li> <a href="{{url('events')}}"> <span>&nbsp;</span> <i class="fa fa-circle theme_color"></i> <b>Calendario</b> </a> </li>
 
 
                  </ul>
@@ -150,7 +141,7 @@
               <li > <a href="javascript:void(0);"> <i class="fa fa-users"></i> Usuarios<span class="plus"><i class="fa fa-plus"></i></span> </a>
                <ul>
                 @can('users.index')
-                <li> <a href="{{ route('users.index')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b class="theme_color" >Usuarios</b> </a> </li>
+                <li> <a href="{{ route('users.index')}}"> <span>&nbsp;</span> <i class="fa fa-circle theme_color"></i> <b >Usuarios</b> </a> </li>
                 @endcan
                 <li> <a href="{{url('direcciones')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Departamento</b> </a> </li>
               </ul>

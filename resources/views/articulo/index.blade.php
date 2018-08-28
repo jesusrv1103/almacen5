@@ -42,6 +42,11 @@
             </div>
           </div>
         </div>
+        @if(session('info'))
+        <div class="alert alert-success">
+          <strong>{{ session('info')}}</strong> 
+        </div>
+        @endif
 
 
         <div class="porlets-content">

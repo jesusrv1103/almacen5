@@ -115,9 +115,10 @@
            <div class="form-group">
             <label class="col-sm-3 control-label">Fecha Caducidad: <strog class="theme_color">*</strog></label>
             <div class="col-sm-6">
-              <input type="text" class="form-control mask" required name="fechaCaducidad" data-inputmask="'alias': 'date'" value="{{$articulos->fechaCaducidad}}">
+              <input onkeypress="return soloNumeros(event);" type="text" class="form-control mask" name="fechaCaducidad" data-inputmask="'alias': 'date'" value="{{$articulos->fechaCaducidad}}">
             </div>
           </div><!--/form-group-->
+
 
           <div class="form-group">
             <label class="col-sm-3 control-label">Tipo Artículo:<strog class="theme_color">*</strog></label>

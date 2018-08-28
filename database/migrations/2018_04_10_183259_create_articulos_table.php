@@ -25,7 +25,7 @@ class CreateArticulosTable extends Migration
             
             $table->integer('idUnidad')->unsigned();
             $table->foreign('idUnidad')->references('id')->on('unidad_de_medidas');
-            $table->string('fechaCaducidad');
+            $table->string('fechaCaducidad')->nullable($value = true);
             $table->string('tipoArticulo');
 
             $table->integer('idPartida')->unsigned();
