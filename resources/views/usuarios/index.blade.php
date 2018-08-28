@@ -66,7 +66,7 @@
                 <td>{{$usuarios->nombre}}</td>
 
                 <td class="center">
-                  <a href="{{URL::action('UsuariosController@edit',$usuarios->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>
+                  <a href="{{URL::action('UserController@edit',$usuarios->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>
                 </td>
                 <td class="center">
                   <a class="btn btn-danger btn-sm" data-target="#modal-delete-{{$usuarios->id}}" data-toggle="modal" style="margin-right: 10px;"  role="button"><i class="fa fa-eraser"></i></a>

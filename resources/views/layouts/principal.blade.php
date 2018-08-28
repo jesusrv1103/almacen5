@@ -13,6 +13,7 @@
     {!!Html::style('css/animate.css')!!}
     {!!Html::style('css/admin.css')!!}
     {!!Html::style('css/MisEstilos.css')!!}
+    {!!Html::script('js/moment.min.js')!!}
     {!!Html::style('plugins/advanced-datatable/css/demo_table.css')!!}
     {!!Html::style('plugins/advanced-datatable/css/demo_page.css')!!}
     {!!Html::style('plugins/toggle-switch/toggles.css')!!}

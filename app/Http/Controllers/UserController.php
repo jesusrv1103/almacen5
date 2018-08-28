@@ -9,16 +9,13 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Almacen\Http\Controllers\Controller;
 use Almacen\User;
+use Caffeinated\Shinobi\Models\Role;
 use DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function index()
     {
      $usuarios= DB::table('users')
@@ -52,7 +49,7 @@ class UserController extends Controller
     {
 
 
-       echo "hola";
+
     }
 
     /**
@@ -78,7 +75,9 @@ class UserController extends Controller
        $direcciones=DB::table('direcciones')
        ->where('estado','=','Activo')
        ->get();
-       return view('usuarios.edit',['usuarios'=>$usuarios,'direcciones'=>$direcciones]);
+
+       $roles= Role::get();
+       return view('usuarios.edit',['usuarios'=>$usuarios,'direcciones'=>$direcciones, 'roles'=>$roles]);
    }
 
     /**

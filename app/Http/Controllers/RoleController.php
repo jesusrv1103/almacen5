@@ -3,6 +3,7 @@
 namespace Almacen\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Caffeinated\Shinobi\Models\Role;
 
 class RoleController extends Controller
 {
@@ -13,8 +14,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
-    }
+      $roles= Role::get();
+  }
 
     /**
      * Show the form for creating a new resource.

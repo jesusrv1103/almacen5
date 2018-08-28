@@ -67,3 +67,20 @@ Date.prototype.toString = function() {
   return dia+"/"+mes+"/"+anyo;  
 }  
 
+
+function validarFecha(){
+
+
+  var fecha =document.getElementById('fecha').value;
+
+
+  if (!moment(fecha).isValid()) {
+    document.getElementById("errorFecha").innerHTML = "Fecha Invalida";
+    document.getElementById('submit').disabled=true;
+  } else {
+    document.getElementById("errorFecha").innerHTML = "";
+    document.getElementById('submit').disabled=false;
+  }
+
+}
+

@@ -92,7 +92,8 @@
           <label class="col-sm-3 control-label">Fecha Caducidad: <strog class="theme_color">*</strog></label>
           <div class="col-sm-6">
             <input type="text" class="form-control mask" name="fechaCaducidad"
-            data-inputmask="'alias': 'date'">
+            data-inputmask="'alias': 'date'" id="fecha" onblur="validarFecha();">
+             <span  style="color: #C0392B;" id="errorFecha"></span>
           </div>
         </div><!--/form-group-->
 
@@ -128,7 +129,7 @@
 
       <div class="form-group">
         <div class="col-sm-offset-7 col-sm-5">
-          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="submit" id="submit" class="btn btn-primary">Guardar</button>
           <a href="{{url('/articulos')}}" class="btn btn-default"> Cancelar</a>
         </div>
       </div><!--/form-group-->
