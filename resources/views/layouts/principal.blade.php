@@ -140,9 +140,9 @@
 
               <li > <a href="javascript:void(0);"> <i class="fa fa-users"></i> Usuarios<span class="plus"><i class="fa fa-plus"></i></span> </a>
                <ul>
-                @can('users.index')
+       
                 <li> <a href="{{ route('users.index')}}"> <span>&nbsp;</span> <i class="fa fa-circle theme_color"></i> <b >Usuarios</b> </a> </li>
-                @endcan
+
                 <li> <a href="{{url('direcciones')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Departamento</b> </a> </li>
               </ul>
             </li>

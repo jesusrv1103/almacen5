@@ -45,7 +45,7 @@
               <thead>
                 <tr>
                   <th>Nombre Completo</th>
-                  <th>Apellido</th>
+              
                   <th>Nombre Usuario</th>
           
                   <th>Tipo de Usuario</th>
@@ -58,11 +58,11 @@
               <tbody>
                @foreach($usuarios as $usuarios)
                <tr class="gradeA">
-                <td>{{$usuarios->nombreCompleto}}</td>
-                <td>{{$usuarios->apellido}}</td>
+                <td>{{$usuarios->name}}</td>
+           
                 <td>{{$usuarios->nombreusuario}}</td>
     
-                <td>{{$usuarios->tipoUsuario}}</td>
+                <td>A</td>
                 <td>{{$usuarios->nombre}}</td>
 
                 <td class="center">
@@ -79,7 +79,7 @@
             <tfoot>
               <tr>
                 <th>Nombre Completo</th>
-                <th>Apellido</th>
+          
                 <th>Nombre Usuario</th>
 
                 <th>Tipo de Usuario</th>

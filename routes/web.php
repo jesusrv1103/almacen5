@@ -81,15 +81,15 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:users.create');
 
 
-	Route::put('users/{almacen}','UserController@update')->name('users.update')
+	Route::put('users/{users}','UserController@update')->name('users.update')
 	->middleware('permission:users.edit');
 
 
-	Route::delete('users/{almacen}','UserController@destroy')->name('users.destroy')
+	Route::delete('users/{users}','UserController@destroy')->name('users.destroy')
 	->middleware('permission:users.destroy');
 
 
-	Route::get('users/{Almacen}/edit','UserController@edit')->name('users.edit')
+	Route::get('users/{users}/edit','UserController@edit')->name('users.edit')
 	->middleware('permission:users.edit');
 });
 

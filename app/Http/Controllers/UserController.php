@@ -21,10 +21,10 @@ class UserController extends Controller
      */
     public function index()
     {
-     $usuarios= DB::table('usuarios')
-     ->join( 'direcciones as d', 'usuarios.idDireccion','=','d.id')
-     ->select('usuarios.*','d.nombre')
-     ->where('usuarios.estado','Activo')
+     $usuarios= DB::table('users')
+     ->join( 'direcciones as d', 'users.idDireccion','=','d.id')
+     ->select('users.*','d.nombre')
+     ->where('users.estado','Activo')
      ->where('d.estado','Activo')->get();
      return view('usuarios.index',['usuarios' => $usuarios]);
  }
