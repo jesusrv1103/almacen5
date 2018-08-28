@@ -56,7 +56,7 @@
 
                 <td>{{$solicitud->numeroSolicitud}}</td>
                 <td>{{$solicitud->fechaS}}</td>
-                <td>{{$solicitud->nombreCompleto}}</td>
+                <td>{{$solicitud->name}}</td>
                 <td>{{$solicitud->nombre}}</td>
                 <td>{{$solicitud->UsoDestinado}}</td>
 

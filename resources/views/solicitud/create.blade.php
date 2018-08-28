@@ -43,7 +43,7 @@
                <select name="idUsuario" class="form-control" required>
                 @foreach($usuarios as $usuario)
                 <option value="{{$usuario->id}}">
-                  {{$usuario->nombreCompleto}} {{$usuario->apellido}}
+                  {{$usuario->name}} 
                 </option>
                 @endforeach
               </select>

@@ -18,7 +18,7 @@ class CreateSolicitudes1sTable extends Migration
             $table->string('fechaS');
 
             $table->integer('idUsuario')->unsigned();
-            $table->foreign('idUsuario')->references('id')->on('usuarios');
+            $table->foreign('idUsuario')->references('id')->on('users');
 
             $table->integer('idDireccion')->unsigned();
             $table->foreign('idDireccion')->references('id')->on('direcciones');

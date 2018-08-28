@@ -92,12 +92,12 @@
             <h1>Control Almacén</h1>
           </div>
           <div class="top_right_bar">
-            <div style="margin-top: -33%;">
-              <span class="user_adminname"> <br><br>  <span class="caret"></span>{{ Auth::user()->name }}   </span>
-              <span class="user_adminname"><a href="{{ route('logout') }}" 
+            <div style="margin-top: -33%;" >
+              <span class="user_adminname"> <br> {{ Auth::user()->name }}   </span>
+              <span  class="user_adminname" ><a  href="{{ route('logout') }}"  
                 onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();"
-                ><i class="fa fa-power-off"></i> Salir</span></a>
+                ><i class="fa fa-power-off" style="color:#787878;"> Salir </i></span></a>
               </div>
             </div>
           </div>

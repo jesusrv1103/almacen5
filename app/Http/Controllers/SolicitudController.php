@@ -18,6 +18,8 @@ use PDF;
 use Illuminate\Http\Resources\Json\Resource;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+
 
 
 
@@ -33,9 +35,9 @@ class SolicitudController extends Controller
     public function index()
     {
         $solicitudes= DB::table('solicitudes')
-        ->join('usuarios as u', 'solicitudes.idUsuario', '=', 'u.id')
+        ->join('users as u', 'solicitudes.idUsuario', '=', 'u.id')
         ->join('direcciones as d', 'solicitudes.idDireccion', '=', 'd.id')
-        ->select('solicitudes.*','u.nombreCompleto','solicitudes.*','d.nombre')
+        ->select('solicitudes.*','u.name','solicitudes.*','d.nombre')
 
         ->where('solicitudes.estado','Activo')->get();
         return view('solicitud.index',['solicitudes' => $solicitudes]);
@@ -50,7 +52,7 @@ class SolicitudController extends Controller
      */
     public function create()
     {
-        $usuarios= DB::table('usuarios')->where('estado','Activo')->get();
+        $usuarios= DB::table('users')->where('estado','Activo')->get();
         $direcciones= DB::table('direcciones')->where('estado','Activo')->get();
 
         $productos= DB::table('articulos')->where('estado','Activo')->get();
@@ -65,25 +67,25 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {
+      $date = Carbon::now();
+      $fecha = $date->format('d-m-Y');
 
-     DB::beginTransaction();
-     $solicitudes= new Solicitud();
-     $solicitudes->numeroSolicitud='11';
-     $solicitudes->fechaS='2012-11-11';
-     $solicitudes->idUsuario=$request->get('idUsuario');
-     $solicitudes->idDireccion=$request->get('idDireccion');
-     $solicitudes->UsoDestinado=$request->get('UsoDestinado');
-     $solicitudes->estado='Activo';
-     $solicitudes->save();
-     $idProducto= $request->get('idProducto');
-
-     $cantidad= $request->get('cantidad');
-
-
-     $cont = 0;
-     $idSolicitud=$solicitudes->id;
-     while($cont < count($idProducto))
-     {
+      echo $request->get('UsoDestinado');
+      DB::beginTransaction();
+      $solicitudes= new Solicitud();
+      $solicitudes->numeroSolicitud='11';
+      $solicitudes->fechaS=$fecha;
+      $solicitudes->idUsuario=$request->get('idUsuario');
+      $solicitudes->idDireccion=$request->get('idDireccion');
+      $solicitudes->UsoDestinado=$request->get('UsoDestinado');
+      $solicitudes->estado='Activo';
+      $solicitudes->save();
+      $idProducto= $request->get('idProducto');
+      $cantidad= $request->get('cantidad');
+      $cont = 0;
+      $idSolicitud=$solicitudes->id;
+      while($cont < count($idProducto))
+      {
         $detalles= new DetalleSolicitud;
         $detalles->idSolicitud=$idSolicitud;
         $detalles->idArticulo=$idProducto[$cont];

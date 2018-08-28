@@ -26,15 +26,15 @@
                         </div>
 
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('nombreusuario') ? ' has-error' : '' }}">
                         <label for="name" class="col-md-4 control-label">Nombre Usuario</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="nombreusuario" value="{{ old('name') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('nombreusuario'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('name') }}</strong>
+                                    <strong>{{ $errors->first('nombreusuario') }}</strong>
                                 </span>
                                 @endif
                             </div>
@@ -84,7 +84,7 @@
                             <select name="idDireccion" class="form-control" required>
 
                               <option value="1">
-                                 ti
+                                 Direccoion de  RI
                              </option>
 
                          </select>
