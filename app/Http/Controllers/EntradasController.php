@@ -61,7 +61,7 @@ class EntradasController extends Controller
         $entradas->fechaCaducidad=$request->get('fechaCaducidad');
         $entradas->estado='Activo';
         $entradas->save();
-        return Redirect::to('entradas')->with('info','Entrada Guardada con exito');
+        return Redirect::to('entradas')->with('info','Entrada guardada con exito');
     }
 
     /**
@@ -107,7 +107,7 @@ class EntradasController extends Controller
         $entradas->fechaCaducidad=$request->get('fechaCaducidad');
 
         $entradas->update();
-        return Redirect::to('entradas')->with('info','Entrada Editada con exito');
+        return Redirect::to('entradas')->with('info','Entrada editada con exito');
     }
 
     /**

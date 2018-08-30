@@ -48,7 +48,7 @@ class AlmacenController extends Controller
         $almacenes->nombre=$request->get('nombre');
         $almacenes->estado='Activo';
         $almacenes->save();
-        return Redirect::to('almacenes')->with('info','Almacen Guardado con exito');
+        return Redirect::to('almacenes')->with('info','Almacen guardado con exito');
     }
 
     /**
@@ -86,7 +86,7 @@ class AlmacenController extends Controller
         $almacenes->nombre=$request->get('nombre');
         
         $almacenes->update();
-        return Redirect::to('almacenes')->with('info','Almacen Editado con exito');
+        return Redirect::to('almacenes')->with('info','Almacen editado con exito');
     }
 
     /**

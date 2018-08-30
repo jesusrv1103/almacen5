@@ -49,7 +49,7 @@ class DireccionController extends Controller
         $direcciones->nombre=$request->get('nombre');
         $direcciones->estado='Activo';
         $direcciones->save();
-        return Redirect::to('direcciones')->with('info','Dirección Guardada con exito');
+        return Redirect::to('direcciones')->with('info','Dirección guardada con exito');
     }
 
     /**
@@ -87,7 +87,7 @@ class DireccionController extends Controller
         $direcciones->nombre=$request->get('nombre');
         
         $direcciones->update();
-        return Redirect::to('direcciones')->with('info','Dirección Editada con exito');
+        return Redirect::to('direcciones')->with('info','Dirección editada con exito');
     }
 
     /**

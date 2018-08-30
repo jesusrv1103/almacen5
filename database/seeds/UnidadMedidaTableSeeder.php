@@ -11,6 +11,10 @@ class UnidadMedidaTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('unidad_de_medidas')->insert([
+            'nombre' => 'PIEZA', 
+            ]);
+
     	DB::table('unidad_de_medidas')->insert([
     		'nombre' => 'CAJA', 
     		]);
@@ -19,8 +23,8 @@ class UnidadMedidaTableSeeder extends Seeder
     		'nombre' => 'PAQUETE', 
     		]);
 
-    	DB::table('unidad_de_medidas')->insert([
-    		'nombre' => 'PIEZA', 
-    		]);
+        DB::table('unidad_de_medidas')->insert([
+            'nombre' => 'KILOGRAMO', 
+            ]);
     }
 }

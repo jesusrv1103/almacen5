@@ -50,7 +50,7 @@ class ProveedorController extends Controller
         $proveedores->direccion=$request->get('direccion');
         $proveedores->estado='Activo';
         $proveedores->save();
-        return Redirect::to('proveedores')->with('info','Proveedor Guardado con exito');
+        return Redirect::to('proveedores')->with('info','Proveedor guardado con exito');
     }
 
     /**
@@ -89,7 +89,7 @@ class ProveedorController extends Controller
         $proveedores->rfc=$request->get('rfc');
         $proveedores->direccion=$request->get('direccion');
         $proveedores->update();
-        return Redirect::to('proveedores')->with('info','Proveedor Editado con exito');
+        return Redirect::to('proveedores')->with('info','Proveedor editado con exito');
     }
 
     /**

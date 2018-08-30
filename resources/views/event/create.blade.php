@@ -53,7 +53,8 @@
           <label class="col-sm-3 control-label">Inicio del Evento: <strog class="theme_color">*</strog></label>
           <div class="col-sm-6">
             <input class="form-control mask"
-            data-inputmask="'alias': 'date'" type="text"  name="start_date" required >
+            data-inputmask="'alias': 'date'" type="text"  name="start_date" required  id="fecha" parsley-regexp="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$">
+            <span  style="color: #C0392B;" id="errorFecha"></span>
           </div>
         </div><!--/form-group-->
 
@@ -62,7 +63,8 @@
           <label class="col-sm-3 control-label">Finalización del Evento: <strog class="theme_color">*</strog></label>
           <div class="col-sm-6">
             <input class="form-control mask"
-            data-inputmask="'alias': 'date'"  type="text"  name="end_date" required >
+            data-inputmask="'alias': 'date'" type="text"  name="end_date" required  id="fecha1" parsley-regexp="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$">
+            <span  style="color: #C0392B;" id="errorFecha1"></span>
           </div>
         </div><!--/form-group-->
 
@@ -70,7 +72,7 @@
 
         <div class="form-group">
           <div class="col-sm-offset-7 col-sm-5">
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" id="submit" class="btn btn-primary">Guardar</button>
             <a href="{{URL::action('EventController@index1')}}" class="btn btn-default"> Cancelar</a>
           </div>
         </div><!--/form-group-->
