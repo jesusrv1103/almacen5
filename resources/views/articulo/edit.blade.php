@@ -72,7 +72,7 @@
                 <select name="idAlmacen" class="form-control" required>
                   @foreach($almacenes as $almacen)
                   @if($articulos->idAlmacen==$almacen->id)
-                  <option value="{{$almacen->id}}">
+                  <option value="{{$almacen->id}}" selected="">
                     {{$almacen->nombre}}
                   </option>
                   @else
@@ -91,11 +91,9 @@
               <label class="col-sm-3 control-label">Unidad de Medida:<strog class="theme_color">*</strog></label>
               <div class="col-sm-6">
                 <select class="form-control" name="UnidadMedidad" required >
-
                   @foreach($unidades as $unidad)
-
                   @if($articulos->idUnidad == $unidad->id)
-                  <option value="{{$unidad->id}}"> 
+                  <option value="{{$unidad->id}}" selected=""> 
                    {{$unidad->nombre}}         
                  </option>
                  @else
@@ -138,7 +136,7 @@
                  PAPELERIA           
                </option>
                <option value="CONSUMIBLE" > 
-                 PAPELERIA           
+                 CONSUMIBLE           
                </option>
                @endif
 
@@ -152,7 +150,7 @@
             <select name="idPartida" class="form-control" required>
               @foreach($partidas as $partida)
               @if($articulos->idPartida==$partida->id)
-              <option value="{{$partida->id}}" selected>
+              <option value="{{$partida->id}}" selected="">
                 {{$partida->numeroPartida}}
               </option>
               @else

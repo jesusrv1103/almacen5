@@ -40,7 +40,6 @@
            <input type="hidden" name="_method" value="PUT">
 
 
-
            <input  type ="hidden"  name="idPartida" value="{{$partidas->idPartida}}"/>
 
            <div class="form-group">
@@ -50,7 +49,7 @@
 
                 @foreach($meses as $mes)
                 @if($mes->id== $partidas->idMes)
-                <option value="{{$mes->id}}" selected>
+                <option value="{{$mes->id}}" selected="">
                   {{$mes->nombre_mes}}
                 </option>
                 @else

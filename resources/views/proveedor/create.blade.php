@@ -46,8 +46,8 @@
           <div class="form-group">
             <label class="col-sm-3 control-label">RFC: <strog class="theme_color">*</strog></label>
             <div class="col-sm-6">
-              <input name="rfc"  maxlength="20" id="rfc" name="rfc"   type="text" onkeyup="mayus(this);"  class="form-control"   class="form-control" required placeholder="Ingrese RFC del Cliente"/>
-              <div class="text-danger" id='error_rfc'>{{$errors->formulario->first('rfc')}}</div>
+              <input parsley-regexp="([A-Z,Ñ,&]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[A-Z|\d]{3})" name="rfc"  maxlength="20" id="rfc" name="rfc"   type="text" onkeyup="mayus(this);"  class="form-control"   class="form-control" required placeholder="Ingrese RFC del Cliente"/>
+              <div  class="text-danger" id='error_rfc'>{{$errors->formulario->first('rfc')}}</div>
             </div>
           </div>
 
