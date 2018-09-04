@@ -12,7 +12,6 @@ use Almacen\Entradas;
 use DB;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
-use Almacen\Articulos;
 
 class EntradasController extends Controller
 {
@@ -23,13 +22,13 @@ class EntradasController extends Controller
      */
     public function index()
     {
-     $entradas= DB::table('entradas')
-     ->join( 'articulos', 'entradas.idArticulos','=','articulos.id')
-     ->select('articulos.nombre as nomArticulo','entradas.*')
-     ->where('articulos.estado','=','Activo')
-     ->where('entradas.estado','Activo')->get();
-     return view('entradas.index',['entradas' => $entradas]);
- }
+       $entradas= DB::table('entradas')
+       ->join( 'articulos', 'entradas.idArticulos','=','articulos.id')
+       ->select('articulos.nombre as nomArticulo','entradas.*')
+       ->where('articulos.estado','=','Activo')
+       ->where('entradas.estado','Activo')->get();
+       return view('entradas.index',['entradas' => $entradas]);
+   }
 
     /**
      * Show the form for creating a new resource.
@@ -84,14 +83,12 @@ class EntradasController extends Controller
      */
     public function edit($id)
     {
-     $entradas=Entradas::findOrFail($id);
-     $articulos=DB::table('articulos')
-     ->where('estado','=','Activo')
-     ->get();
-
-
-     return view('entradas.edit',['entradas'=>$entradas,'articulos'=>$articulos]);
- }
+       $entradas=Entradas::findOrFail($id);
+       $articulos=DB::table('articulos')
+       ->where('estado','=','Activo')
+       ->get();
+       return view('entradas.edit',['entradas'=>$entradas,'articulos'=>$articulos]);
+   }
 
     /**
      * Update the specified resource in storage.
@@ -103,8 +100,6 @@ class EntradasController extends Controller
     public function update(Request $request, $id)
     {
 
-
-
         $entradas=Entradas::findOrFail($id);
         $entradas->fechaEntrada=$request->get('fechaEntrada');
         $entradas->idArticulos=$request->get('idArticulos');
@@ -112,18 +107,7 @@ class EntradasController extends Controller
         $entradas->fechaCaducidad=$request->get('fechaCaducidad');
 
         $entradas->update();
-<<<<<<< HEAD
-
-        $articulos=Articulos::findOrFail($request->get('idArticulos'));
-        $cantidad =$articulos->cantidad;
-        $cantidadtotal=$cantidad+$request->get('cantidad');
-        $articulos->cantidad=$cantidadtotal;
-        $articulos->update();
-
-        return Redirect::to('entradas')->with('info','Entrada Editada con exito');
-=======
         return Redirect::to('entradas')->with('info','Entrada editada con exito');
->>>>>>> 83b883af56d821b31dfc6c68061fbbc5cfbdb0eb
     }
 
     /**
@@ -135,25 +119,8 @@ class EntradasController extends Controller
     public function destroy($id)
     {
         $entradas=Entradas::findOrFail($id);
-
-        $idArticulos= $entradas->idArticulos;
-        $cantidadEliminar= $entradas->cantidad;
-
         $entradas->estado="Inactivo";
         $entradas->update();
-
-        $articulos=Articulos::findOrFail($id);
-        $cantidadExistente= $articulos->cantidad;
-
-        $cantidadActualizada= $cantidadExistente-$cantidadEliminar;
-        $articulos-> $cantidadActualizada;
-        $articulos->update();
-
-
-
-
-
-
         return Redirect::to('entradas')->with('info','Entrada eliminada con exito');
     }
 }

@@ -52,6 +52,8 @@
         @endif
 
 
+
+
         <div class="porlets-content">
           <div class="table-responsive">
             <table  class="display table table-bordered table-striped" id="dynamic-table">
