@@ -92,7 +92,7 @@
           <label class="col-sm-3 control-label">Fecha Caducidad: <strog class="theme_color">*</strog></label>
           <div class="col-sm-6">
             <input type="text" class="form-control mask" name="fechaCaducidad"
-            data-inputmask="'alias': 'date'" id="fecha" onblur="validarFecha();">
+            data-inputmask="'alias': 'date'" id="fecha" parsley-regexp="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" >
              <span  style="color: #C0392B;" id="errorFecha"></span>
           </div>
         </div><!--/form-group-->

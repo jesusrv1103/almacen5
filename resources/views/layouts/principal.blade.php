@@ -2,18 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Almacén SEZAC</title>
+  <title>Control de Almacen Secretaria de Economia de Zacatecas</title>
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
-
-
 
     {!!Html::style('css/font-awesome.css')!!}
     {!!Html::style('css/bootstrap.min.css')!!}
     {!!Html::style('css/animate.css')!!}
     {!!Html::style('css/admin.css')!!}
     {!!Html::style('css/MisEstilos.css')!!}
-    {!!Html::script('js/moment.min.js')!!}
     {!!Html::style('plugins/advanced-datatable/css/demo_table.css')!!}
     {!!Html::style('plugins/advanced-datatable/css/demo_page.css')!!}
     {!!Html::style('plugins/toggle-switch/toggles.css')!!}
@@ -55,7 +52,7 @@
 
     {!!Html::style('plugins/calendar/fullcalendar.css')!!}
     {!!Html::style('plugins/calendar/fullcalendar.print.css')!!}
-    
+
 
   </head>
   <style type="text/css">
@@ -79,11 +76,9 @@
         <!--\\\\\\\ header Start \\\\\\-->
         <div class="brand">
           <!--\\\\\\\ brand Start \\\\\\-->
-          <!--div class="logo" style="display:block"><h2 style="margin-top: -5px;"><span class="theme_color">INSEZAC</span></h2></div-->
-          <div style="display:block"><img width="100%" style=" margin-top:-15px" src="{{asset('images/sezac.png')}}"></div>
+          <div style="display:block"><img width="100%" style=" margin-top:-15px" src="images/sezac.png"></div>
 
-          <div class="small_logo" style="display:none"><img src="{{asset('images/s-logo.png')}}" width="50" height="47" alt="s-logo" /> <img src="{{asset('images/s-logo.png')}}" width="122" height="20" alt="r-logo" /></div>
-
+          <div class="small_logo" style="display:none"><img src="{{asset('images/sezac.png')}}"  width="50" height="47" alt="s-logo" /> <img src="{{asset('images/s-logo.png')}}" width="122" height="20" alt="r-logo" /></div>
         </div>
         <!--\\\\\\\ brand end \\\\\\-->
         <div class="header_top_bar">
@@ -93,7 +88,7 @@
             <h1>Control Almacén</h1>
           </div>
           <div class="top_right_bar">
-            <div style="margin-top: -33%;" >
+            <div style="margin-top: -63%;" >
               <span class="user_adminname"> <br> {{ Auth::user()->name }}   </span>
               <span  class="user_adminname" ><a  href="{{ route('logout') }}"  
                 onclick="event.preventDefault();
@@ -102,131 +97,208 @@
               </div>
             </div>
           </div>
-          <!--\\\\\\\ header top bar end \\\\\\-->
         </div>
-        <!--\\\\\\\ header end \\\\\\-->
-        <div class="inner">
-          <!--\\\\\\\ inner start \\\\\\-->
-          <div class="left_nav">
-            <!--\\\\\\\left_nav start \\\\\\-->
-            <br>
-            <div class="left_nav_slidebar">
-             <ul>
-               <li class="left_nav_active theme_border"><a href="javascript:void(0);"> <i class="fa fa-home"></i> Control de Almacen <span class="left_nav_pointer"></span> <span class="plus"><i class="fa fa-plus" ></i></span> </a>
-                 <ul class="opened" style="display:block">
-
-
-                   <li> <a href="{{ route('almacenes.index')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Almacenes</b> </a> </li>
-
-
-
-                   <li> <a href="{{url('events')}}"> <span>&nbsp;</span> <i class="fa fa-circle theme_color"></i> <b>Calendario</b> </a> </li>
-
-
-                 </ul>
-
-               </li>
-
-
-               <li> <a href="javascript:void(0);"> <i class="fa fa-shopping-cart"></i> Artículos<span class="plus"><i class="fa fa-plus"></i></span> </a>
-
-                 <ul >
-                  <li> <a href="{{url('articulos')}}"> <span>&nbsp;</span> <i class="fa fa-circle theme_color"></i> <b >Artículos</b> </a> </li>
-                  <li> <a href="{{url('entradas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Entrada de Artículos</b> </a> </li>
-                  <li> <a href="{{url('proveedores')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b >Proveedores</b> </a> </li>
-                  <li> <a href="{{url('inventarios')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Inventario</b> </a> </li>
-
-                </ul>
-              </li>
-
-              <li > <a href="javascript:void(0);"> <i class="fa fa-users"></i> Usuarios<span class="plus"><i class="fa fa-plus"></i></span> </a>
-               <ul>
-       
-                <li> <a href="{{ route('users.index')}}"> <span>&nbsp;</span> <i class="fa fa-circle theme_color"></i> <b >Usuarios</b> </a> </li>
-
-                <li> <a href="{{url('direcciones')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Departamento</b> </a> </li>
-              </ul>
-            </li>
-
-            <li > <a href="javascript:void(0);"> <i class="fa fa-money"></i> Partidas<span class="plus"><i class="fa fa-plus"></i></span> </a>
-             <ul>
-
-               <li> <a href="{{url('partidas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Partidas</b> </a> </li>
-
-             </ul>
-           </li>
-
-           <li > <a href="javascript:void(0);"> <i class="fa fa-envelope"></i> Solicitudes<span class="plus"><i class="fa fa-plus"></i></span> </a>
-             <ul>
-              <li> <a href="{{url('solicitudes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Recibidas</b> </a> </li>
-
-              <li> <a href="{{url('solicitudes1')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Enviadas</b> </a> </li>
-
-            </ul>
-          </li>
-
-        </ul>
-
+        <!--\\\\\\\ header top bar end \\\\\\-->
       </div>
-    </div>
-  </div>
-  <!--\\\\\\\left_nav end \\\\\\-->
-  <div class="contentpanel">
-    <!--\\\\\\\ contentpanel start\\\\\\-->
+      <!--\\\\\\\ header end \\\\\\-->
+      <div class="inner">
+        <!--\\\\\\\ inner start \\\\\\-->
+        <div class="left_nav">
+          <!--\\\\\\\left_nav start \\\\\\-->
+          <br>
+          <div class="left_nav_slidebar">
+           <ul>
+             @if(str_contains(Route::getCurrentRoute()->getName(),'almacenes'))
+             <li class="left_nav_active theme_border"><a href="javascript:void(0);"><i class="fa fa-home"></i> Control de Almacen <!--<span class="left_nav_pointer"></span>--><span class="plus"><i class="fa fa-plus" ></i></span> </a>
+              <ul class="opened" style="display:block">
+                @else
+                <li><a href="javascript:void(0);"><i class="fa fa-home"></i> Control de Almacen<span class="plus"><i class="fa fa-plus" ></i></span> </a>
+                  <ul id="este">
+                    @endif
+                    <li> <a href="{{url('almacenes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
+                      @if(Route::getCurrentRoute()->getName()=="almacenes.index")
+                      <b class="theme_color" >Almacenes</b> </a> 
+                      @else
+                      <b>Almacenes</b> </a> 
+                      @endif
+                    </li>
+                    <li> <a href="{{url('events')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Calendario</b> </a> </li>
+                  </ul>
+                </li>
+                @if(str_contains(Route::getCurrentRoute()->getName(),['articulos','entradas','proveedores','inventarios']))
+                <li class="left_nav_active theme_border"> <a href="javascript:void(0);"> <i class="fa fa-shopping-cart"></i> Artículos<span class="plus"><i class="fa fa-plus"></i></span> </a>
+                  <ul class="opened" style="display:block">
+                    @else
+                    <li> <a href="javascript:void(0);"> <i class="fa fa-shopping-cart"></i> Artículos<span class="plus"><i class="fa fa-plus"></i></span> </a>
+                      <ul>
+                        @endif
+                        <li> <a href="{{url('articulos')}}"> <span>&nbsp;</span> <i class="fa fa-circle theme_color"></i> 
+                         @if(Route::getCurrentRoute()->getName()=="articulos.index")
+                         <b class="theme_color">Artículos</b> </a> 
+                         @else
+                         <b >Artículos</b> </a> 
+                         @endif
+                       </li>
+                       <li> <a href="{{url('entradas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
+                        @if(Route::getCurrentRoute()->getName()=="entradas.index")
+                        <b class="theme_color">Entrada de Artículos</b> </a> 
+                        @else
+                        <b>Entrada de Artículos</b> </a>
+                        @endif 
+                      </li>
+                      <li> <a href="{{url('proveedores')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
+                        @if(Route::getCurrentRoute()->getName()=="proveedores.index")
+                        <b class="theme_color">Proveedores</b> </a> 
+                        @else
+                        <b >Proveedores</b> </a> 
+                        @endif
+                      </li>
+                      <li> <a href="{{url('inventarios')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i>
+                        @if(Route::getCurrentRoute()->getName()=="inventarios.index")
+                        <b class="theme_color">Inventario</b> </a> </li>
+                        @else
+                        <b >Inventario</b> </a> 
+                        @endif
+                      </ul>
+                    </li>
 
-    @yield('contenido')
+                    @if(str_contains(Route::getCurrentRoute()->getName(),['usuarios','direcciones','roles']))
+                    <li class="left_nav_active theme_border"> <a href="javascript:void(0);"> <i class="fa fa-users"></i> Usuarios<span class="plus"><i class="fa fa-plus"></i></span> </a>
+                      <ul class="opened" style="display:block">
+                        @else
+                        <li> <a href="javascript:void(0);"> <i class="fa fa-users"></i> Usuarios<span class="plus"><i class="fa fa-plus"></i></span> </a>
+                         <ul>
+                          @endif
+                          <li> <a href="{{url('usuarios')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
+                            @if(Route::getCurrentRoute()->getName()=="usuarios.index")
+                            <b class="theme_color">Usuarios</b></a> 
+                            @else
+                            <b>Usuarios</b></a> 
+                            @endif
+                          </li>
+                          <li> <a href="{{url('direcciones')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i>
+                            @if(Route::getCurrentRoute()->getName()=="direcciones.index")
+                            <b class="theme_color">Departamento</b></a>
+                            @else
+                            <b>Departamento</b></a> 
+                            @endif 
+                          </li>
 
-  </div>
-  <!--\\\\\\\ content panel end \\\\\\-->
-</div>
-<!--\\\\\\\ inner end\\\\\\-->
-</div>
+                          <li> <a href="{{url('roles')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i>
+                            @if(Route::getCurrentRoute()->getName()=="roles.index")
+                            <b class="theme_color">Roles</b></a>
+                            @else
+                            <b>Roles</b></a> 
+                            @endif 
+                          </li>
+                        </ul>
+                      </li>
 
-<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-  {{ csrf_field() }}
-</form>
+                      @if(str_contains(Route::getCurrentRoute()->getName(),'partidas'))
+                      <li class="left_nav_active theme_border"> <a href="javascript:void(0);"> <i class="fa fa-money"></i> Partidas<span class="plus"><i class="fa fa-plus"></i></span> </a>
+                       <ul class="opened" style="display:block">
+                        @else
+                        <li> <a href="javascript:void(0);"> <i class="fa fa-money"></i> Partidas<span class="plus"><i class="fa fa-plus"></i></span> </a>
+                         <ul>
+                          @endif
+                          <li> <a href="{{url('partidas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i>
+                            @if(Route::getCurrentRoute()->getName()=="partidas.index")
+                            <b class="theme_color">Partidas</b></a>
+                            @else
+                            <b>Partidas</b></a>
+                            @endif 
+                          </li>
+                        </ul>
+                      </li>
 
-{!!Html::script('js/jquery-2.1.0.js')!!}
-{!!Html::script('js/script.js')!!}
-{!!Html::script('js/jquery-2.1.0.js')!!}
-{!!Html::script('js/bootstrap.min.js')!!}
-{!!Html::script('js/common-script.js')!!}
-{!!Html::script('js/jquery.slimscroll.min.js')!!}
-{!!Html::script('plugins/toggle-switch/toggles.min.js')!!} 
-{!!Html::script('plugins/checkbox/zepto.js')!!}
-{!!Html::script('plugins/checkbox/icheck.js')!!}
-{!!Html::script('js/icheck-init.js')!!}
-{!!Html::script('plugins/bootstrap-datepicker/js/bootstrap-datepicker.js')!!} 
-{!!Html::script('plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js')!!} 
-{!!Html::script('plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js')!!} 
-{!!Html::script('plugins/bootstrap-timepicker/js/bootstrap-timepicker.js')!!} 
-{!!Html::script('js/form-components.js')!!} 
-{!!Html::script('plugins/input-mask/jquery.inputmask.min.js')!!} 
-{!!Html::script('plugins/input-mask/demo-mask.js')!!} 
-{!!Html::script('plugins/bootstrap-fileupload/bootstrap-fileupload.min.js')!!} 
-{!!Html::script('plugins/dropzone/dropzone.min.js')!!} 
-{!!Html::script('plugins/ckeditor/ckeditor.js')!!}
-{!!Html::script('js/jPushMenu.js')!!} 
-{!!Html::script('plugins/validation/parsley.min.js')!!}
-{!!Html::script('plugins/data-tables/jquery.dataTables.js')!!}
-{!!Html::script('plugins/data-tables/DT_bootstrap.js')!!}
-{!!Html::script('plugins/data-tables/dynamic_table_init.js')!!}
-{!!Html::script('plugins/edit-table/edit-table.js')!!}
-{!!Html::script('plugins/file-uploader/js/vendor/jquery.ui.widget.js')!!}
-{!!Html::script('plugins/file-uploader/js/jquery.iframe-transport.js')!!}
-{!!Html::script('plugins/file-uploader/js/jquery.fileupload.js')!!}
-{!!Html::script('plugins/validation/parsley.min.js')!!}
-{!!Html::script('plugins/select2/dist/js/select2.full.min.js')!!}
-<!-- Include SmartWizard JavaScript source -->
-{!!Html::script('plugins/wizard/js/jquery.smartWizard.js')!!}
-<!-- Include jQuery Validator plugin -->
-{!!Html::script('https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js')!!}
+                      @if(str_contains(Route::getCurrentRoute()->getName(),['solicitudes','solicitudes1']))
+                      <li class="left_nav_active theme_border"> <a href="javascript:void(0);"> <i class="fa fa-envelope"></i> Solicitudes<span class="plus"><i class="fa fa-plus"></i></span> </a>
+                       <ul class="opened" style="display:block">
+                        @else
+                        <li> <a href="javascript:void(0);"> <i class="fa fa-envelope"></i> Solicitudes<span class="plus"><i class="fa fa-plus"></i></span> </a>
+                         <ul>
+                          @endif
+
+                          <li> <a href="{{url('solicitudes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i>
+                            @if(Route::getCurrentRoute()->getName()=="solicitudes.index")
+                            <b class="theme_color">Recibidas</b> </a> 
+                            @else 
+                            <b>Recibidas</b> </a> 
+                            @endif
+                          </li>
+                          <li> <a href="{{url('solicitudes1')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
+                            @if(Route::getCurrentRoute()->getName()=="solicitudes1.index")
+                            <b class="theme_color">Enviados</b> </a> 
+                            @else 
+                            <b>Enviados</b> </a> 
+                            @endif
+                          </li>
+
+                        </ul>
+                      </li>
+
+                    </ul>
+
+                  </div>
+                </div>
+              </div>
+              <!--\\\\\\\left_nav end \\\\\\-->
+              <div class="contentpanel">
+                <!--\\\\\\\ contentpanel start\\\\\\-->
+
+                @yield('contenido')
+
+              </div>
+              <!--\\\\\\\ content panel end \\\\\\-->
+            </div>
+            <!--\\\\\\\ inner end\\\\\\-->
+          </div>
+
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+          </form>
+
+          {!!Html::script('js/jquery-2.1.0.js')!!}
+          {!!Html::script('js/script.js')!!}
+          {!!Html::script('js/jquery-2.1.0.js')!!}
+          {!!Html::script('js/bootstrap.min.js')!!}
+          {!!Html::script('js/common-script.js')!!}
+          {!!Html::script('js/jquery.slimscroll.min.js')!!}
+          {!!Html::script('plugins/toggle-switch/toggles.min.js')!!} 
+          {!!Html::script('plugins/checkbox/zepto.js')!!}
+          {!!Html::script('plugins/checkbox/icheck.js')!!}
+          {!!Html::script('js/icheck-init.js')!!}
+          {!!Html::script('plugins/bootstrap-datepicker/js/bootstrap-datepicker.js')!!} 
+          {!!Html::script('plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js')!!} 
+          {!!Html::script('plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js')!!} 
+          {!!Html::script('plugins/bootstrap-timepicker/js/bootstrap-timepicker.js')!!} 
+          {!!Html::script('js/form-components.js')!!} 
+          {!!Html::script('plugins/input-mask/jquery.inputmask.min.js')!!} 
+          {!!Html::script('plugins/input-mask/demo-mask.js')!!} 
+          {!!Html::script('plugins/bootstrap-fileupload/bootstrap-fileupload.min.js')!!} 
+          {!!Html::script('plugins/dropzone/dropzone.min.js')!!} 
+          {!!Html::script('plugins/ckeditor/ckeditor.js')!!}
+          {!!Html::script('js/jPushMenu.js')!!} 
+          {!!Html::script('plugins/validation/parsley.min.js')!!}
+          {!!Html::script('plugins/data-tables/jquery.dataTables.js')!!}
+          {!!Html::script('plugins/data-tables/DT_bootstrap.js')!!}
+          {!!Html::script('plugins/data-tables/dynamic_table_init.js')!!}
+          {!!Html::script('plugins/edit-table/edit-table.js')!!}
+          {!!Html::script('plugins/file-uploader/js/vendor/jquery.ui.widget.js')!!}
+          {!!Html::script('plugins/file-uploader/js/jquery.iframe-transport.js')!!}
+          {!!Html::script('plugins/file-uploader/js/jquery.fileupload.js')!!}
+          {!!Html::script('plugins/validation/parsley.min.js')!!}
+          {!!Html::script('plugins/select2/dist/js/select2.full.min.js')!!}
+          <!-- Include SmartWizard JavaScript source -->
+          {!!Html::script('plugins/wizard/js/jquery.smartWizard.js')!!}
+          <!-- Include jQuery Validator plugin -->
+          {!!Html::script('https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js')!!}
 
 
-{!!Html::script('https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js')!!}
+          {!!Html::script('https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js')!!}
 
 
-{!!Html::script('plugins/calendar/fullcalendar.min.js')!!}
-{!!Html::script('plugins/calendar/external-draging-calendar.js')!!}
-</body>
-</html>
+          {!!Html::script('plugins/calendar/fullcalendar.min.js')!!}
+          {!!Html::script('plugins/calendar/external-draging-calendar.js')!!}
+        </body>
+        </html>

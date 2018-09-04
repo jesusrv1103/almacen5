@@ -3,7 +3,7 @@
 <!--\\\\\\\ contentpanel start\\\\\\-->
 <div class="pull-left breadcrumb_admin clear_both">
   <div class="pull-left page_title theme_color">
-    <h1>Catálogos</h1>
+    <h1>Control Almacen</h1>
     <h2 class="">Almacenes</h2>
   </div>
   <div class="pull-right">

@@ -4,6 +4,7 @@ namespace Almacen\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Caffeinated\Shinobi\Models\Role;
+use DB;
 
 class RoleController extends Controller
 {
@@ -15,6 +16,8 @@ class RoleController extends Controller
     public function index()
     {
       $roles= Role::get();
+      return view('roles.index',['roles' => $roles]);
+
   }
 
     /**
@@ -57,8 +60,11 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+
+     $permissions=DB::table('permissions')
+     ->get();
+     return view("roles.edit",["roles"=>Role::findOrFail($id), "permissions"=>$permissions]);
+ }
 
     /**
      * Update the specified resource in storage.

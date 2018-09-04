@@ -15,15 +15,15 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
- 
-    public function index()
-    {
-     $usuarios= DB::table('users')
-     ->join( 'direcciones as d', 'users.idDireccion','=','d.id')
-     ->select('users.*','d.nombre')
-     ->where('users.estado','Activo')
-     ->where('d.estado','Activo')->get();
-     return view('usuarios.index',['usuarios' => $usuarios]);
+
+  public function index()
+  {
+   $usuarios= DB::table('users')
+   ->join( 'direcciones as d', 'users.idDireccion','=','d.id')
+   ->select('users.*','d.nombre')
+   ->where('users.estado','Activo')
+   ->where('d.estado','Activo')->get();
+   return view('usuarios.index',['usuarios' => $usuarios]);
  }
 
     /**
@@ -33,10 +33,13 @@ class UserController extends Controller
      */
     public function create()
     {
-       $direcciones=DB::table('direcciones')
-       ->where('estado','=','Activo')
-       ->get();
-       return view('usuarios.create',['direcciones'=>$direcciones]);
+     $direcciones=DB::table('direcciones')
+     ->where('estado','=','Activo')
+     ->get();
+
+     $permissions=DB::table('permissions')
+     ->get();
+     return view('usuarios.create',['direcciones'=>$direcciones]);
    }
 
     /**
@@ -71,13 +74,16 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-       $usuarios=User::findOrFail($id);
-       $direcciones=DB::table('direcciones')
-       ->where('estado','=','Activo')
-       ->get();
+     $usuarios=User::findOrFail($id);
+     $direcciones=DB::table('direcciones')
+     ->where('estado','=','Activo')
+     ->get();
 
-       $roles= Role::get();
-       return view('usuarios.edit',['usuarios'=>$usuarios,'direcciones'=>$direcciones, 'roles'=>$roles]);
+     $permissions=DB::table('permissions')
+     ->get();
+
+     $roles= Role::get();
+     return view('usuarios.edit',['usuarios'=>$usuarios,'direcciones'=>$direcciones, 'roles'=>$roles,'permissions'=>$permissions]);
    }
 
     /**
@@ -99,7 +105,7 @@ class UserController extends Controller
 
       $usuarios->update();
       return Redirect::to('usuarios');
-  }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -109,9 +115,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $usuarios=User::findOrFail($id);
-        $usuarios->estado="Inactivo";
-        $usuarios->update();
-        return Redirect::to('usuarios');
+      $usuarios=User::findOrFail($id);
+      $usuarios->estado="Inactivo";
+      $usuarios->update();
+      return Redirect::to('usuarios');
     }
-}
+  }
