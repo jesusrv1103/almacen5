@@ -38,7 +38,7 @@
           <form action="{{url('events',[$events->id])}}" method="POST" class="form-horizontal row-border"  parsley-validate novalidate>
            {{csrf_field()}}
 
-            <input type="hidden" name="_method" value="PUT">
+           <input type="hidden" name="_method" value="PUT">
 
 
            <div class="form-group">
@@ -54,7 +54,8 @@
          <div class="form-group">
           <label class="col-sm-3 control-label">Inicio del Evento: <strog class="theme_color">*</strog></label>
           <div class="col-sm-6">
-            <input type="text" class="form-control mask" name="start_date" required value="{{$fechaII}}" data-inputmask="'alias': 'date'">
+            <input type="text" class="form-control mask" name="start_date" parsley-regexp="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required value="{{$fechaII}}" data-inputmask="'alias': 'date'">
+            <span  style="color: #C0392B;" id="errorFecha"></span>
           </div>
         </div><!--/form-group-->
 
@@ -62,21 +63,22 @@
         <div class="form-group">
           <label class="col-sm-3 control-label">Finalización del Evento: <strog class="theme_color">*</strog></label>
           <div class="col-sm-6">
-            <input type="text" class="form-control mask" name="end_date" required value="{{$events->end_date}}" data-inputmask="'alias': 'date'">
+            <input type="text" class="form-control mask" name="end_date" parsley-regexp="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required value="{{$events->end_date}}" data-inputmask="'alias': 'date'">
+         <span  style="color: #C0392B;" id="errorFecha"></span>
           </div>
         </div><!--/form-group-->
 
 
 
-       <div class="form-group">
-        <div class="col-sm-offset-7 col-sm-5">
-          <button type="submit" class="btn btn-primary">Guardar</button>
-          <a href="{{URL::action('EventController@index1')}}" class="btn btn-default"> Cancelar</a>
-        </div>
-      </div><!--/form-group-->
-    </form>
-  </div><!--/porlets-content-->
-</div><!--/block-web-->
+        <div class="form-group">
+          <div class="col-sm-offset-7 col-sm-5">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="{{URL::action('EventController@index1')}}" class="btn btn-default"> Cancelar</a>
+          </div>
+        </div><!--/form-group-->
+      </form>
+    </div><!--/porlets-content-->
+  </div><!--/block-web-->
 </div><!--/col-md-12-->
 </div><!--/row-->
 </div><!--/container clear_both padding_fix--> 

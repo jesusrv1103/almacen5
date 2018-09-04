@@ -62,7 +62,7 @@ class EntradasController extends Controller
         $entradas->fechaCaducidad=$request->get('fechaCaducidad');
         $entradas->estado='Activo';
         $entradas->save();
-        return Redirect::to('entradas')->with('info','Entrada Guardada con exito');
+        return Redirect::to('entradas')->with('info','Entrada guardada con exito');
     }
 
     /**
@@ -112,6 +112,7 @@ class EntradasController extends Controller
         $entradas->fechaCaducidad=$request->get('fechaCaducidad');
 
         $entradas->update();
+<<<<<<< HEAD
 
         $articulos=Articulos::findOrFail($request->get('idArticulos'));
         $cantidad =$articulos->cantidad;
@@ -120,6 +121,9 @@ class EntradasController extends Controller
         $articulos->update();
 
         return Redirect::to('entradas')->with('info','Entrada Editada con exito');
+=======
+        return Redirect::to('entradas')->with('info','Entrada editada con exito');
+>>>>>>> 83b883af56d821b31dfc6c68061fbbc5cfbdb0eb
     }
 
     /**

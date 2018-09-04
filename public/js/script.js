@@ -89,3 +89,19 @@ function validarFecha(){
 
 }
 
+function validarFecha1(){
+
+
+  var fecha1 =document.getElementById('fecha1').value;
+
+
+  if (!moment(fecha1).isValid()) {
+    document.getElementById("errorFecha1").innerHTML = "Fecha Invalida";
+    document.getElementById('submit').disabled=true;
+  } else {
+    document.getElementById("errorFecha1").innerHTML = "";
+    document.getElementById('submit').disabled=false;
+  }
+
+}
+

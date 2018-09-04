@@ -4,7 +4,7 @@
 <div class="pull-left breadcrumb_admin clear_both">
   <div class="pull-left page_title theme_color">
     <h1>Inicio</h1>
-    <h2 class="">Partidas</h2>
+    <h2 class="">Solicitud</h2>
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">
@@ -169,7 +169,7 @@
 </div><!--/block-web-->
 </div><!--/col-md-12-->
 </div><!--/row-->
-</div><!--/container clear_both padding_fix--> 
+</div><!--/container clear_both padding_fix http://192.168.1.81/tipoUnidad/--> 
 
 
 <script type="text/javascript">

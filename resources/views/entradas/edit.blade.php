@@ -47,7 +47,7 @@
                 <label class="col-sm-3 control-label">Fecha de Entrada del Artículo: <strog class="theme_color">*</strog></label>
                 <div class="col-sm-6">
                   <input type="text" class="form-control mask" name="fechaEntrada" value="{{$entradas->fechaEntrada}}" 
-                  data-inputmask="'alias': 'date'">
+                  data-inputmask="'alias': 'date'" parsley-regexp="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$">
                 </div>
               </div><!--/form-group-->
 
@@ -82,7 +82,7 @@
               <label class="col-sm-3 control-label">Fecha de Caducidad: <strog class="theme_color">*</strog></label>
               <div class="col-sm-6">
                 <input type="text" class="form-control mask" name="fechaCaducidad"
-                data-inputmask="'alias': 'date'" value="{{$entradas->fechaCaducidad}}">
+                data-inputmask="'alias': 'date'" value="{{$entradas->fechaCaducidad}}" parsley-regexp="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$">
               </div>
             </div><!--/form-group-->
 

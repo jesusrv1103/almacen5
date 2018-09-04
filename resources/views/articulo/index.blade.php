@@ -63,8 +63,8 @@
                   <th>Tipo Artículo</th>
                   <th>Partida</th>
 
-                  <td><center><b>Editar</b></center></td>
-                  <td><center><b>Borrar</b></center></td>
+                  <td><center><b>Editar&nbsp;&nbsp;</b></center></td>
+                  <td><center><b>Borrar&nbsp;&nbsp;</b></center></td>
 
                 </tr>
               </thead>
