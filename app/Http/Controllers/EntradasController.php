@@ -23,13 +23,13 @@ class EntradasController extends Controller
      */
     public function index()
     {
-     $entradas= DB::table('entradas')
-     ->join( 'articulos', 'entradas.idArticulos','=','articulos.id')
-     ->select('articulos.nombre as nomArticulo','entradas.*')
-     ->where('articulos.estado','=','Activo')
-     ->where('entradas.estado','Activo')->get();
-     return view('entradas.index',['entradas' => $entradas]);
- }
+       $entradas= DB::table('entradas')
+       ->join( 'articulos', 'entradas.idArticulos','=','articulos.id')
+       ->select('articulos.nombre as nomArticulo','entradas.*')
+       ->where('articulos.estado','=','Activo')
+       ->where('entradas.estado','Activo')->get();
+       return view('entradas.index',['entradas' => $entradas]);
+   }
 
     /**
      * Show the form for creating a new resource.
@@ -84,14 +84,14 @@ class EntradasController extends Controller
      */
     public function edit($id)
     {
-     $entradas=Entradas::findOrFail($id);
-     $articulos=DB::table('articulos')
-     ->where('estado','=','Activo')
-     ->get();
+       $entradas=Entradas::findOrFail($id);
+       $articulos=DB::table('articulos')
+       ->where('estado','=','Activo')
+       ->get();
 
 
-     return view('entradas.edit',['entradas'=>$entradas,'articulos'=>$articulos]);
- }
+       return view('entradas.edit',['entradas'=>$entradas,'articulos'=>$articulos]);
+   }
 
     /**
      * Update the specified resource in storage.
@@ -104,27 +104,51 @@ class EntradasController extends Controller
     {
 
 
+        $cantidadObtenida= $request->get('cantidad');
 
         $entradas=Entradas::findOrFail($id);
+        $cantidad_a_Actualizar=0;
+
+        $cantidadActual= $entradas->cantidad;
+
+        $cantidad_a_Actualizar = $cantidadObtenida -$cantidadActual;
         $entradas->fechaEntrada=$request->get('fechaEntrada');
         $entradas->idArticulos=$request->get('idArticulos');
         $entradas->cantidad=$request->get('cantidad');
         $entradas->fechaCaducidad=$request->get('fechaCaducidad');
 
         $entradas->update();
-<<<<<<< HEAD
+        if($cantidadObtenida >$cantidadActual)
+        {
+            $cantidad_a_Actualizar = $cantidadObtenida - $cantidadActual;
+            $articulos=Articulos::findOrFail($request->get('idArticulos'));
+            $cantidad =$articulos->cantidad;
 
-        $articulos=Articulos::findOrFail($request->get('idArticulos'));
-        $cantidad =$articulos->cantidad;
-        $cantidadtotal=$cantidad+$request->get('cantidad');
-        $articulos->cantidad=$cantidadtotal;
-        $articulos->update();
+            $articulos->cantidad=$cantidad+$cantidad_a_Actualizar;
+            $articulos->update();
 
-        return Redirect::to('entradas')->with('info','Entrada Editada con exito');
-=======
-        return Redirect::to('entradas')->with('info','Entrada editada con exito');
->>>>>>> 83b883af56d821b31dfc6c68061fbbc5cfbdb0eb
-    }
+        } elseif ($cantidadObtenida < $cantidadActual) {
+
+           $articulos=Articulos::findOrFail($request->get('idArticulos'));
+           $cantidad =$articulos->cantidad;
+           $cantidad_a_Actualizar = $cantidadActual -$cantidadObtenida;
+           $articulos->cantidad = $cantidad- $cantidad_a_Actualizar;
+
+           $articulos->update();
+
+       } else {
+
+           $articulos=Articulos::findOrFail($request->get('idArticulos'));
+           $cantidad =$articulos->cantidad;
+           $cantidadtotal=$cantidad+$request->get('cantidad');
+           $articulos->cantidad=$cantidadtotal;
+           $articulos->update();
+       }
+
+
+       return Redirect::to('entradas')->with('info','Entrada Editada con exito');
+
+   }
 
     /**
      * Remove the specified resource from storage.
@@ -142,11 +166,11 @@ class EntradasController extends Controller
         $entradas->estado="Inactivo";
         $entradas->update();
 
-        $articulos=Articulos::findOrFail($id);
+        $articulos=Articulos::findOrFail($idArticulos);
         $cantidadExistente= $articulos->cantidad;
 
         $cantidadActualizada= $cantidadExistente-$cantidadEliminar;
-        $articulos-> $cantidadActualizada;
+        $articulos->cantidad =  $cantidadActualizada;
         $articulos->update();
 
 

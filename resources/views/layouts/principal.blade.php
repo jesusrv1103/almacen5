@@ -117,7 +117,7 @@
                     @endif
                     <li> <a href="{{url('almacenes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
                       @if(Route::getCurrentRoute()->getName()=="almacenes.index")
-                      <b class="theme_color" >Almacenes</b> </a> 
+                      <b class="theme_color" style="color: #3498DB ;" >Almacenes</b> </a> 
                       @else
                       <b>Almacenes</b> </a> 
                       @endif
