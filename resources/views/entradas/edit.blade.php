@@ -34,7 +34,7 @@
         </div>
         <div class="porlets-content">
           <div class="porlets-content">
-          <form action="{{url('entradas',[$entradas->id])}}" method="post" class="form-horizontal row-border" parsley-validate novalidate>
+            <form action="{{url('entradas',[$entradas->id])}}" method="post" class="form-horizontal row-border" parsley-validate novalidate>
 
 
 
@@ -57,9 +57,15 @@
                 <div class="col-sm-6">
                   <select name="idArticulos" class="form-control" required>
                     @foreach($articulos as $articulos)
-                    <option value="{{$articulos->id}}">
+                    @if($articulos->id == $entradas->idArticulos)
+                    <option value="{{$articulos->id}}" selected>
                       {{$articulos->nombre}}
                     </option>
+                    @else
+                    <option value="{{$articulos->id}}" >
+                      {{$articulos->nombre}}
+                    </option>
+                    @endif
                     @endforeach
                   </select>
                   <div class="help-block with-errors"></div>

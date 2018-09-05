@@ -12,6 +12,7 @@ use Almacen\Entradas;
 use DB;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
+use Almacen\Articulos;
 
 class EntradasController extends Controller
 {
@@ -87,6 +88,8 @@ class EntradasController extends Controller
        $articulos=DB::table('articulos')
        ->where('estado','=','Activo')
        ->get();
+
+
        return view('entradas.edit',['entradas'=>$entradas,'articulos'=>$articulos]);
    }
 
@@ -100,15 +103,52 @@ class EntradasController extends Controller
     public function update(Request $request, $id)
     {
 
+
+        $cantidadObtenida= $request->get('cantidad');
+
         $entradas=Entradas::findOrFail($id);
+        $cantidad_a_Actualizar=0;
+
+        $cantidadActual= $entradas->cantidad;
+
+        $cantidad_a_Actualizar = $cantidadObtenida -$cantidadActual;
         $entradas->fechaEntrada=$request->get('fechaEntrada');
         $entradas->idArticulos=$request->get('idArticulos');
         $entradas->cantidad=$request->get('cantidad');
         $entradas->fechaCaducidad=$request->get('fechaCaducidad');
 
         $entradas->update();
-        return Redirect::to('entradas')->with('info','Entrada editada con exito');
-    }
+        if($cantidadObtenida >$cantidadActual)
+        {
+            $cantidad_a_Actualizar = $cantidadObtenida - $cantidadActual;
+            $articulos=Articulos::findOrFail($request->get('idArticulos'));
+            $cantidad =$articulos->cantidad;
+
+            $articulos->cantidad=$cantidad+$cantidad_a_Actualizar;
+            $articulos->update();
+
+        } elseif ($cantidadObtenida < $cantidadActual) {
+
+           $articulos=Articulos::findOrFail($request->get('idArticulos'));
+           $cantidad =$articulos->cantidad;
+           $cantidad_a_Actualizar = $cantidadActual -$cantidadObtenida;
+           $articulos->cantidad = $cantidad- $cantidad_a_Actualizar;
+
+           $articulos->update();
+
+       } else {
+
+           $articulos=Articulos::findOrFail($request->get('idArticulos'));
+           $cantidad =$articulos->cantidad;
+           $cantidadtotal=$cantidad+$request->get('cantidad');
+           $articulos->cantidad=$cantidadtotal;
+           $articulos->update();
+       }
+
+
+       return Redirect::to('entradas')->with('info','Entrada Editada con exito');
+
+   }
 
     /**
      * Remove the specified resource from storage.
@@ -119,8 +159,25 @@ class EntradasController extends Controller
     public function destroy($id)
     {
         $entradas=Entradas::findOrFail($id);
+
+        $idArticulos= $entradas->idArticulos;
+        $cantidadEliminar= $entradas->cantidad;
+
         $entradas->estado="Inactivo";
         $entradas->update();
+
+        $articulos=Articulos::findOrFail($idArticulos);
+        $cantidadExistente= $articulos->cantidad;
+
+        $cantidadActualizada= $cantidadExistente-$cantidadEliminar;
+        $articulos->cantidad =  $cantidadActualizada;
+        $articulos->update();
+
+
+
+
+
+
         return Redirect::to('entradas')->with('info','Entrada eliminada con exito');
     }
 }
