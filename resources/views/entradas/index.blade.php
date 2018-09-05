@@ -3,13 +3,13 @@
 <!--\\\\\\\ contentpanel start\\\\\\-->
 <div class="pull-left breadcrumb_admin clear_both">
   <div class="pull-left page_title theme_color">
-    <h1>Catálogos</h1>
-    <h2 class="">Entradas</h2>
+    <h1>Artículos</h1>
+    <h2 class="">Entrada de Artículos</h2>
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">
       <li><a href="?c=Inicio">Inicio</a></li>
-      <li class="active">Entradas</a></li>
+      <li class="active">Entrada de Artículos</a></li>
     </ol>
   </div>
 </div>
@@ -21,14 +21,14 @@
           <div class="row" style="margin-top: 15px; margin-bottom: 12px;">
             <div class="col-sm-7">
               <div class="actions"> </div>
-              <h2 class="content-header theme_color" style="margin-top: -5px;">&nbsp;&nbsp;Entradas</h2>
+              <h2 class="content-header theme_color" style="margin-top: -5px;">&nbsp;&nbsp;Entrada de Artículos</h2>
             </div>
             <div class="col-md-5">
               <div class="btn-group pull-right">
                 <b>
 
                   <div class="btn-group" style="margin-right: 10px;">
-                    <a class="btn btn-sm btn-success tooltips" href="{{URL::action('EntradasController@create')}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registrar nueva entrada de Artículo"> <i class="fa fa-plus"></i> Registrar </a>
+                    <a class="btn btn-sm btn-success tooltips" href="{{URL::action('EntradasController@create')}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registrar Nueva Entrada de Artículo"> <i class="fa fa-plus"></i> Registrar </a>
 
                   </div>
 

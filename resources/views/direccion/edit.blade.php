@@ -3,8 +3,8 @@
 
 <div class="pull-left breadcrumb_admin clear_both">
   <div class="pull-left page_title theme_color">
-    <h1>Inicio</h1>
-    <h2 class="">Articulo</h2>
+    <h1>Departamentos</h1>
+    <h2 class="">Editar Departamento</h2>
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">

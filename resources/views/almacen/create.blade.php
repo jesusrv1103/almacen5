@@ -2,8 +2,8 @@
 @section('contenido')
 <div class="pull-left breadcrumb_admin clear_both">
   <div class="pull-left page_title theme_color">
-    <h1>Inicio</h1>
-    <h2 class="">Almacenes</h2>
+    <h1>Almacenes</h1>
+    <h2 class="">Registrar Almacén</h2>
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">
@@ -21,7 +21,7 @@
           <div class="row" style="margin-top: 15px; margin-bottom: 12px;">
             <div class="col-sm-8">
               <div class="actions"> </div>
-              <h2 class="content-header theme_color" style="margin-top: -5px;">Registrar almacén</h2>
+              <h2 class="content-header theme_color" style="margin-top: -5px;">Registrar Almacén</h2>
             </div>
             <div class="col-md-4">
               <div class="btn-group pull-right">

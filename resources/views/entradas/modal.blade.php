@@ -8,7 +8,7 @@
               <h3 class="content-header theme_color">&nbsp;Eliminar Entrada de Artículo</h3>
             </div>
             <div class="porlets-content" style="margin-bottom: -50px;">
-              <h4>¿Esta segúro que desea eliminar la Entrada?</h4>
+              <h4>¿Esta segúro que desea eliminar la Entrada de Artículo?</h4>
             </div><!--/porlets-content--> 
           </div><!--/block-web--> 
         </div>

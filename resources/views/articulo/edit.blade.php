@@ -3,8 +3,8 @@
 
 <div class="pull-left breadcrumb_admin clear_both">
   <div class="pull-left page_title theme_color">
-    <h1>Inicio</h1>
-    <h2 class="">Articulo</h2>
+    <h1>Articículos</h1>
+    <h2 class="">Editar Articulo</h2>
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">
@@ -57,7 +57,7 @@
 
 
 
-                <label class="col-sm-3 control-label">Cantidad artículo: <strog class="theme_color">*</strog></label>
+                <label class="col-sm-3 control-label">Cantidad Artículo: <strog class="theme_color">*</strog></label>
                 <div class="col-sm-6">
                  <input onkeypress="return soloNumeros(event);" type="text" required class="form-control"  autofocus name="cantidad" maxlength="12" placeholder="Ingrese la cantidad del Articulo" value="{{$articulos->cantidad}}">
                </div>

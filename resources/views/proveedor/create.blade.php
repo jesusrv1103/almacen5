@@ -3,8 +3,8 @@
 
  <div class="pull-left breadcrumb_admin clear_both">
   <div class="pull-left page_title theme_color">
-    <h1>Inicio</h1>
-    <h2 class="">Proveedores</h2>
+    <h1>Proveedores</h1>
+    <h2 class="">Registrar Proveedor</h2>
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">
@@ -46,7 +46,7 @@
           <div class="form-group">
             <label class="col-sm-3 control-label">RFC: <strog class="theme_color">*</strog></label>
             <div class="col-sm-6">
-              <input parsley-regexp="([A-Z,Ñ,&]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[A-Z|\d]{3})" name="rfc"  maxlength="20" id="rfc" name="rfc"   type="text" onkeyup="mayus(this);"  class="form-control"   class="form-control" required placeholder="Ingrese RFC del Cliente"/>
+              <input parsley-regexp="([A-Z,Ñ,&]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[A-Z|\d]{3})" name="rfc"  maxlength="20" id="rfc" name="rfc"   type="text" onkeyup="mayus(this);"  class="form-control"   class="form-control" required placeholder="Ingrese RFC del Proveedor"/>
               <div  class="text-danger" id='error_rfc'>{{$errors->formulario->first('rfc')}}</div>
             </div>
           </div>
@@ -55,7 +55,7 @@
 
            <label class="col-sm-3 control-label">Dirección: <strog class="theme_color">*</strog></label>
            <div class="col-sm-6">
-            <input name="direccion" id="direccion" onchange="mayus(this);" type="text" required value="" class="form-control" maxlength="90" placeholder="Ingrese Dirección del proveedor"/>
+            <input name="direccion" id="direccion" onchange="mayus(this);" type="text" required value="" class="form-control" maxlength="90" placeholder="Ingrese Dirección del Proveedor"/>
           </div>
         </div><!--/form-group-->
 

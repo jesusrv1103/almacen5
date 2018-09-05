@@ -2,7 +2,7 @@
 @section('contenido')
 <div class="pull-left breadcrumb_admin clear_both">
   <div class="pull-left page_title theme_color">
-    <h1>Inicio</h1>
+    <h1>Partidas</h1>
     <h2 class="">Lista de Partidas mensuales</h2>
   </div>
   <div class="pull-right">
@@ -26,7 +26,7 @@
               <b>
 
                 <div class="btn-group" style="margin-right: 10px;">
-                  <a class="btn btn-sm btn-success tooltips" href="{{URL::action('Partida2Controller@create1',$partidas->id)}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registrar nueva Partida Mensual"> <i class="fa fa-plus"></i> Registrar   </a>
+                  <a class="btn btn-sm btn-success tooltips" href="{{URL::action('Partida2Controller@create1',$partidas->id)}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registrar Nueva Partida Mensual"> <i class="fa fa-plus"></i> Registrar   </a>
 
                   <a class="btn btn-sm btn-warning tooltips" href="" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Descargar Partidas"> <i class="fa fa-download"></i> Descargar </a>
                   <a class="btn btn-sm btn-danger tooltips" href="{{url('/partidas')}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Cancelar"> <i class="fa fa-times"></i> Salir</a>

@@ -48,7 +48,7 @@ class AlmacenController extends Controller
         $almacenes->nombre=$request->get('nombre');
         $almacenes->estado='Activo';
         $almacenes->save();
-        return Redirect::to('almacenes')->with('info','Almacen guardado con exito');
+        return Redirect::to('almacenes')->with('info','Almacén guardado con éxito');
     }
 
     /**
@@ -86,7 +86,7 @@ class AlmacenController extends Controller
         $almacenes->nombre=$request->get('nombre');
         
         $almacenes->update();
-        return Redirect::to('almacenes')->with('info','Almacen editado con exito');
+        return Redirect::to('almacenes')->with('info','Almacén editado con éxito');
     }
 
     /**
@@ -100,7 +100,7 @@ class AlmacenController extends Controller
         $almacenes=Almacen::findOrFail($id);
         $almacenes->estado="Inactivo";
         $almacenes->update();
-        return Redirect::to('almacenes')->with('info','Almacen eliminado con exito');
+        return Redirect::to('almacenes')->with('info','Almacén eliminado con éxito');
     }
 }
 

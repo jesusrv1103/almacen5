@@ -5,7 +5,7 @@
  <!--\\\\\\\ contentpanel start\\\\\\-->
  <div class="pull-left breadcrumb_admin clear_both">
   <div class="pull-left page_title theme_color">
-    <h1>Catálogos</h1>
+    <h1>Catálogo de Artículos</h1>
     <h2 class="">Inventario</h2>
   </div>
   <div class="pull-right">

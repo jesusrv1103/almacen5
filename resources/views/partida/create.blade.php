@@ -3,8 +3,8 @@
 
 <div class="pull-left breadcrumb_admin clear_both">
   <div class="pull-left page_title theme_color">
-    <h1>Inicio</h1>
-    <h2 class="">Partidas</h2>
+    <h1>Partidas</h1>
+    <h2 class="">Registrar Partida</h2>
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">
@@ -75,9 +75,9 @@
 
          <div class="form-group">
           <!-- autofocus name="nombre" id="nombre" -->
-          <label class="col-sm-3 control-label">Numero de Partida: <strog class="theme_color">*</strog></label>
+          <label class="col-sm-3 control-label">Número de Partida: <strog class="theme_color">*</strog></label>
           <div class="col-sm-6">
-           <input onkeypress="return soloNumeros(event);" required value="" class="form-control"  name="numeroPartida" id="numeroPartida" autofocus name="cantidad" maxlength="5" placeholder="Ingrese el numero de partida">
+           <input onkeypress="return soloNumeros(event);" required value="" class="form-control"  name="numeroPartida" id="numeroPartida" autofocus name="cantidad" maxlength="5" placeholder="Ingrese el Número de Partida">
          </div>
        </div><!--/form-group-->
 

@@ -2,8 +2,8 @@
 @section('contenido')
 <div class="pull-left breadcrumb_admin clear_both">
   <div class="pull-left page_title theme_color">
-    <h1>Inicio</h1>
-    <h2 class="">Departamento</h2>
+    <h1>Departamentos</h1>
+    <h2 class=""> Registrar Departamento</h2>
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">

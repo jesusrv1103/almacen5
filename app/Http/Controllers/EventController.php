@@ -105,7 +105,7 @@ class EventController extends Controller
     $fechaInicio=$events->end_date;
 
     $fechaIAno=substr($fechaInicio,0,4);
-y
+
     $fechaIMes=substr($fechaInicio,5,-3);
  
     $fechaIDia=substr($fechaInicio,8,10);

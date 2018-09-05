@@ -1,10 +1,9 @@
 @extends('layouts.principal')
 @section('contenido')
-{{ $juan="juan" }}
 <div class="pull-left breadcrumb_admin clear_both">
   <div class="pull-left page_title theme_color">
-    <h1>Inicio</h1>
-    <h2 class="">Entrada</h2>
+    <h1>Entrada de Artículos</h1>
+    <h2 class="">Editar Entrada de Artículo</h2>
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">
@@ -22,7 +21,7 @@
           <div class="row" style="margin-top: 15px; margin-bottom: 12px;">
             <div class="col-sm-8">
               <div class="actions"> </div>
-              <h2 class="content-header theme_color" style="margin-top: -5px;">Editar Entrada</h2>
+              <h2 class="content-header theme_color" style="margin-top: -5px;">Editar Entrada de Artículos</h2>
             </div>
             <div class="col-md-4">
               <div class="btn-group pull-right">
@@ -77,7 +76,7 @@
 
 
               <div class="form-group">
-                <label class="col-sm-3 control-label">Cantidad artículo: <strog class="theme_color">*</strog></label>
+                <label class="col-sm-3 control-label">Cantidad Artículo: <strog class="theme_color">*</strog></label>
                 <div class="col-sm-6">
                  <input onkeypress="return soloNumeros(event);" required value="{{$entradas->cantidad}}"  type="text" class="form-control"  autofocus name="cantidad" maxlength="12" placeholder="Ingrese la cantidad del Articulo">
                </div>
