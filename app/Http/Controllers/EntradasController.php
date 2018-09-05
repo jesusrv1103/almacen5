@@ -23,12 +23,12 @@ class EntradasController extends Controller
      */
     public function index()
     {
-       $entradas= DB::table('entradas')
-       ->join( 'articulos', 'entradas.idArticulos','=','articulos.id')
-       ->select('articulos.nombre as nomArticulo','entradas.*')
-       ->where('articulos.estado','=','Activo')
-       ->where('entradas.estado','Activo')->get();
-       return view('entradas.index',['entradas' => $entradas]);
+     $entradas= DB::table('entradas')
+     ->join( 'articulos', 'entradas.idArticulos','=','articulos.id')
+     ->select('articulos.nombre as nomArticulo','entradas.*')
+     ->where('articulos.estado','=','Activo')
+     ->where('entradas.estado','Activo')->get();
+     return view('entradas.index',['entradas' => $entradas]);
    }
 
     /**
@@ -39,11 +39,11 @@ class EntradasController extends Controller
     public function create()
     {
 
-        $articulos= DB::table('articulos')->where('estado','Activo')->get();
-        return view('entradas.create',['articulos' => $articulos]);
+      $articulos= DB::table('articulos')->where('estado','Activo')->get();
+      return view('entradas.create',['articulos' => $articulos]);
 
 
-        
+      
     }
 
     /**
@@ -54,15 +54,15 @@ class EntradasController extends Controller
      */
     public function store(Request $request)
     {
-        $entradas= new Entradas();
-        $entradas->fechaEntrada=$request->get('fechaEntrada');
+      $entradas= new Entradas();
+      $entradas->fechaEntrada=$request->get('fechaEntrada');
 
-        $entradas->idArticulos=$request->get('idArticulos');
-        $entradas->cantidad=$request->get('cantidad');
-        $entradas->fechaCaducidad=$request->get('fechaCaducidad');
-        $entradas->estado='Activo';
-        $entradas->save();
-        return Redirect::to('entradas')->with('info','Entrada guardada con exito');
+      $entradas->idArticulos=$request->get('idArticulos');
+      $entradas->cantidad=$request->get('cantidad');
+      $entradas->fechaCaducidad=$request->get('fechaCaducidad');
+      $entradas->estado='Activo';
+      $entradas->save();
+      return Redirect::to('entradas')->with('info','Entrada guardada con exito');
     }
 
     /**
@@ -84,13 +84,13 @@ class EntradasController extends Controller
      */
     public function edit($id)
     {
-       $entradas=Entradas::findOrFail($id);
-       $articulos=DB::table('articulos')
-       ->where('estado','=','Activo')
-       ->get();
+     $entradas=Entradas::findOrFail($id);
+     $articulos=DB::table('articulos')
+     ->where('estado','=','Activo')
+     ->get();
 
 
-       return view('entradas.edit',['entradas'=>$entradas,'articulos'=>$articulos]);
+     return view('entradas.edit',['entradas'=>$entradas,'articulos'=>$articulos]);
    }
 
     /**
@@ -104,49 +104,49 @@ class EntradasController extends Controller
     {
 
 
-        $cantidadObtenida= $request->get('cantidad');
+      $cantidadObtenida= $request->get('cantidad');
 
-        $entradas=Entradas::findOrFail($id);
-        $cantidad_a_Actualizar=0;
+      $entradas=Entradas::findOrFail($id);
+      $cantidad_a_Actualizar=0;
 
-        $cantidadActual= $entradas->cantidad;
+      $cantidadActual= $entradas->cantidad;
 
-        $cantidad_a_Actualizar = $cantidadObtenida -$cantidadActual;
-        $entradas->fechaEntrada=$request->get('fechaEntrada');
-        $entradas->idArticulos=$request->get('idArticulos');
-        $entradas->cantidad=$request->get('cantidad');
-        $entradas->fechaCaducidad=$request->get('fechaCaducidad');
+      $cantidad_a_Actualizar = $cantidadObtenida -$cantidadActual;
+      $entradas->fechaEntrada=$request->get('fechaEntrada');
+      $entradas->idArticulos=$request->get('idArticulos');
+      $entradas->cantidad=$request->get('cantidad');
+      $entradas->fechaCaducidad=$request->get('fechaCaducidad');
 
-        $entradas->update();
-        if($cantidadObtenida >$cantidadActual)
-        {
-            $cantidad_a_Actualizar = $cantidadObtenida - $cantidadActual;
-            $articulos=Articulos::findOrFail($request->get('idArticulos'));
-            $cantidad =$articulos->cantidad;
+      $entradas->update();
+      if($cantidadObtenida >$cantidadActual)
+      {
+        $cantidad_a_Actualizar = $cantidadObtenida - $cantidadActual;
+        $articulos=Articulos::findOrFail($request->get('idArticulos'));
+        $cantidad =$articulos->cantidad;
 
-            $articulos->cantidad=$cantidad+$cantidad_a_Actualizar;
-            $articulos->update();
+        $articulos->cantidad=$cantidad+$cantidad_a_Actualizar;
+        $articulos->update();
 
-        } elseif ($cantidadObtenida < $cantidadActual) {
+      } elseif ($cantidadObtenida < $cantidadActual) {
 
-           $articulos=Articulos::findOrFail($request->get('idArticulos'));
-           $cantidad =$articulos->cantidad;
-           $cantidad_a_Actualizar = $cantidadActual -$cantidadObtenida;
-           $articulos->cantidad = $cantidad- $cantidad_a_Actualizar;
+       $articulos=Articulos::findOrFail($request->get('idArticulos'));
+       $cantidad =$articulos->cantidad;
+       $cantidad_a_Actualizar = $cantidadActual -$cantidadObtenida;
+       $articulos->cantidad = $cantidad- $cantidad_a_Actualizar;
 
-           $articulos->update();
+       $articulos->update();
 
-       } else {
+     } else {
 
-           $articulos=Articulos::findOrFail($request->get('idArticulos'));
-           $cantidad =$articulos->cantidad;
-           $cantidadtotal=$cantidad+$request->get('cantidad');
-           $articulos->cantidad=$cantidadtotal;
-           $articulos->update();
-       }
+       $articulos=Articulos::findOrFail($request->get('idArticulos'));
+       $cantidad =$articulos->cantidad;
+       $cantidadtotal=$cantidad+$request->get('cantidad');
+       $articulos->cantidad=$cantidadtotal;
+       $articulos->update();
+     }
 
 
-       return Redirect::to('entradas')->with('info','Entrada Editada con exito');
+     return Redirect::to('entradas')->with('info','Entrada Editada con exito');
 
    }
 
@@ -158,26 +158,29 @@ class EntradasController extends Controller
      */
     public function destroy($id)
     {
-        $entradas=Entradas::findOrFail($id);
+      $entradas=Entradas::findOrFail($id);
 
-        $idArticulos= $entradas->idArticulos;
-        $cantidadEliminar= $entradas->cantidad;
+      $idArticulos= $entradas->idArticulos;
+      $cantidadEliminar= $entradas->cantidad;
 
-        $entradas->estado="Inactivo";
-        $entradas->update();
+      $entradas->estado="Inactivo";
+      $entradas->update();
 
-        $articulos=Articulos::findOrFail($idArticulos);
-        $cantidadExistente= $articulos->cantidad;
+      $articulos=Articulos::findOrFail($idArticulos);
+      $cantidadExistente= $articulos->cantidad;
 
-        $cantidadActualizada= $cantidadExistente-$cantidadEliminar;
-        $articulos->cantidad =  $cantidadActualizada;
-        $articulos->update();
-
-
+      $cantidadActualizada= $cantidadExistente-$cantidadEliminar;
+      $articulos->cantidad =  $cantidadActualizada;
+      $articulos->update();
 
 
 
 
-        return Redirect::to('entradas')->with('info','Entrada eliminada con exito');
+
+
+      return Redirect::to('entradas')->with('info','Entrada eliminada con exito');
     }
+
 }
+  
+

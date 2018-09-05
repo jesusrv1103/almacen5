@@ -117,7 +117,7 @@
                     @endif
                     <li> <a href="{{url('almacenes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
                       @if(Route::getCurrentRoute()->getName()=="almacenes.index")
-                      <b class="theme_color" style="color: #3498DB ;" >Almacenes</b> </a> 
+                      <b class="theme_color"  >Almacenes</b> </a> 
                       @else
                       <b>Almacenes</b> </a> 
                       @endif
@@ -193,6 +193,8 @@
                           </li>
                         </ul>
                       </li>
+
+
 
                       @if(str_contains(Route::getCurrentRoute()->getName(),'partidas'))
                       <li class="left_nav_active theme_border"> <a href="javascript:void(0);"> <i class="fa fa-money"></i> Partidas<span class="plus"><i class="fa fa-plus"></i></span> </a>
