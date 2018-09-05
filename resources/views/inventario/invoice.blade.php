@@ -10,7 +10,7 @@
 
 			<td>
 				<h3>INVENTARIO GENERAL DE ARTICULOS</h3>
-		
+				
 
 			</td>
 			<td style="align-content:center;" >
@@ -27,7 +27,7 @@
 				<br>
 				<strong>Zacatecas Zac. A</strong>
 
-				<label>{{date("m/d/y")}}   </label>
+				<label>{{date("d/m/y")}}   </label>
 
 
 
@@ -51,7 +51,7 @@
 						<td style="padding-left: 4px;">{{$inventario->concepto}}</td>
 						<td style="padding-left: 4px;">{{$inventario->nombre}}</td>
 						<td style="padding-left: 4px;">{{$inventario->cantidad}}</td>
-					
+						
 					</tr>
 					@endforeach
 				</table>
