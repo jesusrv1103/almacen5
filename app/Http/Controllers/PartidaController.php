@@ -11,6 +11,7 @@ use Almacen\Http\Controllers\Controller;
 use Almacen\Partida;
 use Almacen\Partida2;
 use DB;
+use PDF;
 use Maatwebsite\Excel\Facades\Excel;
 
 

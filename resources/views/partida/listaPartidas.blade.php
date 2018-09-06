@@ -28,7 +28,12 @@
                 <div class="btn-group" style="margin-right: 10px;">
                   <a class="btn btn-sm btn-success tooltips" href="{{URL::action('Partida2Controller@create1',$partidas->id)}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registrar Nueva Partida Mensual"> <i class="fa fa-plus"></i> Registrar   </a>
 
-                  <a class="btn btn-sm btn-warning tooltips" href="" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Descargar Partidas"> <i class="fa fa-download"></i> Descargar </a>
+                  <a class="btn btn-sm btn-warning tooltips" href="{{URL::action('Partida2Controller@descargarConceptoPartidas',$partidas->id)}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Descargar Partidas"> <i class="fa fa-download"></i> Descargar </a>
+
+
+                  
+
+
                   <a class="btn btn-sm btn-danger tooltips" href="{{url('/partidas')}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Cancelar"> <i class="fa fa-times"></i> Salir</a>
                 </div>
               </a>

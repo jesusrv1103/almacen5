@@ -11,6 +11,7 @@ use Almacen\Http\Controllers\Controller;
 use Almacen\Partidas2;
 use Almacen\Partida;
 use DB;
+use PDF;
 use Maatwebsite\Excel\Facades\Excel;
 
 class Partida2Controller extends Controller
@@ -20,19 +21,19 @@ class Partida2Controller extends Controller
     {
 
 
-       $partida2= DB::table('partidas2')->where('estado','Activo')->get();
-       return view('partidas.index',['partidas2' => $partidas2]);
-   }
+     $partida2= DB::table('partidas2')->where('estado','Activo')->get();
+     return view('partidas.index',['partidas2' => $partidas2]);
+ }
 
 
-   public function create1($id)
-   {
-       $partidas=Partida::findOrFail($id);
-       $meses= DB::table('meses')->get(); 
-       return view('partidas2.create',['meses' => $meses,'partidas'=>$partidas]);
-   }
+ public function create1($id)
+ {
+     $partidas=Partida::findOrFail($id);
+     $meses= DB::table('meses')->get(); 
+     return view('partidas2.create',['meses' => $meses,'partidas'=>$partidas]);
+ }
 
-   public function store(Request $request) {
+ public function store(Request $request) {
 
     DB::beginTransaction();
 
@@ -154,5 +155,31 @@ class Partida2Controller extends Controller
 
         DB::commit();
         return view('partida.listaPartidas',["partidas"=>$partidas,"partidasMensuales"=>$partidasMensuales]); 
+    }
+
+
+
+    public  function  descargarConceptoPartidas($idPartida){
+
+
+
+        $conceptoPartidas=Partida::findOrFail($idPartida);
+
+        $partidas2 = DB::table('partidas')
+        ->join('partidas2 as p', 'p.idPartida', '=','partidas.id')
+        ->select('p.*')
+        ->join('meses','p.idMes','=','meses.id')
+        ->select('partidas.*', 'p.*', 'meses.*')
+        ->where('p.idPartida','=', $idPartida)
+        ->get();
+
+        $pdf=PDF::loadView("partidas2.invoice",['partidas2'=>$partidas2,'conceptoPartidas'=>$conceptoPartidas]);
+        return $pdf->download("conceptoPartidas.pdf");
+
+
+
+
+
+
     }
 }
