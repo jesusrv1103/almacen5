@@ -132,6 +132,9 @@ Route::get('adquisinet', function()
 Route::get('tipoUnidad/{id}', 'SolicitudController@tipoUnidad');
 
 
+Route::get('descargarConceptoPartidas/{id}','Partida2Controller@descargarConceptoPartidas')->name('conceptoPartidas.pdf');
+
+
 Auth::routes();
 
 
