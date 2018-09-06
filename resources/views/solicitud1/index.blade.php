@@ -3,7 +3,7 @@
 <!--\\\\\\\ contentpanel start\\\\\\-->
 <div class="pull-left breadcrumb_admin clear_both">
   <div class="pull-left page_title theme_color">
-    <h1>Catálogos</h1>
+    <h1>Solicitudes</h1>
     <h2 class="">Solicitudes Enviadas</h2>
   </div>
   <div class="pull-right">
@@ -28,7 +28,7 @@
                 <b>
 
                   <div class="btn-group" style="margin-right: 10px;">
-                    <a class="btn btn-sm btn-success tooltips" href="solicitudes/create" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Regist"> <i class="fa fa-plus"></i> Registrar </a>
+                    <a class="btn btn-sm btn-success tooltips" href="solicitudes/create" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Realizar Nueva Solicitud"> <i class="fa fa-plus"></i> Realizar Solucitud </a>
 
                   </div>
 

@@ -3,13 +3,13 @@
 
 <div class="pull-left breadcrumb_admin clear_both">
   <div class="pull-left page_title theme_color">
-    <h1>Inicio</h1>
-    <h2 class="">Solicitud</h2>
+    <h1>Solicitudes</h1>
+    <h2 class="">Realizar Solicitud</h2>
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">
-      <li><a href="?c=Inicio">Inicio</a></li>
-      <li><a href="?c=localidad">Registrar Solicitud</a></li>
+      <li><a href="?c=Inicio">Solicitud</a></li>
+      <li><a href="?c=localidad">Realizar Solicitud</a></li>
 
     </ol>
   </div>
@@ -22,7 +22,7 @@
           <div class="row" style="margin-top: 15px; margin-bottom: 12px;">
             <div class="col-sm-8">
               <div class="actions"> </div>
-              <h2 class="content-header theme_color" style="margin-top: -5px;">Hacer Solicitud</h2>
+              <h2 class="content-header theme_color" style="margin-top: -5px;">Realizar Solicitud</h2>
             </div>
             <div class="col-md-4">
               <div class="btn-group pull-right">

@@ -232,7 +232,7 @@
                             @if(Route::getCurrentRoute()->getName()=="solicitudes1.index")
                             <b class="theme_color">Enviados</b> </a> 
                             @else 
-                            <b>Enviados</b> </a> 
+                            <b>Enviadas</b> </a> 
                             @endif
                           </li>
 
