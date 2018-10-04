@@ -38,14 +38,17 @@
                 </div>
               </a>
             </b>
-          </div>
+          </div> 
 
         </div>
+      </div> 
+      @if(session('info'))
+      <div class="alert alert-success">
+        <strong>{{ session('info')}}</strong> 
       </div>
+      @endif
+
       <div class="porlets-content container clear_both padding_fix">
-
-
-
        @foreach($partidasMensuales as $partidames )
        <div class="col-lg-6"> 
         <section class="panel default blue_title h4">
