@@ -88,7 +88,7 @@
             <h1>Control Almacén</h1>
           </div>
           <div class="top_right_bar">
-            <div style="margin-top: -63%;" >
+            <div style="margin-top: -20%;" >
               <span class="user_adminname"> <br> {{ Auth::user()->name }}   </span>
               <span  class="user_adminname" ><a  href="{{ route('logout') }}"  
                 onclick="event.preventDefault();
@@ -169,8 +169,8 @@
                         <li> <a href="javascript:void(0);"> <i class="fa fa-users"></i> Usuarios<span class="plus"><i class="fa fa-plus"></i></span> </a>
                          <ul>
                           @endif
-                          <li> <a href="{{url('usuarios')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
-                            @if(Route::getCurrentRoute()->getName()=="usuarios.index")
+                          <li> <a href="{{url('users')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
+                            @if(Route::getCurrentRoute()->getName()=="users.index")
                             <b class="theme_color">Usuarios</b></a> 
                             @else
                             <b>Usuarios</b></a> 

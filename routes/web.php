@@ -77,7 +77,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('users','UserController@index')->name('users.index')
 	->middleware('permission:users.index');
 
-	Route::get('users/create','AlmacenController@create')->name('users.create')
+	Route::get('users/create','UserController@create')->name('users.create')
 	->middleware('permission:users.create');
 
 
@@ -97,7 +97,7 @@ Route::middleware(['auth'])->group(function(){
 Route::resource('partidas','PartidaController');
 Route::resource('direcciones','DireccionController');
 Route::resource('proveedores','ProveedorController');
-Route::resource('usuarios','UsuariosController');
+
 Route::resource('articulos','ArticulosController');
 Route::resource('partidas2','Partida2Controller');
 //Route::resource('reportes','ReporteController');

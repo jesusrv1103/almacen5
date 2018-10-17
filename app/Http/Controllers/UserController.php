@@ -50,7 +50,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
+      $usuarios= new User();
+      $usuarios->name=$request->get('name');
+      $usuarios->nombreusuario=$request->get('nombreusuario');
+      $usuarios->email=$request->get('email');
+      $usuarios->password=bcrypt($request->get('password'));
+      $usuarios->idDireccion=$request->get('idDireccion');
+      $usuarios->estado="Activo";
+      $usuarios->save();
+      return Redirect::to('users');
 
 
     }
@@ -96,13 +104,12 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
       $usuarios=User::findOrFail($id);
-      $usuarios->nombreCompleto=$request->get('nombreCompleto');
-      $usuarios->apellido=$request->get('apellido');
+      $usuarios->name=$request->get('name');
       $usuarios->nombreusuario=$request->get('nombreusuario');
-      $usuarios->tipoUsuario=$request->get('tipoUsuario');
-      $usuarios->contraseña=$request->get('contraseña');
+      $usuarios->email=$request->get('email');
+      $usuarios->bcrypt($request->get('password'));
       $usuarios->idDireccion=$request->get('idDireccion');
-
+      $usuarios->estado="Activo";
       $usuarios->update();
       return Redirect::to('usuarios');
     }
@@ -118,6 +125,10 @@ class UserController extends Controller
       $usuarios=User::findOrFail($id);
       $usuarios->estado="Inactivo";
       $usuarios->update();
-      return Redirect::to('usuarios');
+      return Redirect::to('users');
     }
+
+
+
+
   }
