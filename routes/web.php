@@ -96,13 +96,12 @@ Route::middleware(['auth'])->group(function(){
 
 //controladores manejados en constructor
 Route::resource('partidas','PartidaController');
-<<<<<<< HEAD
+
 
 Route::resource('users','UserController');
-=======
+
 Route::get('verPartidas/{id}','PartidaController@verPartidas')->name('partidas.verPartidas');
 
->>>>>>> b70f807414ee27f108216436fbfce78a72a444a1
 Route::resource('direcciones','DireccionController');
 
 Route::resource('proveedores','ProveedorController');

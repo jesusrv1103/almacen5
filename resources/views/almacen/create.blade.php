@@ -48,8 +48,6 @@
           <div class="col-sm-offset-7 col-sm-5">
             <button type="submit" class="btn btn-primary">Guardar</button>
             <a href="{{url('/almacenes')}}" class="btn btn-default"> Cancelar</a>
-       
-
           </div>
         </div><!--/form-group-->
       </form>
