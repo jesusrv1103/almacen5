@@ -61,7 +61,7 @@
                 <td>{{$solicitud->UsoDestinado}}</td>
 
 
-                <th class="center">
+                <td class="center">
                   <a href="{{URL::action('SolicitudController@verSolicitudes',$solicitud->id)}}" class="btn btn-info btn-sm" role="button"><i class="fa fa-eye"></i></a>   
                 </td>
 
