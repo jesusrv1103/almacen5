@@ -14,7 +14,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-
      DB::table('almacen.direcciones')->insert([
         'nombre' => 'TI',
         'estado' => 'Activo',

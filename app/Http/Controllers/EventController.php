@@ -15,6 +15,25 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class EventController extends Controller
 {
+
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:events.create')->only(['create','store']);
+        $this->middleware('permission:events.index')->only('index');
+        $this->middleware('permission:events.edit')->only(['edit','update']);
+        $this->middleware('permission:events.show')->only('show');
+        $this->middleware('permission:events.destroy')->only('destroy');
+
+        $this->middleware('permission:event2.index1')->only('event2.index1');
+    }
+
+
     public function index()
     {
         $events = [];

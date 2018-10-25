@@ -16,7 +16,25 @@ use Maatwebsite\Excel\Facades\Excel;
 
 
 class PartidaController extends Controller
-{
+{   
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+     public function __construct()
+     {
+        $this->middleware('auth');
+        $this->middleware('permission:partidas.create')->only(['create','store']);
+        $this->middleware('permission:partidas.index')->only('index');
+        $this->middleware('permission:partidas.edit')->only(['edit','update']);
+        $this->middleware('permission:partidas.show')->only('show');
+        $this->middleware('permission:partidas.destroy')->only('destroy');
+
+        $this->middleware('permission:partidas.verPartidas')->only('partidas.verPartidas');
+    }
+
     /**
      * Display a listing of the resource.
      *

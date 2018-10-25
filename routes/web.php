@@ -109,17 +109,16 @@ Route::get('crearPartidas2/{id}','Partida2Controller@create1')->name('partidas2.
 Route::get('descargarConceptoPartidas/{id}','Partida2Controller@descargarConceptoPartidas')->name('conceptoPartidas.pdf');
 //Route::resource('reportes','ReporteController');
 Route::resource('events','EventController');
-Route::get('event2', 'EventController@index1');
+Route::get('event2', 'EventController@index1')->name('event2.index1');
 
 Route::resource('solicitudes','SolicitudController');
 Route::get('pdf/{id}','SolicitudController@pdf')->name('solicitud.pdf');
 Route::get('verSolicitudes/{id}','SolicitudController@verSolicitudes')->name('solicitud.verSolicitudes');
-Route::get('tipoUnidad/{id}', 'SolicitudController@tipoUnidad');
+Route::get('tipoUnidad/{id}', 'SolicitudController@tipoUnidad')->name('solicitud.tipo');
 
 Route::resource('solicitudes1','Solicitud1Controller');
 
 Route::resource('entradas','EntradasController');
-
 
 Route::resource('inventarios','InventarioController');
 Route::get('pdf','InventarioController@pdf')->name('inventario.pdf');

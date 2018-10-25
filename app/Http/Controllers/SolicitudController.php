@@ -20,13 +20,27 @@ use Illuminate\Http\Resources\Json\Resource;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
-
-
-
-
-
 class SolicitudController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+      $this->middleware('auth');
+      $this->middleware('permission:solicitudes.create')->only(['create','store']);
+      $this->middleware('permission:solicitudes.index')->only('index');
+      $this->middleware('permission:solicitudes.edit')->only(['edit','update']);
+      $this->middleware('permission:solicitudes.show')->only('show');
+      $this->middleware('permission:solicitudes.destroy')->only('destroy');
+
+      $this->middleware('permission:solicitud.pdf')->only('solicitud.pdf');
+      $this->middleware('permission:solicitud.verSolicitudes')->only('solicitud.verSolicitudes');
+      $this->middleware('permission:solicitud.solicitud.tipo')->only('solicitud.tipo');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -34,13 +48,13 @@ class SolicitudController extends Controller
      */
     public function index()
     {
-        $solicitudes= DB::table('solicitudes')
-        ->join('users as u', 'solicitudes.idUsuario', '=', 'u.id')
-        ->join('direcciones as d', 'solicitudes.idDireccion', '=', 'd.id')
-        ->select('solicitudes.*','u.name','solicitudes.*','d.nombre')
+      $solicitudes= DB::table('solicitudes')
+      ->join('users as u', 'solicitudes.idUsuario', '=', 'u.id')
+      ->join('direcciones as d', 'solicitudes.idDireccion', '=', 'd.id')
+      ->select('solicitudes.*','u.name','solicitudes.*','d.nombre')
 
-        ->where('solicitudes.estado','Activo')->get();
-        return view('solicitud.index',['solicitudes' => $solicitudes]);
+      ->where('solicitudes.estado','Activo')->get();
+      return view('solicitud.index',['solicitudes' => $solicitudes]);
     }
 
 
@@ -52,11 +66,11 @@ class SolicitudController extends Controller
      */
     public function create()
     {
-        $usuarios= DB::table('users')->where('estado','Activo')->get();
-        $direcciones= DB::table('direcciones')->where('estado','Activo')->get();
+      $usuarios= DB::table('users')->where('estado','Activo')->get();
+      $direcciones= DB::table('direcciones')->where('estado','Activo')->get();
 
-        $productos= DB::table('articulos')->where('estado','Activo')->get();
-        return view('solicitud.create',['usuarios'=>$usuarios,'direcciones'=>$direcciones,'productos'=>$productos]);
+      $productos= DB::table('articulos')->where('estado','Activo')->get();
+      return view('solicitud.create',['usuarios'=>$usuarios,'direcciones'=>$direcciones,'productos'=>$productos]);
     }
 
     /**
@@ -94,12 +108,12 @@ class SolicitudController extends Controller
         $cont = $cont+1;
         $detalles->save();
 
+      }
+
+      DB::commit();
+
+      return Redirect::to('solicitudes');
     }
-
-    DB::commit();
-
-    return Redirect::to('solicitudes');
-}
 
     /**
      * Display the specified resource.
@@ -132,14 +146,14 @@ class SolicitudController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $solicitudes=Solicitud::findOrFail($id);
-        $solicitudes->numeroSolicitud=$request->get('numeroSolicitud');
-        $solicitudes->fechaS=$request->get('fechaS');
-        $solicitudes->idUsuario=$request->get('idUsuario');
-        $solicitudes->idDireccion=$request->get('idDireccion');
-        $solicitudes->UsoDestinado=$request->get('UsoDestinado');
-        $solicitudes->update(); 
-        return Redirect::to('solicitudes');
+      $solicitudes=Solicitud::findOrFail($id);
+      $solicitudes->numeroSolicitud=$request->get('numeroSolicitud');
+      $solicitudes->fechaS=$request->get('fechaS');
+      $solicitudes->idUsuario=$request->get('idUsuario');
+      $solicitudes->idDireccion=$request->get('idDireccion');
+      $solicitudes->UsoDestinado=$request->get('UsoDestinado');
+      $solicitudes->update(); 
+      return Redirect::to('solicitudes');
     }
 
 
@@ -147,18 +161,18 @@ class SolicitudController extends Controller
 
     {
 
-        $solicitudes=Solicitud::findOrFail($id);
-        $idSolicitud=$solicitudes->id;
+      $solicitudes=Solicitud::findOrFail($id);
+      $idSolicitud=$solicitudes->id;
 
-        $verSolicitud=DB::table('detalle_solicitud')
-        ->join('articulos','detalle_solicitud.idArticulo','=','articulos.id')
-        ->select('detalle_solicitud.*','articulos.nombre','articulos.idUnidad')
-        ->join('unidad_de_medidas','unidad_de_medidas.id','=','articulos.id')
-        ->select('detalle_solicitud.*','articulos.nombre','unidad_de_medidas.nombre as unidad')
-        ->where('articulos.estado','=','Activo')
-        ->where('idSolicitud','=',$idSolicitud)
-        ->get();
-        return view('solicitud.verSolicitudes',["solicitudes"=>$solicitudes,"verSolicitud"=>$verSolicitud]);   
+      $verSolicitud=DB::table('detalle_solicitud')
+      ->join('articulos','detalle_solicitud.idArticulo','=','articulos.id')
+      ->select('detalle_solicitud.*','articulos.nombre','articulos.idUnidad')
+      ->join('unidad_de_medidas','unidad_de_medidas.id','=','articulos.id')
+      ->select('detalle_solicitud.*','articulos.nombre','unidad_de_medidas.nombre as unidad')
+      ->where('articulos.estado','=','Activo')
+      ->where('idSolicitud','=',$idSolicitud)
+      ->get();
+      return view('solicitud.verSolicitudes',["solicitudes"=>$solicitudes,"verSolicitud"=>$verSolicitud]);   
     }
 
 
@@ -175,19 +189,19 @@ class SolicitudController extends Controller
     public function pdf($id)
     {
 
-       $solicitudes=Solicitud::findOrFail($id);
-       $idSolicitud=$solicitudes->id;
+     $solicitudes=Solicitud::findOrFail($id);
+     $idSolicitud=$solicitudes->id;
 
-       $verSolicitud=DB::table('detalle_solicitud')
-       ->join('articulos','detalle_solicitud.idArticulo','=','articulos.id')
-       ->select('detalle_solicitud.*','articulos.nombre','articulos.idUnidad')
-       ->join('unidad_de_medidas','unidad_de_medidas.id','=','articulos.id')
-       ->select('detalle_solicitud.*','articulos.nombre','unidad_de_medidas.nombre as unidad')
-       ->where('articulos.estado','=','Activo')
-       ->where('idSolicitud','=',$idSolicitud)
-       ->get();
-       $pdf=PDF::loadView("solicitud.invoice",['solicitudes'=>$solicitudes, "verSolicitud"=>$verSolicitud]);
-       return $pdf->download("archivo.pdf");
+     $verSolicitud=DB::table('detalle_solicitud')
+     ->join('articulos','detalle_solicitud.idArticulo','=','articulos.id')
+     ->select('detalle_solicitud.*','articulos.nombre','articulos.idUnidad')
+     ->join('unidad_de_medidas','unidad_de_medidas.id','=','articulos.id')
+     ->select('detalle_solicitud.*','articulos.nombre','unidad_de_medidas.nombre as unidad')
+     ->where('articulos.estado','=','Activo')
+     ->where('idSolicitud','=',$idSolicitud)
+     ->get();
+     $pdf=PDF::loadView("solicitud.invoice",['solicitudes'=>$solicitudes, "verSolicitud"=>$verSolicitud]);
+     return $pdf->download("archivo.pdf");
    }
 
 
@@ -203,9 +217,9 @@ class SolicitudController extends Controller
     ->where('articulos.id','=',$id)
     ->get();
     return response()->json(
-        $tipoEmpaque->toArray());
+      $tipoEmpaque->toArray());
 
-}
+  }
 
 
 
