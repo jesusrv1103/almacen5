@@ -112,7 +112,7 @@
              <li class="left_nav_active theme_border"><a href="javascript:void(0);"><i class="fa fa-home"></i> Control de Almacen <!--<span class="left_nav_pointer"></span>--><span class="plus"><i class="fa fa-plus" ></i></span> </a>
               <ul class="opened" style="display:block">
                 @else
-                <li><a href="javascript:void(0);"><i class="fa fa-home"></i> Control de Almacen<span class="plus"><i class="fa fa-plus" ></i></span> </a>
+                <li><a href="javascript:void(0);"><i class="fa fa-home"></i> Control de Almacén<span class="plus"><i class="fa fa-plus" ></i></span> </a>
                   <ul id="este">
                     @endif
                     <li> <a href="{{url('almacenes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
@@ -162,7 +162,7 @@
                       </ul>
                     </li>
 
-                    @if(str_contains(Route::getCurrentRoute()->getName(),['usuarios','direcciones','roles']))
+                    @if(str_contains(Route::getCurrentRoute()->getName(),['users','direcciones','roles']))
                     <li class="left_nav_active theme_border"> <a href="javascript:void(0);"> <i class="fa fa-users"></i> Usuarios<span class="plus"><i class="fa fa-plus"></i></span> </a>
                       <ul class="opened" style="display:block">
                         @else

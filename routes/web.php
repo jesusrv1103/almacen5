@@ -94,35 +94,40 @@ Route::middleware(['auth'])->group(function(){
 	*/
 });
 
-
+//controladores manejados en constructor
 Route::resource('partidas','PartidaController');
+<<<<<<< HEAD
 
 Route::resource('users','UserController');
+=======
+Route::get('verPartidas/{id}','PartidaController@verPartidas')->name('partidas.verPartidas');
+
+>>>>>>> b70f807414ee27f108216436fbfce78a72a444a1
 Route::resource('direcciones','DireccionController');
+
 Route::resource('proveedores','ProveedorController');
 
 Route::resource('articulos','ArticulosController');
-Route::resource('partidas2','Partida2Controller');
-//Route::resource('reportes','ReporteController');
-Route::resource('events','EventController');
-Route::resource('solicitudes','SolicitudController');
-Route::resource('solicitudes1','Solicitud1Controller');
-Route::resource('entradas','EntradasController');
-
-Route::resource('inventarios','InventarioController');
-
-Route::get('verPartidas/{id}','PartidaController@verPartidas')->name('partidas.verPartidas');
-
 Route::get('pdf','ArticulosController@pdf')->name('articulos.pdf');
 
+Route::resource('partidas2','Partida2Controller');
 Route::get('crearPartidas2/{id}','Partida2Controller@create1')->name('partidas2.create1');
-
+Route::get('descargarConceptoPartidas/{id}','Partida2Controller@descargarConceptoPartidas')->name('conceptoPartidas.pdf');
+//Route::resource('reportes','ReporteController');
+Route::resource('events','EventController');
 Route::get('event2', 'EventController@index1');
 
-Route::get('verSolicitudes/{id}','SolicitudController@verSolicitudes')->name('solicitud.verSolicitudes');
-
+Route::resource('solicitudes','SolicitudController');
 Route::get('pdf/{id}','SolicitudController@pdf')->name('solicitud.pdf');
+Route::get('verSolicitudes/{id}','SolicitudController@verSolicitudes')->name('solicitud.verSolicitudes');
+Route::get('tipoUnidad/{id}', 'SolicitudController@tipoUnidad');
 
+Route::resource('solicitudes1','Solicitud1Controller');
+
+Route::resource('entradas','EntradasController');
+
+
+Route::resource('inventarios','InventarioController');
 Route::get('pdf','InventarioController@pdf')->name('inventario.pdf');
 
 Route::get('adquisinet', function()
@@ -131,11 +136,6 @@ Route::get('adquisinet', function()
 		');
 });
 
-
-Route::get('tipoUnidad/{id}', 'SolicitudController@tipoUnidad');
-
-
-Route::get('descargarConceptoPartidas/{id}','Partida2Controller@descargarConceptoPartidas')->name('conceptoPartidas.pdf');
 
 
 Auth::routes();

@@ -44,7 +44,6 @@
 
 
 
-
              <div class="form-group">
               <label class="col-sm-3 control-label">Nombre(s)<strog class="theme_color">*</strog></label>
               <div class="col-sm-6">
@@ -53,7 +52,6 @@
                maxlength="50" required value="{{$usuarios->name}}" placeholder="Ingrese el Nombre completo del Usuario">
              </div>
            </div><!--/form-group-->
-           <div class="form-group">
 
 
 
@@ -85,7 +83,7 @@
         <div class="form-group">
           <label class="col-sm-3 control-label">Tipo de Usuario:<strog class="theme_color">*</strog></label>
           <div class="col-sm-6">
-            <select class="form-control" name="tipoUsuario" required id="ambito">
+            <select class="form-control" name="id" required id="ambito">
 
               @foreach($roles  as $rol)
               <option value="{{$rol->id}}"> 
@@ -122,7 +120,7 @@
         <div class="form-group">
           <div class="col-sm-offset-7 col-sm-5">
             <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="{{url('/usuarios')}}" class="btn btn-default"> Cancelar</a>
+            <a href="{{url('/users')}}" class="btn btn-default"> Cancelar</a>
           </div>
         </div><!--/form-group-->
       </form>
