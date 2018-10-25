@@ -16,6 +16,24 @@ use PDF;
 
 class ArticulosController extends Controller
 {
+
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:articulos.create')->only(['create','store']);
+        $this->middleware('permission:articulos.index')->only('index');
+        $this->middleware('permission:articulos.edit')->only(['edit','update']);
+        $this->middleware('permission:articulos.show')->only('show');
+        $this->middleware('permission:articulos.destroy')->only('destroy');
+
+        $this->middleware('permission:articulos.pdf')->only('articulos.pdf');
+    }
+
     /**
      * Display a listing of the resource.
      *

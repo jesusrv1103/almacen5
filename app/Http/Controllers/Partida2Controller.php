@@ -17,13 +17,29 @@ use Maatwebsite\Excel\Facades\Excel;
 class Partida2Controller extends Controller
 {
 
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+     public function __construct()
+     {
+        $this->middleware('auth');
+        $this->middleware('permission:partidas2.create')->only(['create','store']);
+        $this->middleware('permission:partidas2.index')->only('index');
+        $this->middleware('permission:partidas2.edit')->only(['edit','update']);
+        $this->middleware('permission:partidas2.show')->only('show');
+        $this->middleware('permission:partidas2.destroy')->only('destroy');
+
+        $this->middleware('permission:partidas2.create1')->only('partidas2.create1');
+        $this->middleware('permission:conceptoPartidas.pdf')->only('conceptoPartidas.pdf');
+    }
+
     public function index()
     {
-
-
      $partida2= DB::table('partidas2')->where('estado','Activo')->get();
-     return view('partidas.index',['partidas2' => $partidas2]);
- }
+     return view('partidas.index',['partidas2' => $partida2]);
+    }
 
 
  public function create1($id)

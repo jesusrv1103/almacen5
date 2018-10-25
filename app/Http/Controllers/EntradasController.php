@@ -16,6 +16,21 @@ use Almacen\Articulos;
 
 class EntradasController extends Controller
 {
+
+    /**
+    * Create a new controller instance.
+    *
+    * @return void
+    */
+    public function __construct()
+    {
+      $this->middleware('auth');
+      $this->middleware('permission:entradas.create')->only(['create','store']);
+      $this->middleware('permission:entradas.index')->only('index');
+      $this->middleware('permission:entradas.edit')->only(['edit','update']);
+      $this->middleware('permission:entradas.show')->only('show');
+      $this->middleware('permission:entradas.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -181,6 +196,6 @@ class EntradasController extends Controller
       return Redirect::to('entradas')->with('info','Entrada eliminada con éxito');
     }
 
-}
+  }
   
 

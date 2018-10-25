@@ -15,6 +15,24 @@ use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 class InventarioController extends Controller
 {
+
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:inventarios.create')->only(['create','store']);
+        $this->middleware('permission:inventarios.index')->only('index');
+        $this->middleware('permission:inventarios.edit')->only(['edit','update']);
+        $this->middleware('permission:inventarios.show')->only('show');
+        $this->middleware('permission:inventarios.destroy')->only('destroy');
+
+        $this->middleware('permission:inventario.pdf')->only('inventario.pdf');
+    }
+
     /**
      * Display a listing of the resource.
      *
