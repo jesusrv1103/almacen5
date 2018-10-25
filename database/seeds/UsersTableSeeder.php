@@ -14,11 +14,15 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+<<<<<<< HEAD
 
 
 
 
      DB::table('direcciones')->insert([
+=======
+     DB::table('almacen.direcciones')->insert([
+>>>>>>> 2ed5a2164c291c491f66d046a8a5ff6604504d54
         'nombre' => 'TI',
         'estado' => 'Activo',
     ]);

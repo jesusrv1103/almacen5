@@ -10,6 +10,21 @@ use DB;
 use Maatwebsite\Excel\Facades\Excel;
 class Solicitud1Controller extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+     public function __construct()
+     {
+        $this->middleware('auth');
+        $this->middleware('permission:solicitudes1.create')->only(['create','store']);
+        $this->middleware('permission:solicitudes1.index')->only('index');
+        $this->middleware('permission:solicitudes1.edit')->only(['edit','update']);
+        $this->middleware('permission:solicitudes1.show')->only('show');
+        $this->middleware('permission:solicitudes1.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

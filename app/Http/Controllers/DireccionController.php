@@ -15,6 +15,21 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class DireccionController extends Controller
 {
+
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+     public function __construct()
+     {
+        $this->middleware('auth');
+        $this->middleware('permission:direcciones.create')->only(['create','store']);
+        $this->middleware('permission:direcciones.index')->only('index');
+        $this->middleware('permission:direcciones.edit')->only(['edit','update']);
+        $this->middleware('permission:direcciones.show')->only('show');
+        $this->middleware('permission:direcciones.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -71,8 +86,8 @@ class DireccionController extends Controller
      */
     public function edit($id)
     {
-     return view("direccion.edit",["direcciones"=>Direccion::findOrFail($id)]);
- }
+       return view("direccion.edit",["direcciones"=>Direccion::findOrFail($id)]);
+   }
 
     /**
      * Update the specified resource in storage.

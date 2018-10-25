@@ -67,7 +67,7 @@
             <div class="col-sm-9">
               <div class="radio">
                 <label >
-                  <input type="radio" name="special" id="special" class="noseleccionar" value="all-access">
+                  <input type="radio" name="special" id="special" class="noseleccionar" value="all-access" checked="">
                 Acceso Total </label>
               </div>
               <div class="radio">
@@ -78,7 +78,7 @@
               <!-- AQUI AGREGUE EL TERCER RADIO -->
               <div class="radio">
                 <label>
-                  <input type="radio" name="special" id="special" class="seleccionar" value="seleccionar acceso">
+                  <input type="radio"  name="special2" id="special2" class="seleccionar">
                 Seleccionar Accesos </label>
               </div>
             </div>
@@ -100,8 +100,6 @@
             </div>
 
             
-
-
             <div class="form-group">
               <div class="col-sm-offset-7 col-sm-5">
                 <button type="submit" class="btn btn-primary">Guardar</button>
@@ -115,18 +113,21 @@
   </div><!--/row-->
 </div><!--/container clear_both padding_fix--> 
 
-<script src=https://code.jquery.com/jquery-3.3.1.min.js></script>
-  <script>
-    $('.seleccionar').change(function () {
-      $("#permisos").css("display","block");
-    });
+<script src=/js/jquery-3.3.1.min.js></script>
+<script>
+  $('.seleccionar').change(function () {
+    $("#permisos").css("display","block");
+    $(".noseleccionar").prop('checked', false);
+  });
 
-    $('.noseleccionar').change(function () {
-      if ($(this).is(":checked")) {
-        $("#permisos").css("display","none");
-        $("input:checkbox").prop('checked', false);}
-      });
-    </script>
+  $('.noseleccionar').change(function () {
+    if ($(this).is(":checked")) {
+      $("#permisos").css("display","none");
+      $("input:checkbox").prop('checked', false);
+      $(".seleccionar").prop('checked', false);
+    }
+  });
+</script>
 
 
 @endsection
