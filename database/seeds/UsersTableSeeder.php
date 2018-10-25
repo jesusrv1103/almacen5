@@ -14,15 +14,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-<<<<<<< HEAD
-
-
-
-
      DB::table('direcciones')->insert([
-=======
-     DB::table('almacen.direcciones')->insert([
->>>>>>> 2ed5a2164c291c491f66d046a8a5ff6604504d54
         'nombre' => 'TI',
         'estado' => 'Activo',
     ]);
@@ -34,10 +26,6 @@ class UsersTableSeeder extends Seeder
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',//secret 
         'idDireccion' => '1', 
     ]);
-
-
-
-
 
      Role::create([
       'name' => 'Admin',
