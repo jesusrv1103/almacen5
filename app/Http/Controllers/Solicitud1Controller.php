@@ -32,7 +32,12 @@ class Solicitud1Controller extends Controller
      */
     public function index()
     {
-        $solicitudes1s= DB::table('solicitudes1s')->where('estado','Activo')->get();
+         $solicitudes1s= DB::table('solicitudes')
+        ->join('users as u', 'solicitudes.idUsuario', '=', 'u.id')
+        ->join('direcciones as d', 'solicitudes.idDireccion', '=', 'd.id')
+        ->select('solicitudes.*','u.name','solicitudes.*','d.nombre')
+
+        ->where('solicitudes.estado','Activo')->get();
         return view('solicitud1.index',['solicitudes1s' => $solicitudes1s]);
     }
     /**

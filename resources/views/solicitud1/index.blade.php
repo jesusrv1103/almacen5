@@ -49,11 +49,10 @@
                   <th>Nombre</th>
                   <th>Área o Dirección</th>
 
-                  
-                  
-                  <td><center><b>Ver</b></center></td>
-                  <td><center><b>Editar</b></center></td>
-                  <td><center><b>Borrar</b></center></td>
+                  <th>Uso Destinado</th>
+
+                  <th><center><b>Ver</b></center></th>
+  
 
 
                 </tr>
@@ -64,48 +63,40 @@
 
                 <td>{{$solicitud->numeroSolicitud}}</td>
                 <td>{{$solicitud->fechaS}}</td>
-                <td>{{$solicitud->usuario}}</td>
-                <td>{{$solicitud->areaDireccion}}</td>
+                <td>{{$solicitud->name}}</td>
+                <td>{{$solicitud->nombre}}</td>
                 <td>{{$solicitud->UsoDestinado}}</td>
                 
 
                 <th class="center">
-                  <a href="" class="btn btn-info btn-sm" role="button"><i class="fa fa-eye"></i></a>   
-                </td>
+                 <a href="{{URL::action('SolicitudController@verSolicitudes',$solicitud->id)}}" class="btn btn-info btn-sm" role="button"><i class="fa fa-eye"></i></a>    
+               </td>
 
-                <td class="center">
-                  <a href="{{URL::action('Solicitud1Controller@edit',$solicitud->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>                    
-                </td>
-                <td class="center">
-                  <a class="btn btn-danger btn-sm" href="#modalEliminar" style="margin-right: 10px;"  
-                  data-target="#modal-delete-{{$solicitud->id}}" data-toggle="modal" role="button"><i class="fa fa-eraser"></i></a></i></a>
-                </td>
-
-              </tr>
-              @include('solicitud1.modal')
-              @endforeach
+             
+            </tr>
+            @include('solicitud1.modal')
+            @endforeach
 
 
 
-            </tbody>
-            <tfoot>
-              <tr>
-               <th>No. Vale</th>
-                  <th>Fecha</th>
-                  <th>Nombre</th>
-                  <th>Área o Dirección</th>
+          </tbody>
+          <tfoot>
+            <tr>
+             <th>No. Vale</th>
+             <th>Fecha</th>
+             <th>Nombre</th>
+             <th>Área o Dirección</th>
+             <th>Uso Destinado</th>
 
-                <td><center><b>Ver</b></center></td>
-                <td><center><b>Editar</b></center></td>
-                <td><center><b>Borrar</b></center></td>
-
-              </tr>
-            </tfoot>
-          </table>
-        </div><!--/table-responsive-->
-      </div><!--/porlets-content-->
-    </div><!--/block-web-->
-  </div><!--/col-md-12-->
+             <td><center><b>Ver</b></center></td>
+            
+           </tr>
+         </tfoot>
+       </table>
+     </div><!--/table-responsive-->
+   </div><!--/porlets-content-->
+ </div><!--/block-web-->
+</div><!--/col-md-12-->
 </div><!--/row-->
 
 

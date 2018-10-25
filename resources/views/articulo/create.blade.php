@@ -9,8 +9,8 @@
   <div class="pull-right">
     <ol class="breadcrumb">
       <li><a href="?c=Inicio">Inicio</a></li>
-      <li><a href="?c=localidad">Articulo</a></li>
-      <li class="active">Alta Articulo</li>
+      <li><a href="?c=localidad">Artículo</a></li>
+      <li class="active">Alta Artículo</li>
     </ol>
   </div>
 </div>
@@ -43,14 +43,14 @@
                 <div class="col-sm-6">
 
                  <input onchange="mayus(this);" type="text" class="form-control"  autofocus name="nombre" id="nombre" 
-                 maxlength="70" required value="" placeholder="Ingrese el Nombre del Articulo">
+                 maxlength="70" required value="" placeholder="Ingrese el Nombre del Artículo">
                </div>
              </div><!--/form-group-->
              <div class="form-group">
 
               <label class="col-sm-3 control-label">Cantidad Artículo: <strog class="theme_color">*</strog></label>
               <div class="col-sm-6">
-               <input onkeypress="return soloNumeros(event);" required value="" type="text" class="form-control"  autofocus name="cantidad" maxlength="12" placeholder="Ingrese la cantidad del Articulo">
+               <input onkeypress="return soloNumeros(event);" required value="" type="text" class="form-control"  autofocus name="cantidad" maxlength="12" placeholder="Ingrese la cantidad del Artículo">
              </div>
            </div><!--/form-group-->
 
@@ -109,6 +109,7 @@
               <option value="PAPELERIA"> 
                PAPELERIA           
              </option>
+               
 
 
            </select>

@@ -13,7 +13,7 @@
 
 
 Route::get('/', function () {
-	return view('welcome');
+	return view('auth/login');
 });
 Route::resource('home','HomeController');
 
@@ -70,7 +70,7 @@ Route::middleware(['auth'])->group(function(){
 
 	//usuarios
 
-
+/*
 	Route::post('users/store','UserController@store')->name('users.store')
 	->middleware('permission:users.create');
 
@@ -90,11 +90,16 @@ Route::middleware(['auth'])->group(function(){
 
 
 	Route::get('users/{users}/edit','UserController@edit')->name('users.edit')
-	->middleware('permission:users.edit');
+	->middleware('permission:users.edit'); 
+	*/
 });
 
 //controladores manejados en constructor
 Route::resource('partidas','PartidaController');
+
+
+Route::resource('users','UserController');
+
 Route::get('verPartidas/{id}','PartidaController@verPartidas')->name('partidas.verPartidas');
 
 Route::resource('direcciones','DireccionController');

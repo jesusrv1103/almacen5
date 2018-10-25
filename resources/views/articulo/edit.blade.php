@@ -44,7 +44,7 @@
                 <div class="col-sm-6">
 
                   <input onchange="mayus(this);"  type="text" class="form-control" autofocus name="nombre" id="nombre" 
-                  maxlength="70" required value="{{$articulos->nombre}}" placeholder="Ingrese el Nombre del Articulo">
+                  maxlength="70" required value="{{$articulos->nombre}}" placeholder="Ingrese el Nombre del Artículo">
                 </div>
               </div><!--/form-group-->
               <div class="form-group">
@@ -59,7 +59,7 @@
 
                 <label class="col-sm-3 control-label">Cantidad Artículo: <strog class="theme_color">*</strog></label>
                 <div class="col-sm-6">
-                 <input onkeypress="return soloNumeros(event);" type="text" required class="form-control"  autofocus name="cantidad" maxlength="12" placeholder="Ingrese la cantidad del Articulo" value="{{$articulos->cantidad}}">
+                 <input onkeypress="return soloNumeros(event);" type="text" required class="form-control"  autofocus name="cantidad" maxlength="12" placeholder="Ingrese la cantidad del Artículo" value="{{$articulos->cantidad}}">
                </div>
              </div><!--/form-group-->
 

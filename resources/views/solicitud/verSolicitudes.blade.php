@@ -21,7 +21,7 @@
 					<div class="row" style="margin-top: 15px; margin-bottom: 12px;">
 						<div class="col-sm-7">
 							<div class="actions"> </div>
-							<h2 class="content-header theme_color" style="margin-top: -5px;">&nbsp;&nbsp;Proveer Petición de solicitud</h2>
+							<h2 class="content-header theme_color" style="margin-top: -5px;">&nbsp;&nbsp;Petición de solicitud</h2>
 						</div>
 						<div class="col-md-5">
 							<div class="btn-group pull-right">
