@@ -15,7 +15,9 @@
 Route::get('/', function () {
 	return view('auth/login');
 });
-Route::resource('home','HomeController');
+
+//Route::resource('home','HomeController');
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::middleware(['auth'])->group(function(){

@@ -20,11 +20,21 @@ class UserController extends Controller
 
   public function index()
   {
-   $usuarios= DB::table('users')
+   /*$usuarios= DB::table('users')
    ->join( 'direcciones as d', 'users.idDireccion','=','d.id')
+   ->join( 'roles as r', '.idDireccion','=','d.id')
    ->select('users.*','d.nombre')
    ->where('users.estado','Activo')
-   ->where('d.estado','Activo')->get();
+   ->where('d.estado','Activo')->get();*/
+   $usuarios = DB::table('role_user')
+   ->join('users as u','role_user.id','=','u.id')
+   ->join( 'roles as r', 'role_user.id','=','r.id')
+   ->select('users.*','role_user.*','r.*')
+   ->join('direcciones','u.idDireccion','=','direcciones.id')
+   ->select('u.id','u.name as nombreCompleto','u.nombreusuario','r.name AS nombreRol', 'direcciones.nombre as nombreDireccion')
+   ->where('u.estado','Activo')
+   ->where('direcciones.estado','Activo')->get();
+   ;
    return view('usuarios.index',['usuarios' => $usuarios]);
  }
 
@@ -77,7 +87,7 @@ class UserController extends Controller
       Role_User::create([
         'role_id' => $request->get('id'), 
         'user_id' => $usuarios->id
-        ]);
+      ]);
 
       return Redirect::to('users');
     }
@@ -157,9 +167,9 @@ class UserController extends Controller
             'role_id' => 'required',
             'idDireccion' => 'required',
             ]);
-    }*/
+          }*/
 
 
 
 
-  }
+        }

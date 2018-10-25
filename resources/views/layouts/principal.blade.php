@@ -107,13 +107,16 @@ a {
         <br>
         <div class="left_nav_slidebar">
          <ul>
-           @if(str_contains(Route::getCurrentRoute()->getName(),['almacenes']))
-           <li class="left_nav_active theme_border"><a href="javascript:void(0);"><i class="fa fa-home"></i> Control de Almacen <!--<span class="left_nav_pointer"></span>--><span class="plus"><i class="fa fa-plus" ></i></span> </a>
+          
+          @if(str_contains(Route::getCurrentRoute()->getName(),['almacenes']))
+          <li class="left_nav_active theme_border"><a href="javascript:void(0);"><i class="fa fa-home"></i> Control de Almacen <!--<span class="left_nav_pointer"></span>--><span class="plus"><i class="fa fa-plus" ></i></span> </a>
             <ul class="opened" style="display:block">
               @else
               <li><a href="javascript:void(0);"><i class="fa fa-home"></i> Control de Almacen<span class="plus"><i class="fa fa-plus" ></i></span> </a>
                 <ul id="este">
                   @endif
+                  
+                  @can('almacenes.index')
                   <li> <a href="{{url('almacenes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
                     @if(str_contains(Route::getCurrentRoute()->getName(),['almacenes']))
                     <b class="theme_color"  >Almacenes</b> </a> 
@@ -121,9 +124,14 @@ a {
                     <b>Almacenes</b> </a> 
                     @endif
                   </li>
+                  @endcan
                   <li> <a href="{{url('events')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Calendario</b> </a> </li>
                 </ul>
               </li>
+             
+
+
+
               @if(str_contains(Route::getCurrentRoute()->getName(),['articulos','entradas','proveedores','inventarios']))
               <li class="left_nav_active theme_border"> <a href="javascript:void(0);"> <i class="fa fa-shopping-cart"></i> Artículos<span class="plus"><i class="fa fa-plus"></i></span> </a>
                 <ul class="opened" style="display:block">
@@ -240,15 +248,15 @@ a {
                     <!--APOYO-->
                     <li> <a href="javascript:void(0);"> <i class="fa fa-envelope"></i> {{Route::getCurrentRoute()->getName()}}<span class="plus"><i class="fa fa-plus"></i></span> </a>
                      <ul>
-                    <!--APOYO-->
+                      <!--APOYO-->
 
-                     </ul>
+                    </ul>
 
-                   </div>
-                 </div>
-               </div>
-               <!--\\\\\\\left_nav end \\\\\\-->
-               <div class="contentpanel">
+                  </div>
+                </div>
+              </div>
+              <!--\\\\\\\left_nav end \\\\\\-->
+              <div class="contentpanel">
                 <!--\\\\\\\ contentpanel start\\\\\\-->
 
                 @yield('contenido')
