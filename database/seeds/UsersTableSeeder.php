@@ -14,12 +14,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-     DB::table('direcciones')->insert([
+       DB::table('direcciones')->insert([
         'nombre' => 'TI',
         'estado' => 'Activo',
     ]);
 
-     DB::table('users')->insert([
+       DB::table('users')->insert([
         'name' => 'SEZAC', 
         'nombreusuario' => 'SEZAC', 
         'email' => 'sezac@sezac.gob', 
@@ -27,21 +27,20 @@ class UsersTableSeeder extends Seeder
         'idDireccion' => '1', 
     ]);
 
-     Role::create([
-      'name' => 'Admin',
-      'slug' => 'admin',
-      'special' => 'all-access'
-  ]);
+       Role::create([
+          'name' => 'Admin',
+          'slug' => 'admin',
+          'special' => 'all-access'
+      ]);
 
         /*DB::table('role_user')->insert([
             'role_id' => '1', 
             'user_id' => '1', 
         ]);*/
-
         Role_User::create([
-         'role_id' => '1', 
-         'user_id' => '1', 
-     ]);
+           'role_id' => '1', 
+           'user_id' => '1', 
+       ]);
 
     }
 }

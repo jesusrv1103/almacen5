@@ -45,9 +45,9 @@
               <thead>
                 <tr>
                   <th>Nombre Completo</th>
-              
+
                   <th>Nombre Usuario</th>
-          
+
                   <th>Tipo de Usuario</th>
                   <th>Dirección</th>
                   <td><center><b>Editar</b></center></td>
@@ -58,12 +58,13 @@
               <tbody>
                @foreach($usuarios as $usuarios)
                <tr class="gradeA">
-                <td>{{$usuarios->name}}</td>
-           
+                <td>{{$usuarios->nombreCompleto}}</td>
+
                 <td>{{$usuarios->nombreusuario}}</td>
-    
-                <td>A</td>
-                <td>{{$usuarios->nombre}}</td>
+
+                <td>{{$usuarios->nombreRol}}</td>
+                <td>{{$usuarios->nombreDireccion}}</td>
+                
 
                 <td class="center">
                   <a href="{{URL::action('UserController@edit',$usuarios->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>
@@ -79,7 +80,7 @@
             <tfoot>
               <tr>
                 <th>Nombre Completo</th>
-          
+
                 <th>Nombre Usuario</th>
 
                 <th>Tipo de Usuario</th>
