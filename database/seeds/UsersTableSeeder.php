@@ -15,7 +15,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
 
-     DB::table('almacen.direcciones')->insert([
+
+
+
+     DB::table('direcciones')->insert([
         'nombre' => 'TI',
         'estado' => 'Activo',
     ]);
@@ -29,8 +32,7 @@ class UsersTableSeeder extends Seeder
     ]);
 
 
-     factory(Almacen\Direccion::class,20)->create();
-     factory(Almacen\User::class,20)->create();
+
 
 
      Role::create([
