@@ -162,7 +162,7 @@
                       </ul>
                     </li>
 
-                    @if(str_contains(Route::getCurrentRoute()->getName(),['usuarios','direcciones','roles']))
+                    @if(str_contains(Route::getCurrentRoute()->getName(),['users','direcciones','roles']))
                     <li class="left_nav_active theme_border"> <a href="javascript:void(0);"> <i class="fa fa-users"></i> Usuarios<span class="plus"><i class="fa fa-plus"></i></span> </a>
                       <ul class="opened" style="display:block">
                         @else

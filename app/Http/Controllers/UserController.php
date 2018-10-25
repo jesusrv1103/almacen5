@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use Almacen\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 use Almacen\Http\Controllers\Controller;
 use Almacen\User;
+use Almacen\Role_User;
 use Caffeinated\Shinobi\Models\Role;
 use DB;
 use Maatwebsite\Excel\Facades\Excel;
@@ -37,9 +39,12 @@ class UserController extends Controller
      ->where('estado','=','Activo')
      ->get();
 
-     $permissions=DB::table('permissions')
+     //$permissions=DB::table('permissions')
+     //->get();
+     $roles=DB::table('roles')
      ->get();
-     return view('usuarios.create',['direcciones'=>$direcciones]);
+
+     return view('usuarios.create',['direcciones'=>$direcciones,'roles'=>$roles]);
    }
 
     /**
@@ -50,6 +55,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+      //$this->validator($request->all())->validate();
+
       $usuarios= new User();
       $usuarios->name=$request->get('name');
       $usuarios->nombreusuario=$request->get('nombreusuario');
@@ -58,9 +65,21 @@ class UserController extends Controller
       $usuarios->idDireccion=$request->get('idDireccion');
       $usuarios->estado="Activo";
       $usuarios->save();
+
+
+
+      /*DB::table('role_user')->insert([
+        'role_id' => $request->get('id'), 
+        'user_id' => $usuarios->id, 
+      ]);*/
+
+      //Usar un model para alterar campos created_at update_at
+      Role_User::create([
+        'role_id' => $request->get('id'), 
+        'user_id' => $usuarios->id
+        ]);
+
       return Redirect::to('users');
-
-
     }
 
     /**
@@ -127,6 +146,18 @@ class UserController extends Controller
       $usuarios->update();
       return Redirect::to('users');
     }
+
+    /*protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|string|max:255',
+            'nombreusuario' => 'required|string|min:6|max:15|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'email' => 'required|string|email|max:255|unique:users',
+            'role_id' => 'required',
+            'idDireccion' => 'required',
+            ]);
+    }*/
 
 
 

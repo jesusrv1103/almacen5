@@ -26,6 +26,6 @@ class CreateUnidadMedidasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('unidad_medidas');
+        Schema::drop('unidad_de_medidas');
     }
 }

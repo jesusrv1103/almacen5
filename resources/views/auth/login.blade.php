@@ -86,11 +86,10 @@
         <form role="form" class="form-horizontal" method="POST" action="{{ route('login') }}">
          {{csrf_field()}}
 
-           
-
          <div class="form-group">
           <div class="col-sm-10">
-            <input type="text" placeholder="Usuario" name="email" id="email" class="form-control">
+           <!-- <input type="text" placeholder="Usuario" name="email" id="email" class="form-control">-->
+           <input type="text" placeholder="Usuario" name="nombreusuario" id="nombreusuario" class="form-control">
           </div>
         </div>
         <div class="form-group">
