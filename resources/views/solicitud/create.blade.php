@@ -8,8 +8,8 @@
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">
-      <li><a href="?c=Inicio">Solicitud</a></li>
-      <li><a href="?c=localidad">Realizar Solicitud</a></li>
+      <li><a style="color: #808080" href="?c=Inicio">Solicitud</a></li>
+      <li><a style="color: #808080" href="?c=localidad">Realizar Solicitud</a></li>
 
     </ol>
   </div>

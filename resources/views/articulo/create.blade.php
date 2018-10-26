@@ -8,9 +8,9 @@
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">
-      <li><a href="?c=Inicio">Inicio</a></li>
-      <li><a href="?c=localidad">Artículo</a></li>
-      <li class="active">Alta Artículo</li>
+      <li><a style="color: #808080" class="text-secondary" href="?c=Inicio">Inicio</a></li>
+      <li><a  style="color: #808080" class="text-secondary" href="?c=localidad">Artículo</a></li>
+      <li style="color: #808080" class="active">Alta Artículo</li>
     </ol>
   </div>
 </div>

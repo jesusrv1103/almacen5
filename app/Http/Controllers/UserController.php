@@ -76,18 +76,11 @@ class UserController extends Controller
       $usuarios->estado="Activo";
       $usuarios->save();
 
-
-
-      /*DB::table('role_user')->insert([
-        'role_id' => $request->get('id'), 
-        'user_id' => $usuarios->id, 
-      ]);*/
-
       //Usar un model para alterar campos created_at update_at
       Role_User::create([
         'role_id' => $request->get('id'), 
         'user_id' => $usuarios->id
-      ]);
+        ]);
 
       return Redirect::to('users');
     }
@@ -157,19 +150,6 @@ class UserController extends Controller
       return Redirect::to('users');
     }
 
-    /*protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'nombreusuario' => 'required|string|min:6|max:15|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'email' => 'required|string|email|max:255|unique:users',
-            'role_id' => 'required',
-            'idDireccion' => 'required',
-            ]);
-          }*/
 
 
-
-
-        }
+  }

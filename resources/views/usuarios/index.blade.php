@@ -8,7 +8,7 @@
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">
-      <li><a href="?c=Inicio">Inicio</a></li>
+      <li><a style="color: #808080" href="?c=Inicio">Inicio</a></li>
       <li class="active">Usuarios</a></li>
     </ol>
   </div>

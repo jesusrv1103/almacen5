@@ -7,8 +7,8 @@
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">
-      <li><a href="?c=Inicio">Inicio</a></li>
-      <li><a href="?c=localidad">Almacenes</a></li>
+      <li> <a style="color: #808080"  class="text-secondary" href="?c=Inicio">Inicio</a></li>
+      <li><a style="color: #808080"  href="?c=localidad">Almacenes</a></li>
       <li class="active">Alta Almacén</li>
     </ol>
   </div>
