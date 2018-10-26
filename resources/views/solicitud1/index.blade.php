@@ -27,10 +27,11 @@
               <div class="btn-group pull-right">
                 <b>
 
+                  @can('solicitudes1.create')
                   <div class="btn-group" style="margin-right: 10px;">
                     <a class="btn btn-sm btn-success tooltips" href="solicitudes/create" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Realizar Nueva Solicitud"> <i class="fa fa-plus"></i> Realizar Solucitud </a>
-
                   </div>
+                  @endcan
 
                 </b>
               </div>
@@ -51,8 +52,9 @@
 
                   <th>Uso Destinado</th>
 
+                  @can('solicitud.verSolicitudes')
                   <th><center><b>Ver</b></center></th>
-  
+                  @endcan
 
 
                 </tr>
@@ -67,20 +69,21 @@
                 <td>{{$solicitud->nombre}}</td>
                 <td>{{$solicitud->UsoDestinado}}</td>
                 
-
+                @can('solicitud.verSolicitudes')
                 <th class="center">
                  <a href="{{URL::action('SolicitudController@verSolicitudes',$solicitud->id)}}" class="btn btn-info btn-sm" role="button"><i class="fa fa-eye"></i></a>    
                </td>
-
-             
-            </tr>
-            @include('solicitud1.modal')
-            @endforeach
+               @endcan
 
 
+             </tr>
+             @include('solicitud1.modal')
+             @endforeach
 
-          </tbody>
-          <tfoot>
+
+
+           </tbody>
+           <tfoot>
             <tr>
              <th>No. Vale</th>
              <th>Fecha</th>
@@ -88,8 +91,10 @@
              <th>Área o Dirección</th>
              <th>Uso Destinado</th>
 
+             @can('solicitud.verSolicitudes')
              <td><center><b>Ver</b></center></td>
-            
+             @endcan
+
            </tr>
          </tfoot>
        </table>

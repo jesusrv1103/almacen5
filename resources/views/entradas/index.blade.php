@@ -27,10 +27,11 @@
               <div class="btn-group pull-right">
                 <b>
 
+                  @can('entradas.create')
                   <div class="btn-group" style="margin-right: 10px;">
                     <a class="btn btn-sm btn-success tooltips" href="{{URL::action('EntradasController@create')}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registrar Nueva Entrada de Artículo"> <i class="fa fa-plus"></i> Registrar </a>
-
                   </div>
+                  @endcan
 
                 </b>
               </div>
@@ -54,9 +55,12 @@
                   <th>Fecha de Caducidad</th>
                   <b>
                    <b>
+                    @can('entradas.edit')
                     <td><center><b>Editar</b></center></td>
+                    @endcan
+                    @can('entradas.destroy')
                     <td><center><b>Borrar</b></center></td>
-
+                    @endcan
                   </tr>
                 </thead>
                 <tbody>
@@ -67,14 +71,18 @@
                   <td> {{$entradas->cantidad}}</td>
                   <td> {{$entradas->fechaCaducidad}}</td>
 
-                  
+                  @can('entradas.edit')
                   <td class="center">
                     <a href="{{URL::action('EntradasController@edit',$entradas->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>                    
                   </td>
+                  @endcan
+
+                  @can('entradas.destroy')
                   <td class="center">
                     <a class="btn btn-danger btn-sm" href="#modalEliminar" style="margin-right: 10px;"  
                     data-target="#modal-delete-{{$entradas->id}}" data-toggle="modal" role="button"><i class="fa fa-eraser"></i></a></i></a>
                   </td>
+                  @endcan
 
                 </tr>
                 @include('entradas.modal')
@@ -89,8 +97,13 @@
                   <th>Cantidad</th>
                   <th>Fecha de Caducidad</th>
 
+                  @can('entradas.edit')
                   <td><center><b>Editar</b></center></td>
+                  @endcan
+                  
+                  @can('entradas.destroy')
                   <td><center><b>Borrar</b></center></td>
+                  @endcan
 
                 </tr>
               </tfoot>

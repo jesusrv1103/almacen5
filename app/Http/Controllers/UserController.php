@@ -27,14 +27,14 @@ class UserController extends Controller
    ->where('users.estado','Activo')
    ->where('d.estado','Activo')->get();*/
    $usuarios = DB::table('role_user')
-   ->join('users as u','role_user.id','=','u.id')
-   ->join( 'roles as r', 'role_user.id','=','r.id')
+   ->join('users as u','role_user.user_id','=','u.id')
+   ->join( 'roles as r', 'role_user.role_id','=','r.id')
    ->select('users.*','role_user.*','r.*')
    ->join('direcciones','u.idDireccion','=','direcciones.id')
    ->select('u.id','u.name as nombreCompleto','u.nombreusuario','r.name AS nombreRol', 'direcciones.nombre as nombreDireccion')
    ->where('u.estado','Activo')
-   ->where('direcciones.estado','Activo')->get();
-   ;
+   ->get();
+   
    return view('usuarios.index',['usuarios' => $usuarios]);
  }
 

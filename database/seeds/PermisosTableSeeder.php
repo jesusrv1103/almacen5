@@ -26,6 +26,12 @@ class PermisosTableSeeder extends Seeder
       ]);
 
       Permission::create([
+        'name'          => 'Creación de usuario',
+        'slug'          => 'users.create',
+        'description'   => 'Podría crear nuevos usuarios en el sistema',
+      ]);
+
+      Permission::create([
         'name'          => 'Edición de usuarios',
         'slug'          => 'users.edit',
         'description'   => 'Podría editar cualquier dato de un usuario del sistema',
@@ -66,6 +72,37 @@ class PermisosTableSeeder extends Seeder
         'name'          => 'Eliminar roles',
         'slug'          => 'roles.destroy',
         'description'   => 'Podría eliminar cualquier rol del sistema',      
+      ]);
+
+      //almacenes
+      Permission::create([
+        'name'          => 'Navegar almacenes',
+        'slug'          => 'almacenes.index',
+        'description'   => 'Lista y navega todos los almacenes del sistema',
+      ]);
+
+      Permission::create([
+        'name'          => 'Ver detalle de un almacen',
+        'slug'          => 'almacenes.show',
+        'description'   => 'Ve en detalle cada almacen del sistema',            
+      ]);
+
+      Permission::create([
+        'name'          => 'Creación de almacenes',
+        'slug'          => 'almacenes.create',
+        'description'   => 'Podría crear nuevos almacenes en el sistema',
+      ]);
+
+      Permission::create([
+        'name'          => 'Edición de almacenes',
+        'slug'          => 'almacenes.edit',
+        'description'   => 'Podría editar cualquier dato de un almacen del sistema',
+      ]);
+
+      Permission::create([
+        'name'          => 'Eliminar almacenes',
+        'slug'          => 'almacenes.destroy',
+        'description'   => 'Podría eliminar cualquier articulo del sistema',      
       ]);
 
         //articulos
@@ -258,6 +295,13 @@ class PermisosTableSeeder extends Seeder
         'name'          => 'Ver detalle de un concepto de partida',
         'slug'          => 'partidas2.show',
         'description'   => 'Ve en detalle cada concepto de partida del sistema',            
+      ]);
+
+      //ruta doble
+      Permission::create([
+        'name'          => 'Creación de concepto de partidas',
+        'slug'          => 'partidas2.create',
+        'description'   => 'Podría guardar nuevos concepto de partidas en el sistema',
       ]);
 
       Permission::create([

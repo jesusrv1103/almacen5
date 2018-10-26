@@ -30,9 +30,11 @@
               <div class="btn-group pull-right">
                 <b>
 
+                  @can('roles.create')
                   <div class="btn-group" style="margin-right: 10px;">
                     <a class="btn btn-sm btn-success tooltips" href="{{route('roles.create')}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registrar nuevo Artículo"> <i class="fa fa-plus"></i> Registrar </a>
                   </div>
+                  @endcan
 
                 </b>
               </div>
@@ -54,39 +56,51 @@
                 <tr>
                   <th>Rol</th>
                   <th>Descripcion</th>
-                  <td><center><b>Editar</b></center></td>
-                  <td><center><b>Borrar</b></center></td>
 
+                  @can('roles.edit')
+                  <td><center><b>Editar</b></center></td>
+                  @endcan
+
+                  @can('roles.destroy')
+                  <td><center><b>Borrar</b></center></td>
+                  @endcan
                 </tr>
               </thead>
               <tbody>
 
                 @foreach($roles as $rol)
-              
+
                 <tr class="gradeA"   >
                   <td >{{$rol->name}}</td>
                   <td >{{$rol->description}}</td>
-                
-                  <td >
+
+                  @can('roles.edit')
+                  <td>
                     <a href="{{URL::action('RoleController@edit',$rol->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>
                   </td>
-                  <td >
+                  @endcan
+                  @can('roles.destroy')
+                  <td>
                     <a class="btn btn-danger btn-sm" data-target="#modal-delete-{{$rol->id}}" data-toggle="modal" style="margin-right: 10px;"  role="button"><i class="fa fa-eraser"></i></a>
                   </td>
+                  @endcan
                 </tr>
-             
-    
+
+
                 @include('roles.modal')
                 @endforeach
               </tbody>
               <tfoot>
                 <tr>
                  <th>Rol</th>
-                  <th> Descripcion</th>
-                 
-                 <td><center><b>Editar</b></center></td>
-                 <td><center><b>Borrar</b></center></td>
+                 <th> Descripcion</th>
 
+                 @can('roles.edit')
+                 <td><center><b>Editar</b></center></td>
+                 @endcan
+                 @can('roles.destroy')
+                 <td><center><b>Borrar</b></center></td>
+                 @endcan
                </tr>
              </tfoot>
            </table>

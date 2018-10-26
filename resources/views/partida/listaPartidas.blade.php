@@ -26,13 +26,13 @@
               <b>
 
                 <div class="btn-group" style="margin-right: 10px;">
+                  @can('partidas2.create1')
                   <a class="btn btn-sm btn-success tooltips" href="{{URL::action('Partida2Controller@create1',$partidas->id)}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registrar Nueva Partida Mensual"> <i class="fa fa-plus"></i> Registrar   </a>
+                  @endcan
 
+                  @can('conceptoPartidas.pdf')
                   <a class="btn btn-sm btn-warning tooltips" href="{{URL::action('Partida2Controller@descargarConceptoPartidas',$partidas->id)}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Descargar Partidas"> <i class="fa fa-download"></i> Descargar </a>
-
-
-                  
-
+                  @endcan
 
                   <a class="btn btn-sm btn-danger tooltips" href="{{url('/partidas')}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Cancelar"> <i class="fa fa-times"></i> Salir</a>
                 </div>
@@ -73,14 +73,19 @@
 
                 </tr>
                 
+                @can('partidas2.edit')
                 <tr>
                   <th>Modificar: </th>
                   <td><a class="btn btn-primary btn-sm" href="{{route('partidas2.edit',$partidames->id)}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Modificar Partida Mensual"> <i class="fa fa-edit"></i> Modificar </a></td>
                 </tr>
+                @endcan
+
+                @can('partidas2.destroy')
                 <tr>
                   <th>Eliminar: </th>
                   <td><a class="btn btn-danger btn-sm" href="#modal-delete-{{$partidames->id}}" style="margin-right: 10px;" data-toggle="modal" data-placement="bottom" title="" data-original-title="Eliminar Partida Mensual"> <i class="fa fa-eraser"></i> Eliminar </a></td>
                 </tr>
+                @endcan
 
               </tbody>
             </table>

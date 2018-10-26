@@ -27,10 +27,11 @@
               <div class="btn-group pull-right">
                 <b>
 
+                  @can('proveedores.create')
                   <div class="btn-group" style="margin-right: 10px;">
                     <a class="btn btn-sm btn-success tooltips" href="proveedores/create" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registrar Nuevo Proveedor"> <i class="fa fa-plus"></i> Registrar </a>
-
                   </div>
+                  @endcan
 
                 </b>
               </div>
@@ -54,9 +55,12 @@
                   <th>RFC</th>
                   <th>Dirección</th>
 
+                  @can('proveedores.edit')
                   <td><center><b>Editar</b></center></td>
+                  @endcan
+                  @can('proveedores.destroy')
                   <td><center><b>Borrar</b></center></td>
-
+                  @endcan
                 </tr>
               </thead>
               <tbody>
@@ -65,13 +69,17 @@
                 <td>{{$proveedor->nombre}}</td>
                 <td>{{$proveedor->rfc}}</td>
                 <td>{{$proveedor->direccion}}</td>
+                @can('proveedores.edit')
                 <td class="center">
                   <a href="{{URL::action('ProveedorController@edit',$proveedor->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>                    
                 </td>
+                @endcan
+                @can('proveedores.destroy')
                 <td class="center">
                   <a class="btn btn-danger btn-sm" href="#modalEliminar" style="margin-right: 10px;"  
                   data-target="#modal-delete-{{$proveedor->id}}" data-toggle="modal" role="button"><i class="fa fa-eraser"></i></a></i></a>
                 </td>
+                @endcan
 
               </tr>
               @include('proveedor.modal')
@@ -86,10 +94,12 @@
                 <th>RFC</th>
                 <th>Dirección</th>
 
-
+                @can('proveedores.edit')
                 <td><center><b>Editar</b></center></td>
+                @endcan
+                @can('proveedores.destroy')
                 <td><center><b>Borrar</b></center></td>
-
+                @endcan
               </tr>
             </tfoot>
           </table>

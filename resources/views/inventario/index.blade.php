@@ -30,10 +30,11 @@
                 <b>
 
 
-                <div class="btn-group" style="margin-right: 10px;">
-                  <a class="btn btn-sm btn-warning tooltips" href="{{URL::action('InventarioController@pdf')}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Descargar Inventario"> <i class="fa fa-download"></i> Descargar </a>
-
-                </div>
+                  @can('inventario.pdf')
+                  <div class="btn-group" style="margin-right: 10px;">
+                    <a class="btn btn-sm btn-warning tooltips" href="{{URL::action('InventarioController@pdf')}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Descargar Inventario"> <i class="fa fa-download"></i> Descargar </a>
+                  </div>
+                  @endcan
 
 
                 </b>

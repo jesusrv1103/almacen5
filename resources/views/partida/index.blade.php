@@ -27,10 +27,12 @@
               <div class="btn-group pull-right">
                 <b>
 
+                  @can('partidas.create')
                   <div class="btn-group" style="margin-right: 10px;">
                     <a class="btn btn-sm btn-success tooltips" href="partidas/create" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registrar Nueva Partida"> <i class="fa fa-plus"></i> Registrar </a>
-
                   </div>
+                  @endcan
+
 
                 </b>
               </div>
@@ -54,10 +56,15 @@
                   <th>Numero Partida</th>
                   <th>Concepto</th>
 
+                  @can('partidas.verPartidas')
                   <th><center><b>Ver</b></center></th>
+                  @endcan
+                  @can('partidas.edit')
                   <th><center><b>Editar</b></center></th>
+                  @endcan
+                  @can('partidas.destroy')
                   <td><center><b>Borrar</b></center></td>
-
+                  @endcan
                 </tr>
               </thead>
               <tbody>
@@ -67,16 +74,22 @@
                 <td>{{$partida->numeroPartida}}</td>
                 <td>{{$partida->concepto}}</td>
 
+                @can('partidas.verPartidas')
                 <th class="center">
                   <a href="{{URL::action('PartidaController@verPartidas',$partida->id)}}" class="btn btn-info btn-sm" role="button"><i class="fa fa-eye"></i></a>   
                 </td>
+                @endcan
+                @can('partidas.edit')
                 <th class="center">
                   <a href="{{URL::action('PartidaController@edit',$partida->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>                    
                 </td>
+                @endcan
+                @can('partidas.destroy')
                 <td class="center">
                   <a class="btn btn-danger btn-sm" href="#modalEliminar" style="margin-right: 10px;"  
                   data-target="#modal-delete-{{$partida->id}}" data-toggle="modal" role="button"><i class="fa fa-eraser"></i></a></i></a>
                 </td>
+                @endcan
 
               </tr>
               @include('partida.modal')
@@ -90,9 +103,15 @@
                 <th>Numero Partida</th>
                 <th>Concepto</th>
                 
+                @can('partidas.verPartidas')
                 <th><center><b>Ver</b></center></th>
+                @endcan
+                @can('partidas.edit')
                 <td><center><b>Editar</b></center></td>
+                @endcan
+                @can('partidas.destroy')
                 <td><center><b>Borrar</b></center></td>
+                @endcan
 
               </tr>
             </tfoot>

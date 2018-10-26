@@ -27,10 +27,11 @@
               <div class="btn-group pull-right">
                 <b>
 
+                  @can('users.create')
                   <div class="btn-group" style="margin-right: 10px;">
                     <a class="btn btn-sm btn-success tooltips" href="users/create" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registrar Nuevo Usuario"> <i class="fa fa-plus"></i> Registrar </a>
-
                   </div>
+                  @endcan
 
                 </b>
               </div>
@@ -50,8 +51,13 @@
 
                   <th>Tipo de Usuario</th>
                   <th>Dirección</th>
+
+                  @can('users.edit')
                   <td><center><b>Editar</b></center></td>
+                  @endcan
+                  @can('users.destroy')
                   <td><center><b>Borrar</b></center></td>
+                  @endcan
 
                 </tr>
               </thead>
@@ -66,12 +72,16 @@
                 <td>{{$usuarios->nombreDireccion}}</td>
                 
 
+                @can('users.edit')
                 <td class="center">
                   <a href="{{URL::action('UserController@edit',$usuarios->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>
                 </td>
+                @endcan
+                @can('users.destroy')
                 <td class="center">
                   <a class="btn btn-danger btn-sm" data-target="#modal-delete-{{$usuarios->id}}" data-toggle="modal" style="margin-right: 10px;"  role="button"><i class="fa fa-eraser"></i></a>
                 </td>
+                @endcan
 
               </tr>
               @include('usuarios.modal')
@@ -85,8 +95,12 @@
 
                 <th>Tipo de Usuario</th>
                 <th>Dirección</th>
+                @can('users.edit')
                 <td><center><b>Editar</b></center></td>
+                @endcan
+                @can('users.destroy')
                 <td><center><b>Borrar</b></center></td>
+                @endcan
 
               </tr>
             </tfoot>
