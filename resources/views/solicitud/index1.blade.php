@@ -35,11 +35,11 @@
 
 
 
-
+                 @can(''solicitud.pdf'')
                  <div class="btn-group" style="margin-right: 10px;">
                   <a class="btn btn-sm btn-warning tooltips" href="{{URL::action('SolicitudController@pdf')}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Descargar Solicitud"> <i class="fa fa-download"></i> Descargar </a>
-
                 </div>
+                @endcan
 
               </b>
             </div>
@@ -75,10 +75,11 @@
                <td>li</td>
                
 
-               
+               @can('solicitud.verSolicitudes')
                <th class="center">
                 <a href="{{URL::action('SolicitudController@verSolicitudes')}}" class="btn btn-info btn-sm" role="button"><i class="fa fa-eye"></i></a>   
               </td>
+              @endcan
 
 
 

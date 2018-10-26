@@ -54,8 +54,12 @@
                   <th>Nombre</th>
                   <b>
                    <b>
+                    @can('almacenes.edit')
                     <td><center><b>Editar</b></center></td>
+                    @endcan
+                    @can('almacenes.destroy')
                     <td><center><b>Borrar</b></center></td>
+                    @endcan
 
                   </tr>
                 </thead>
@@ -63,13 +67,17 @@
                  @foreach($almacenes as $almacen)
                  <tr class="gradeA">
                   <td> {{$almacen->nombre}}</td>
+                  @can('almacenes.edit')
                   <td class="center">
                     <a href="{{URL::action('AlmacenController@edit',$almacen->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>                    
                   </td>
+                  @endcan
+                  @can('almacenes.destroy')
                   <td class="center">
                     <a class="btn btn-danger btn-sm" href="#modalEliminar" style="margin-right: 10px;"  
                     data-target="#modal-delete-{{$almacen->id}}" data-toggle="modal" role="button"><i class="fa fa-eraser"></i></a></i></a>
                   </td>
+                  @endcan
 
                 </tr>
                 @include('almacen.modal')
@@ -82,8 +90,12 @@
 
                   <th>Nombre</th>
 
+                  @can('almacenes.edit')
                   <td><center><b>Editar</b></center></td>
+                  @endcan
+                  @can('almacenes.destroy')
                   <td><center><b>Borrar</b></center></td>
+                  @endcan
 
                 </tr>
               </tfoot>

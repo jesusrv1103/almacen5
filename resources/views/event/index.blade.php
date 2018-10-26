@@ -27,17 +27,17 @@
               <div class="btn-group pull-right">
                 <b>
 
+                  @can('events.create')
                   <div class="btn-group" style="margin-right: 10px;">
                     <a class="btn btn-sm btn-success tooltips" href="{{URL::action('EventController@create')}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registrar nuevo Evento"> <i class="fa fa-plus"></i> Registrar </a>
-
                   </div>
+                  @endcan
 
-
-
+                  @can('event2.index')
                   <div class="btn-group" style="margin-right: 10px;">
                     <a class="btn btn-sm btn-warning tooltips" href="{{URL::action('EventController@index')}}" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Ir al calaendario de Actividades"> <i class="fa fa-calendar-o"></i> Calendario </a>
-
                   </div>
+                  @endcan
 
                 </b>
               </div>
@@ -45,14 +45,11 @@
           </div>
         </div>
 
-          @if(session('info'))
+        @if(session('info'))
         <div class="alert alert-success">
           <strong>{{ session('info')}}</strong> 
         </div>
         @endif
-
-
-
 
         <div class="porlets-content">
           <div class="table-responsive">
@@ -63,9 +60,12 @@
                   <th>Inicio</th>
                   <th>Final</th>
 
+                  @can('events.edit')
                   <td><center><b>Editar</b></center></td>
+                  @endcan
+                  @can('events.destroy')
                   <td><center><b>Borrar</b></center></td>
-
+                  @endcan
                 </tr>
               </thead>
               <tbody>
@@ -74,13 +74,19 @@
                 <td>{{$calendario->title}}</td>
                 <td>{{$calendario->start_date}}</td>
                 <td>{{$calendario->end_date}}</td>
+
+                @can('events.edit')
                 <td class="center">
                   <a href="{{URL::action('EventController@edit',$calendario->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>                    
                 </td>
+                @endcan
+
+                @can('events.destroy')
                 <td class="center">
                  <a class="btn btn-danger btn-sm" href="#modalEliminar" style="margin-right: 10px;"  
                  data-target="#modal-delete-{{$calendario->id}}" data-toggle="modal" role="button"><i class="fa fa-eraser"></i></a></i></a>
                </td>
+               @endcan
 
              </tr>
              @include('event.modal')
@@ -95,9 +101,12 @@
               <th>Inicio</th>
               <th>Final</th>
 
-
+              @can('events.edit')
               <td><center><b>Editar</b></center></td>
+              @endcan
+              @can('events.destroy')
               <td><center><b>Borrar</b></center></td>
+              @endcan
 
             </tr>
           </tfoot>

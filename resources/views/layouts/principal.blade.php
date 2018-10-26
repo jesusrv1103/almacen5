@@ -107,7 +107,8 @@ a {
         <br>
         <div class="left_nav_slidebar">
          <ul>
-          
+
+          @can(['almacenes.index','events.index'])
           @if(str_contains(Route::getCurrentRoute()->getName(),['almacenes']))
           <li class="left_nav_active theme_border"><a href="javascript:void(0);"><i class="fa fa-home"></i> Control de Almacen <!--<span class="left_nav_pointer"></span>--><span class="plus"><i class="fa fa-plus" ></i></span> </a>
             <ul class="opened" style="display:block">
@@ -125,13 +126,15 @@ a {
                     @endif
                   </li>
                   @endcan
+
+                  @can('events.index')
                   <li> <a href="{{url('events')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Calendario</b> </a> </li>
+                  @endcan
                 </ul>
               </li>
-             
+              @endcan
 
-
-
+              @can(['articulos.index','entradas.index','proveedores.index','inventarios.index'])
               @if(str_contains(Route::getCurrentRoute()->getName(),['articulos','entradas','proveedores','inventarios']))
               <li class="left_nav_active theme_border"> <a href="javascript:void(0);"> <i class="fa fa-shopping-cart"></i> Artículos<span class="plus"><i class="fa fa-plus"></i></span> </a>
                 <ul class="opened" style="display:block">
@@ -139,6 +142,8 @@ a {
                   <li> <a href="javascript:void(0);"> <i class="fa fa-shopping-cart"></i> Artículos<span class="plus"><i class="fa fa-plus"></i></span> </a>
                     <ul>
                       @endif
+
+                      @can(['articulos.index'])
                       <li> <a href="{{url('articulos')}}"> <span>&nbsp;</span> <i class="fa fa-circle theme_color"></i> 
                        @if(str_contains(Route::getCurrentRoute()->getName(),['articulos']))
                        <b class="theme_color">Artículos</b> </a> 
@@ -146,6 +151,9 @@ a {
                        <b >Artículos</b> </a> 
                        @endif
                      </li>
+                     @endcan
+
+                     @can(['entradas.index'])
                      <li> <a href="{{url('entradas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
                       @if(str_contains(Route::getCurrentRoute()->getName(),['entradas']))
                       <b class="theme_color">Entrada de Artículos</b> </a> 
@@ -153,6 +161,9 @@ a {
                       <b>Entrada de Artículos</b> </a>
                       @endif 
                     </li>
+                    @endcan
+
+                    @can(['proveedores.index'])
                     <li> <a href="{{url('proveedores')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
                       @if(str_contains(Route::getCurrentRoute()->getName(),['proveedores']))
                       <b class="theme_color">Proveedores</b> </a> 
@@ -160,158 +171,186 @@ a {
                       <b >Proveedores</b> </a> 
                       @endif
                     </li>
+                    @endcan
+
+                    @can(['inventarios.index'])
                     <li> <a href="{{url('inventarios')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i>
                       @if(str_contains(Route::getCurrentRoute()->getName(),['inventarios']))
-                      <b class="theme_color">Inventario</b> </a> </li>
+                      <b class="theme_color">Inventario</b> </a> 
                       @else
                       <b >Inventario</b> </a> 
                       @endif
+                    </li>
+                    @endcan
+                  </ul>
+                </li>
+                @endcan
+
+                @can(['users.index','direcciones.index','roles.index'])
+                @if(str_contains(Route::getCurrentRoute()->getName(),['users','direcciones','roles']))
+                <li class="left_nav_active theme_border"> <a href="javascript:void(0);"> <i class="fa fa-users"></i> Usuarios<span class="plus"><i class="fa fa-plus"></i></span> </a>
+                  <ul class="opened" style="display:block">
+                    @else
+                    <li><a href="javascript:void(0);"> <i class="fa fa-users"></i> Usuarios<span class="plus"><i class="fa fa-plus"></i></span> </a>
+                     <ul>
+                      @endif
+
+                      @can(['users.index'])
+                      <li><a href="{{url('users')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
+                        @if(str_contains(Route::getCurrentRoute()->getName(),['users']))
+                        <b class="theme_color">Usuarios</b></a> 
+                        @else
+                        <b>Usuarios</b></a> 
+                        @endif
+                      </li>
+                      @endcan
+
+                      @can(['direcciones.index'])
+                      <li><a href="{{url('direcciones')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i>
+                        @if(str_contains(Route::getCurrentRoute()->getName(),['direcciones']))
+                        <b class="theme_color">Departamento</b></a>
+                        @else
+                        <b>Departamento</b></a> 
+                        @endif 
+                      </li>
+                      @endcan
+
+                      @can(['roles.index'])
+                      <li> <a href="{{url('roles')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i>
+                        @if(str_contains(Route::getCurrentRoute()->getName(),['roles']))
+                        <b class="theme_color">Roles</b></a>
+                        @else
+                        <b>Roles</b></a> 
+                        @endif 
+                      </li>
+                      @endcan
+
                     </ul>
                   </li>
-
-                  @if(str_contains(Route::getCurrentRoute()->getName(),['users','direcciones','roles']))
-                  <li class="left_nav_active theme_border"> <a href="javascript:void(0);"> <i class="fa fa-users"></i> Usuarios<span class="plus"><i class="fa fa-plus"></i></span> </a>
-                    <ul class="opened" style="display:block">
-                      @else
-                      <li><a href="javascript:void(0);"> <i class="fa fa-users"></i>Usuarios<span class="plus"><i class="fa fa-plus"></i></span> </a>
-                       <ul>
-                        @endif
-                        <li><a href="{{url('users')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
-                          @if(str_contains(Route::getCurrentRoute()->getName(),['users']))
-                          <b class="theme_color">Usuarios</b></a> 
-                          @else
-                          <b>Usuarios</b></a> 
-                          @endif
-                        </li>
-                        <li><a href="{{url('direcciones')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i>
-                          @if(str_contains(Route::getCurrentRoute()->getName(),['direcciones']))
-                          <b class="theme_color">Departamento</b></a>
-                          @else
-                          <b>Departamento</b></a> 
-                          @endif 
-                        </li>
-
-                        <li> <a href="{{url('roles')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i>
-                          @if(str_contains(Route::getCurrentRoute()->getName(),['roles']))
-                          <b class="theme_color">Roles</b></a>
-                          @else
-                          <b>Roles</b></a> 
-                          @endif 
-                        </li>
-                      </ul>
-                    </li>
+                  @endcan
 
 
-
-                    @if(str_contains(Route::getCurrentRoute()->getName(),['partidas']))
-                    <li class="left_nav_active theme_border"> <a href="javascript:void(0);"> <i class="fa fa-money"></i> Partidas<span class="plus"><i class="fa fa-plus"></i></span> </a>
-                     <ul class="opened" style="display:block">
-                      @else
-                      <li> <a href="javascript:void(0);"> <i class="fa fa-money"></i> Partidas<span class="plus"><i class="fa fa-plus"></i></span> </a>
-                       <ul>
-                        @endif
-                        <li> <a href="{{url('partidas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i>
-                          @if(str_contains(Route::getCurrentRoute()->getName(),['partidas']))
-                          <b class="theme_color">Partidas</b></a>
-                          @else
-                          <b>Partidas</b></a>
-                          @endif 
-                        </li>
-                      </ul>
-                    </li>
-
-                    @if(str_contains(Route::getCurrentRoute()->getName(),['solicitudes','solicitudes1']))
-                    <li class="left_nav_active theme_border"> <a href="javascript:void(0);"> <i class="fa fa-envelope"></i> Solicitudes<span class="plus"><i class="fa fa-plus"></i></span> </a>
-                     <ul class="opened" style="display:block">
-                      @else
-                      <li> <a href="javascript:void(0);"> <i class="fa fa-envelope"></i> Solicitudes<span class="plus"><i class="fa fa-plus"></i></span> </a>
-                       <ul>
-                        @endif
-
-                        <li> <a href="{{url('solicitudes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i>
-                          @if(str_contains(Route::getCurrentRoute()->getName(),['solicitudes']) && !str_contains(Route::getCurrentRoute()->getName(),['1']))
-                          <b class="theme_color">Recibidas</b> </a> 
-                          @else 
-                          <b>Recibidas</b> </a> 
-                          @endif
-                        </li>
-                        <li> <a href="{{url('solicitudes1')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
-                          @if(str_contains(Route::getCurrentRoute()->getName(),['solicitudes1']))
-                          <b class="theme_color">Enviados</b> </a> 
-                          @else 
-                          <b>Enviadas</b> </a> 
-                          @endif
-                        </li>
-                      </ul>
-                    </li>
-
-                    <!--APOYO-->
-                    <li> <a href="javascript:void(0);"> <i class="fa fa-envelope"></i> {{Route::getCurrentRoute()->getName()}}<span class="plus"><i class="fa fa-plus"></i></span> </a>
+                  @can(['partidas.index'])
+                  @if(str_contains(Route::getCurrentRoute()->getName(),['partidas']))
+                  <li class="left_nav_active theme_border"> <a href="javascript:void(0);"> <i class="fa fa-money"></i> Partidas<span class="plus"><i class="fa fa-plus"></i></span> </a>
+                   <ul class="opened" style="display:block">
+                    @else
+                    <li> <a href="javascript:void(0);"> <i class="fa fa-money"></i> Partidas<span class="plus"><i class="fa fa-plus"></i></span> </a>
                      <ul>
-                      <!--APOYO-->
-
+                      @endif
+                      @can(['partidas.index'])
+                      <li> <a href="{{url('partidas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i>
+                        @if(str_contains(Route::getCurrentRoute()->getName(),['partidas']))
+                        <b class="theme_color">Partidas</b></a>
+                        @else
+                        <b>Partidas</b></a>
+                        @endif 
+                      </li>
+                      @endcan
                     </ul>
+                  </li>
+                  @endcan
 
-                  </div>
+                  @can(['solicitudes.index','solicitudes1.index'])
+                  @if(str_contains(Route::getCurrentRoute()->getName(),['solicitudes','solicitudes1']))
+                  <li class="left_nav_active theme_border"> <a href="javascript:void(0);"> <i class="fa fa-envelope"></i> Solicitudes<span class="plus"><i class="fa fa-plus"></i></span> </a>
+                   <ul class="opened" style="display:block">
+                    @else
+                    <li> <a href="javascript:void(0);"> <i class="fa fa-envelope"></i> Solicitudes<span class="plus"><i class="fa fa-plus"></i></span> </a>
+                     <ul>
+                      @endif
+
+                      @can(['solicitudes.index'])
+                      <li> <a href="{{url('solicitudes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i>
+                        @if(str_contains(Route::getCurrentRoute()->getName(),['solicitudes']) && !str_contains(Route::getCurrentRoute()->getName(),['1']))
+                        <b class="theme_color">Recibidas</b> </a> 
+                        @else 
+                        <b>Recibidas</b> </a> 
+                        @endif
+                      </li>
+                      @endcan
+
+                      @can(['solicitudes1.index'])
+                      <li> <a href="{{url('solicitudes1')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
+                        @if(str_contains(Route::getCurrentRoute()->getName(),['solicitudes1']))
+                        <b class="theme_color">Enviados</b> </a> 
+                        @else 
+                        <b>Enviadas</b> </a> 
+                        @endif
+                      </li>
+                      @endcan
+                      
+                    </ul>
+                  </li>
+                  @endcan
+
+                  <!--APOYO-->
+                  <!--<li> <a href="javascript:void(0);"> <i class="fa fa-envelope"></i> {{Route::getCurrentRoute()->getName()}}<span class="plus"><i class="fa fa-plus"></i></span> </a>
+                   <ul>-->
+                    <!--APOYO-->
+
+                  </ul>
+
                 </div>
               </div>
-              <!--\\\\\\\left_nav end \\\\\\-->
-              <div class="contentpanel">
-                <!--\\\\\\\ contentpanel start\\\\\\-->
-
-                @yield('contenido')
-
-              </div>
-              <!--\\\\\\\ content panel end \\\\\\-->
             </div>
-            <!--\\\\\\\ inner end\\\\\\-->
+            <!--\\\\\\\left_nav end \\\\\\-->
+            <div class="contentpanel">
+              <!--\\\\\\\ contentpanel start\\\\\\-->
+
+              @yield('contenido')
+
+            </div>
+            <!--\\\\\\\ content panel end \\\\\\-->
           </div>
+          <!--\\\\\\\ inner end\\\\\\-->
+        </div>
 
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            {{ csrf_field() }}
-          </form>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          {{ csrf_field() }}
+        </form>
 
-          {!!Html::script('js/jquery-2.1.0.js')!!}
-          {!!Html::script('js/script.js')!!}
-          {!!Html::script('js/jquery-2.1.0.js')!!}
-          {!!Html::script('js/bootstrap.min.js')!!}
-          {!!Html::script('js/common-script.js')!!}
-          {!!Html::script('js/jquery.slimscroll.min.js')!!}
-          {!!Html::script('plugins/toggle-switch/toggles.min.js')!!} 
-          {!!Html::script('plugins/checkbox/zepto.js')!!}
-          {!!Html::script('plugins/checkbox/icheck.js')!!}
-          {!!Html::script('js/icheck-init.js')!!}
-          {!!Html::script('plugins/bootstrap-datepicker/js/bootstrap-datepicker.js')!!} 
-          {!!Html::script('plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js')!!} 
-          {!!Html::script('plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js')!!} 
-          {!!Html::script('plugins/bootstrap-timepicker/js/bootstrap-timepicker.js')!!} 
-          {!!Html::script('js/form-components.js')!!} 
-          {!!Html::script('plugins/input-mask/jquery.inputmask.min.js')!!} 
-          {!!Html::script('plugins/input-mask/demo-mask.js')!!} 
-          {!!Html::script('plugins/bootstrap-fileupload/bootstrap-fileupload.min.js')!!} 
-          {!!Html::script('plugins/dropzone/dropzone.min.js')!!} 
-          {!!Html::script('plugins/ckeditor/ckeditor.js')!!}
-          {!!Html::script('js/jPushMenu.js')!!} 
-          {!!Html::script('plugins/validation/parsley.min.js')!!}
-          {!!Html::script('plugins/data-tables/jquery.dataTables.js')!!}
-          {!!Html::script('plugins/data-tables/DT_bootstrap.js')!!}
-          {!!Html::script('plugins/data-tables/dynamic_table_init.js')!!}
-          {!!Html::script('plugins/edit-table/edit-table.js')!!}
-          {!!Html::script('plugins/file-uploader/js/vendor/jquery.ui.widget.js')!!}
-          {!!Html::script('plugins/file-uploader/js/jquery.iframe-transport.js')!!}
-          {!!Html::script('plugins/file-uploader/js/jquery.fileupload.js')!!}
-          {!!Html::script('plugins/validation/parsley.min.js')!!}
-          {!!Html::script('plugins/select2/dist/js/select2.full.min.js')!!}
-          <!-- Include SmartWizard JavaScript source -->
-          {!!Html::script('plugins/wizard/js/jquery.smartWizard.js')!!}
-          <!-- Include jQuery Validator plugin -->
-          {!!Html::script('https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js')!!}
-
-
-          {!!Html::script('https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js')!!}
+        {!!Html::script('js/jquery-2.1.0.js')!!}
+        {!!Html::script('js/script.js')!!}
+        {!!Html::script('js/jquery-2.1.0.js')!!}
+        {!!Html::script('js/bootstrap.min.js')!!}
+        {!!Html::script('js/common-script.js')!!}
+        {!!Html::script('js/jquery.slimscroll.min.js')!!}
+        {!!Html::script('plugins/toggle-switch/toggles.min.js')!!} 
+        {!!Html::script('plugins/checkbox/zepto.js')!!}
+        {!!Html::script('plugins/checkbox/icheck.js')!!}
+        {!!Html::script('js/icheck-init.js')!!}
+        {!!Html::script('plugins/bootstrap-datepicker/js/bootstrap-datepicker.js')!!} 
+        {!!Html::script('plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js')!!} 
+        {!!Html::script('plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js')!!} 
+        {!!Html::script('plugins/bootstrap-timepicker/js/bootstrap-timepicker.js')!!} 
+        {!!Html::script('js/form-components.js')!!} 
+        {!!Html::script('plugins/input-mask/jquery.inputmask.min.js')!!} 
+        {!!Html::script('plugins/input-mask/demo-mask.js')!!} 
+        {!!Html::script('plugins/bootstrap-fileupload/bootstrap-fileupload.min.js')!!} 
+        {!!Html::script('plugins/dropzone/dropzone.min.js')!!} 
+        {!!Html::script('plugins/ckeditor/ckeditor.js')!!}
+        {!!Html::script('js/jPushMenu.js')!!} 
+        {!!Html::script('plugins/validation/parsley.min.js')!!}
+        {!!Html::script('plugins/data-tables/jquery.dataTables.js')!!}
+        {!!Html::script('plugins/data-tables/DT_bootstrap.js')!!}
+        {!!Html::script('plugins/data-tables/dynamic_table_init.js')!!}
+        {!!Html::script('plugins/edit-table/edit-table.js')!!}
+        {!!Html::script('plugins/file-uploader/js/vendor/jquery.ui.widget.js')!!}
+        {!!Html::script('plugins/file-uploader/js/jquery.iframe-transport.js')!!}
+        {!!Html::script('plugins/file-uploader/js/jquery.fileupload.js')!!}
+        {!!Html::script('plugins/validation/parsley.min.js')!!}
+        {!!Html::script('plugins/select2/dist/js/select2.full.min.js')!!}
+        <!-- Include SmartWizard JavaScript source -->
+        {!!Html::script('plugins/wizard/js/jquery.smartWizard.js')!!}
+        <!-- Include jQuery Validator plugin -->
+        {!!Html::script('https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js')!!}
 
 
-          {!!Html::script('plugins/calendar/fullcalendar.min.js')!!}
-          {!!Html::script('plugins/calendar/external-draging-calendar.js')!!}
-        </body>
-        </html>
+        {!!Html::script('https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js')!!}
+
+
+        {!!Html::script('plugins/calendar/fullcalendar.min.js')!!}
+        {!!Html::script('plugins/calendar/external-draging-calendar.js')!!}
+      </body>
+      </html>

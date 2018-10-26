@@ -42,11 +42,15 @@
                   <th>Nombre</th>
                   <th>Área o Dirección</th>
                   <th>Uso Destinado</th>
-                  
-                  <td><center><b>Ver</b></center></td>
 
+
+                  @can('solicitud.verSolicitudes')
+                  <td><center><b>Ver</b></center></td>
+                  @endcan
                   
+                  @can('solicitud.pdf')
                   <td></td>
+                  @endcan
 
                 </tr>
               </thead>
@@ -60,14 +64,17 @@
                 <td>{{$solicitud->nombre}}</td>
                 <td>{{$solicitud->UsoDestinado}}</td>
 
-
+                @can('solicitud.verSolicitudes')
                 <td class="center">
                   <a href="{{URL::action('SolicitudController@verSolicitudes',$solicitud->id)}}" class="btn btn-info btn-sm" role="button"><i class="fa fa-eye"></i></a>   
                 </td>
+                @endcan
 
 
-                <td>      <a href="{{URL::action('SolicitudController@pdf',$solicitud->id)}}" class="btn btn-warning btn-sm" role="button"><i class="fa fa-download"></i></a>
+                @can('solicitud.pdf')
+                <td> <a href="{{URL::action('SolicitudController@pdf',$solicitud->id)}}" class="btn btn-warning btn-sm" role="button"><i class="fa fa-download"></i></a>
                 </center></td>
+                @endcan
 
               </tr>
               @include('solicitud.modal')
@@ -83,9 +90,13 @@
                <th>Nombre</th>
                <th>Área o Dirección</th>
                <th>Uso Destinado</th>
-
+               
+               @can('solicitud.verSolicitudes')
                <td><center><b>Ver</b></center></td>
+               @endcan
+               @can('solicitud.pdf')
                <td></td>
+               @endcan
 
 
 

@@ -30,12 +30,11 @@
               <div class="btn-group pull-right">
                 <b>
 
+                  @can('articulos.create')
                   <div class="btn-group" style="margin-right: 10px;">
                     <a class="btn btn-sm btn-success tooltips" href="articulos/create" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registrar Nuevo Artículo"> <i class="fa fa-plus"></i> Registrar </a>
-
-                    
-
                   </div>
+                  @endcan
 
                 </b>
               </div>
@@ -63,8 +62,12 @@
                   <th>Tipo Artículo</th>
                   <th>Partida</th>
 
+                  @can('articulos.edit')
                   <td><center><b>Editar&nbsp;&nbsp;</b></center></td>
+                  @endcan
+                  @can('articulos.destoy')
                   <td><center><b>Borrar&nbsp;&nbsp;</b></center></td>
+                  @endcan
 
                 </tr>
               </thead>
@@ -81,12 +84,16 @@
                   <td style="background-color: #FFE4E1; ">{{$articulos->tipoArticulo}}</td>
 
                   <td style="background-color: #FFE4E1; ">{{$articulos->numeroPartida}}</td>
+                  @can('articulos.edit')
                   <td class="center" style="background-color: #FFE4E1; ">
                     <a href="{{URL::action('ArticulosController@edit',$articulos->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>
                   </td>
+                  @endcan
+                  @can('articulos.destoy')
                   <td class="center" style="background-color: #FFE4E1; ">
                     <a class="btn btn-danger btn-sm" data-target="#modal-delete-{{$articulos->id}}" data-toggle="modal" style="margin-right: 10px;"  role="button"><i class="fa fa-eraser"></i></a>
                   </td>
+                  @endcan
                 </tr>  
                 @elseif($articulos->cantidad < 12 and  $articulos->tipoArticulo=="PAPELERIA")
                 <tr class="gradeA"   >
@@ -98,12 +105,16 @@
                   <td style="background-color: #FFE4E1; ">{{$articulos->tipoArticulo}}</td>
 
                   <td style="background-color: #FFE4E1; ">{{$articulos->numeroPartida}}</td>
+                  @can('articulos.edit')
                   <td class="center" style="background-color: #FFE4E1; ">
                     <a href="{{URL::action('ArticulosController@edit',$articulos->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>
                   </td>
+                  @endcan
+                  @can('articulos.destoy')
                   <td class="center" style="background-color: #FFE4E1; ">
                     <a class="btn btn-danger btn-sm" data-target="#modal-delete-{{$articulos->id}}" data-toggle="modal" style="margin-right: 10px;"  role="button"><i class="fa fa-eraser"></i></a>
                   </td>
+                  @endcan
                 </tr>
                 @else
                 <tr class="gradeA"  >
@@ -115,12 +126,16 @@
                   <td>{{$articulos->tipoArticulo}}</td>
 
                   <td>{{$articulos->numeroPartida}}</td>
+                  @can('articulos.edit')
                   <td class="center">
                     <a href="{{URL::action('ArticulosController@edit',$articulos->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>
                   </td>
+                  @endcan
+                  @can('articulos.destoy')
                   <td class="center">
                     <a class="btn btn-danger btn-sm" data-target="#modal-delete-{{$articulos->id}}" data-toggle="modal" style="margin-right: 10px;"  role="button"><i class="fa fa-eraser"></i></a>
                   </td>
+                  @endcan
                 </tr>
                 @endif
                 @include('articulo.modal')
@@ -135,8 +150,12 @@
                  <th>Fecha Caducidad</th>
                  <th>Tipo Artículo</th>
                  <th>Partida</th>
+                 @can('articulos.edit')
                  <td><center><b>Editar</b></center></td>
+                 @endcan
+                 @can('articulos.destoy')
                  <td><center><b>Borrar</b></center></td>
+                 @endcan
 
                </tr>
              </tfoot>

@@ -71,8 +71,6 @@ Route::middleware(['auth'])->group(function(){
 
 
 	//usuarios
-
-/*
 	Route::post('users/store','UserController@store')->name('users.store')
 	->middleware('permission:users.create');
 
@@ -93,7 +91,7 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('users/{users}/edit','UserController@edit')->name('users.edit')
 	->middleware('permission:users.edit'); 
-	*/
+	
 });
 
 //controladores manejados en constructor

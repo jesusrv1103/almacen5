@@ -37,13 +37,16 @@
 
                         <div class="col-md-12">
                           <div class="btn-group pull-center">
+
+
+                            @can('events.creat')
                               <div class="btn-group" style="margin-right: 10px;">
                                 <a class="btn btn-default btn-success tooltips" href="events/create" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registrar nueva Direccion"> <i class="fa fa-plus"></i> Registrar </a>
-
                             </div>
+                            @endcan
                             
                             <div class="btn-group" style="margin-right: 10px;">
-                            <a class="btn btn-default btn-warning tooltips" href="event2" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Cancelar"> <i class="fa fa-refresh"></i> Salir </a>
+                                <a class="btn btn-default btn-warning tooltips" href="event2" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Cancelar"> <i class="fa fa-refresh"></i> Salir </a>
 
                             </div>
                         </div>
@@ -59,10 +62,10 @@
 
 
 
-                         <i class="eye icon"></i> 
-                     </div>
+                           <i class="eye icon"></i> 
+                       </div>
 
-                     <div class="panel-body" >
+                       <div class="panel-body" >
 
                         {!! $calendar->calendar() !!}
 
