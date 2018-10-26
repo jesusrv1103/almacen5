@@ -93,6 +93,10 @@ a {
               onclick="event.preventDefault();
               document.getElementById('logout-form').submit();"
               ><i class="fa fa-power-off" style="color:#787878;"> Salir </i></span></a>
+
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+              </form>
             </div>
           </div>
         </div>
