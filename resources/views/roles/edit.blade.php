@@ -8,8 +8,8 @@
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">
-      <li><a href="?c=Inicio">Inicio</a></li>
-      <li><a href="?c=localidad">Roles y Permisos</a></li>
+      <li><a style="color: #808080" href="?c=Inicio">Inicio</a></li>
+      <li><a style="color: #808080" href="?c=localidad">Roles y Permisos</a></li>
       <li class="active">Editar Rol y/o Permiso</li>
     </ol>
   </div>

@@ -9,7 +9,7 @@
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">
-      <li><a href="?c=Inicio">Inicio</a></li>
+      <li><a style="color: #808080" href="?c=Inicio">Inicio</a></li>
       <li class="active">Usuarios</a></li>
     </ol>
   </div>
@@ -76,17 +76,19 @@
 
                   @can('roles.edit')
                   <td>
-                    <a href="{{URL::action('RoleController@edit',$rol->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>
+                    <center>
+                      <a href="{{URL::action('RoleController@edit',$rol->id)}}" class="btn btn-primary btn-sm" role="button"><i class="fa fa-edit"></i></a>
+                    </center>
                   </td>
                   @endcan
                   @can('roles.destroy')
                   <td>
-                    <a class="btn btn-danger btn-sm" data-target="#modal-delete-{{$rol->id}}" data-toggle="modal" style="margin-right: 10px;"  role="button"><i class="fa fa-eraser"></i></a>
+                    <center>
+                      <a class="btn btn-danger btn-sm" data-target="#modal-delete-{{$rol->id}}" data-toggle="modal" style="margin-right: 10px;"  role="button"><i class="fa fa-eraser"></i></a>
+                    </center>
                   </td>
                   @endcan
                 </tr>
-
-
                 @include('roles.modal')
                 @endforeach
               </tbody>

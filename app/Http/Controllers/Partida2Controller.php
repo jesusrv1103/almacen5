@@ -61,7 +61,7 @@ class Partida2Controller extends Controller
     $partidas->presupuestoGastado=$request->get('presupuestoG');
     $partidas->estado="Activo";
     $partidas->save();
-    echo $request->get('idPartida');
+ 
     $idPartida=$partidas->idPartida;
 
     $partidas=Partida::findOrFail($idPartida);
