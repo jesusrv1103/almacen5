@@ -75,7 +75,7 @@ a {
       <!--\\\\\\\ header Start \\\\\\-->
       <div class="brand">
         <!--\\\\\\\ brand Start \\\\\\-->
-        <div style="display:block"><img width="100%" style=" margin-top:-15px" src="images/sezac.png"></div>
+        <div style="display:block"><img width="100%" style=" margin-top:-20px" src="{{asset('images/sezac.png')}}"></div>
 
         <div class="small_logo" style="display:none"><img src="{{asset('images/sezac.png')}}"  width="50" height="47" alt="s-logo" /> <img src="{{asset('images/s-logo.png')}}" width="122" height="20" alt="r-logo" /></div>
       </div>
@@ -87,7 +87,7 @@ a {
           <h1>Control Almacén</h1>
         </div>
         <div class="top_right_bar">
-          <div style="margin-top: -20%;" >
+          <div style="margin-top: -52%;" >
             <span class="user_adminname"> <br> {{ Auth::user()->name }}   </span>
             <span  class="user_adminname" ><a  href="{{ route('logout') }}"  
               onclick="event.preventDefault();
