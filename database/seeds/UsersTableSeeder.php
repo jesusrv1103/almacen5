@@ -14,33 +14,35 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-       DB::table('direcciones')->insert([
+
+     DB::table('direcciones')->insert([
         'nombre' => 'TI',
         'estado' => 'Activo',
-    ]);
+        ]);
 
-       DB::table('users')->insert([
+     DB::table('users')->insert([
         'name' => 'SEZAC', 
         'nombreusuario' => 'SEZAC', 
         'email' => 'sezac@sezac.gob', 
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',//secret 
         'idDireccion' => '1', 
-    ]);
+        ]);
 
-       Role::create([
-          'name' => 'Admin',
-          'slug' => 'admin',
-          'special' => 'all-access'
+     factory(Almacen\Direccion::class,20)->create();
+     factory(Almacen\User::class,20)->create();
+
+     Role::create([
+      'name' => 'Admin',
+      'slug' => 'admin',
+      'special' => 'all-access'
       ]);
 
-        /*DB::table('role_user')->insert([
-            'role_id' => '1', 
-            'user_id' => '1', 
-        ]);*/
-        Role_User::create([
-           'role_id' => '1', 
-           'user_id' => '1', 
-       ]);
 
-    }
+     
+     Role_User::create([
+         'role_id' => '1', 
+         'user_id' => '1', 
+         ]);
+
+ }
 }
