@@ -25,17 +25,16 @@
 						</div>
 						<div class="col-md-5">
 							<div class="btn-group pull-right">
+								<b>
 
-                <b>
+									<div class="btn-group" style="margin-right: 10px;">
+										<a class="btn btn-sm btn-warning tooltips"  style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" href="{{URL::action('SolicitudController@pdf',$solicitudes->id)}}" title="" data-original-title="Descargar solicitudes"> <i class="fa fa-download"  ></i> Descargar </a>
 
-                  <div class="btn-group" style="margin-right: 10px;">
-                    <a class="btn btn-sm btn-warning tooltips" href="" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registrar nuevo Artículo"> <i class="fa fa-download"></i> Descargar </a>
 
-              
 
-                  </div>
+									</div>
 
-                </b>
+								</b>
 
 							</div>
 						</div>
@@ -52,11 +51,7 @@
 									<th>Cantidad Pedida</th>
 									<th>U. Medida</th>
 									<th>Cantidad Asignada</th>
-
-
-								
-
-
+									<th>Asignar Cantidad</th>
 
 								</tr>
 							</thead>
@@ -65,12 +60,17 @@
 								<tr class="gradeA">
 
 									<td>{{$solicitud->nombre}}</td>
-									<td>{{$solicitud->cantidad}}</td>
+									<td>{{$solicitud->cantidadDetalleSolicitud}}</td>
 									<td>{{$solicitud->unidad}}</td>
-									<td>2</td>
-
-
-
+									<td>{{$solicitud->cantidadAsignada}}</td>
+									<td> 
+										<center>
+											<a class="btn btn-success btn-sm" 
+											data-target="#modal-asignar-{{$solicitud->idSolicitud}}"
+											data-toggle="modal" style="margin-right: 10px;" 
+											role="button"><i class="fa fa-plus"></i></a>
+										</center>
+									</td>
 
 
 								</tr>
@@ -86,6 +86,7 @@
 									<th>Cantidad Pedida</th>
 									<th>U. Medida</th>
 									<th>Cantidad Asignada</th>
+									<th>Asignar Cantidad</th>
 
 
 								</tr>

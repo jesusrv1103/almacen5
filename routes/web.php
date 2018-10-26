@@ -136,6 +136,10 @@ Route::get('adquisinet', function()
 });
 
 
+Route::post('asignarCantidad/{id}', 'SolicitudController@asignarCantidad');
+
+
+
 
 Auth::routes();
 

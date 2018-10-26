@@ -51,7 +51,7 @@ class SolicitudController extends Controller
       $solicitudes= DB::table('solicitudes')
       ->join('users as u', 'solicitudes.idUsuario', '=', 'u.id')
       ->join('direcciones as d', 'solicitudes.idDireccion', '=', 'd.id')
-      ->select('solicitudes.*','u.name','solicitudes.*','d.nombre')
+      ->select('solicitudes.*','u.name','d.nombre')
 
       ->where('solicitudes.estado','Activo')->get();
       return view('solicitud.index',['solicitudes' => $solicitudes]);
@@ -104,6 +104,7 @@ class SolicitudController extends Controller
         $detalles->idSolicitud=$idSolicitud;
         $detalles->idArticulo=$idProducto[$cont];
         $detalles->cantidad=$cantidad[$cont];
+        $detalles->cantidadAsignada=0;
         $detalles->estado='Activo';
         $cont = $cont+1;
         $detalles->save();
@@ -157,6 +158,8 @@ class SolicitudController extends Controller
     }
 
 
+
+
     public function verSolicitudes($id)
 
     {
@@ -168,7 +171,10 @@ class SolicitudController extends Controller
       ->join('articulos','detalle_solicitud.idArticulo','=','articulos.id')
       ->select('detalle_solicitud.*','articulos.nombre','articulos.idUnidad')
       ->join('unidad_de_medidas','unidad_de_medidas.id','=','articulos.id')
-      ->select('detalle_solicitud.*','articulos.nombre','unidad_de_medidas.nombre as unidad')
+      ->select('detalle_solicitud.id as idDetalleSolicitud','detalle_solicitud.idSolicitud','detalle_solicitud.idArticulo',
+        'detalle_solicitud.cantidad as cantidadDetalleSolicitud',
+        'detalle_solicitud.cantidadAsignada','articulos.id as idMaterial',
+        'articulos.nombre','unidad_de_medidas.nombre as unidad')
       ->where('articulos.estado','=','Activo')
       ->where('idSolicitud','=',$idSolicitud)
       ->get();
@@ -221,6 +227,9 @@ class SolicitudController extends Controller
 
   }
 
+  public function asignarCantidad($id){
+    echo "string";
+  }
 
 
 }

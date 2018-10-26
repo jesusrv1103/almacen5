@@ -19,7 +19,7 @@ class CreateDetalleSolicitudTable extends Migration
             $table->integer('idArticulo')->unsigned();
             $table->foreign('idArticulo')->references('id')->on('articulos');
             $table->integer('cantidad');
-
+            $table->integer('cantidadAsignada');
             $table->string('estado');
             $table->timestamps();
         });
