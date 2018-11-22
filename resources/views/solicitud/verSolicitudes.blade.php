@@ -4,12 +4,12 @@
 <div class="pull-left breadcrumb_admin clear_both">
 	<div class="pull-left page_title theme_color">
 		<h1>Solicitudes</h1>
-		<h2 class="">Solicitud Recibida</h2>
+		<h2 class="">Solicitud Enviada</h2>
 	</div>
 	<div class="pull-right">
 		<ol class="breadcrumb">
 			<li><a style="color: #808080" href="?c=Inicio">Inicio</a></li>
-			<li class="active">Solicitud Recibida</a></li>
+			<li class="active">Solicitud Enviada</a></li>
 		</ol>
 	</div>
 </div>
@@ -21,7 +21,7 @@
 					<div class="row" style="margin-top: 15px; margin-bottom: 12px;">
 						<div class="col-sm-7">
 							<div class="actions"> </div>
-							<h2 class="content-header theme_color" style="margin-top: -5px;">&nbsp;&nbsp;Petición de solicitud</h2>
+							<h2 class="content-header theme_color" style="margin-top: -5px;">&nbsp;&nbsp;Detalle de Solicitud </h2>
 						</div>
 						<div class="col-md-5">
 							<div class="btn-group pull-right">
@@ -50,9 +50,7 @@
 									<th>Nombre del Artículo</th>
 									<th>Cantidad Pedida</th>
 									<th>U. Medida</th>
-									<th>Cantidad Asignada</th>
-									<th>Asignar Cantidad</th>
-
+									
 								</tr>
 							</thead>
 							<tbody>
@@ -62,15 +60,8 @@
 									<td>{{$solicitud->nombre}}</td>
 									<td>{{$solicitud->cantidadDetalleSolicitud}}</td>
 									<td>{{$solicitud->unidad}}</td>
-									<td>{{$solicitud->cantidadAsignada}}</td>
-									<td> 
-										<center>
-											<a class="btn btn-success btn-sm" 
-											data-target="#modal-asignar-{{$solicitud->idSolicitud}}"
-											data-toggle="modal" style="margin-right: 10px;" 
-											role="button"><i class="fa fa-plus"></i></a>
-										</center>
-									</td>
+									
+								
 
 
 								</tr>
@@ -85,10 +76,7 @@
 									<th>Nombre del Artículo</th>
 									<th>Cantidad Pedida</th>
 									<th>U. Medida</th>
-									<th>Cantidad Asignada</th>
-									<th>Asignar Cantidad</th>
-
-
+									
 								</tr>
 							</tfoot>
 						</table>
@@ -101,10 +89,6 @@
 
 
 	@endsection
-
-
-
-
 
 
 

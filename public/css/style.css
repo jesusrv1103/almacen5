@@ -639,7 +639,7 @@ body.container {
 	padding-bottom: 9px;
 }
 .block .header, .widget-block .header, .block-web .header {
-	background-color: #000000;
+	background-color: #FEFEFE;
 	border-bottom: 1px solid #DADADA;
 	padding: 10px;
 	transition: border 500ms ease 0s;

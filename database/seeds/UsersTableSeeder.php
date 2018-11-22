@@ -28,8 +28,6 @@ class UsersTableSeeder extends Seeder
         'idDireccion' => '1', 
         ]);
 
-     factory(Almacen\Direccion::class,20)->create();
-     factory(Almacen\User::class,20)->create();
 
      Role::create([
       'name' => 'Admin',

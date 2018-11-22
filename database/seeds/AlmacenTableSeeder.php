@@ -11,6 +11,6 @@ class AlmacenTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Almacen\Almacen::class,80)->create();
+        
     }
 }

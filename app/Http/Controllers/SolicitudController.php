@@ -48,13 +48,15 @@ class SolicitudController extends Controller
      */
     public function index()
     {
-      $solicitudes= DB::table('solicitudes')
-      ->join('users as u', 'solicitudes.idUsuario', '=', 'u.id')
-      ->join('direcciones as d', 'solicitudes.idDireccion', '=', 'd.id')
-      ->select('solicitudes.*','u.name','d.nombre')
+     $solicitudes= DB::table('solicitudes')
+        ->join('usuarios as u', 'solicitudes.idUsuario', '=', 'u.id')
+        ->join('direcciones as d', 'solicitudes.idDireccion', '=', 'd.id')
+        ->select('solicitudes.*','u.nombreCompleto','solicitudes.*','d.nombre')
+        ->where('solicitudes.estado','Activo')->get();
+        return view('solicitud.index',['solicitudes' => $solicitudes]);
 
-      ->where('solicitudes.estado','Activo')->get();
-      return view('solicitud.index',['solicitudes' => $solicitudes]);
+
+
     }
 
 

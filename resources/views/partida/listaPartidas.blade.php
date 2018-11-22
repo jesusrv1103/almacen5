@@ -7,7 +7,7 @@
   </div>
   <div class="pull-right">
     <ol class="breadcrumb">
-      <li ><a style="color: #808080" >Inicio</a></li>
+      <li ><a style="color: #808080" href="{{url('/empleados')}}">Inicio</a></li>
       <li class="active">Lista de Partidas mensuales</a></li>
     </ol>
   </div>
