@@ -60,7 +60,7 @@
                 </tr>
               </thead>
               <tbody>
-               @foreach($solicitudes1s as $solicitud)
+               @foreach($solicitudesEnviadas as $solicitud)
                <tr class="gradeA">
 
                 <td>{{$solicitud->numeroSolicitud}}</td>

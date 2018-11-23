@@ -116,13 +116,13 @@ Route::get('descargarConceptoPartidas/{id}','Partida2Controller@descargarConcept
 Route::resource('events','EventController');
 Route::get('event2', 'EventController@index1')->name('event2.index1');
 
-Route::resource('solicitudes','SolicitudController');
-Route::get('pdf/{id}','SolicitudController@pdf')->name('solicitud.pdf');
-Route::get('verSolicitudes/{id}','SolicitudController@verSolicitudes')->name('solicitud.verSolicitudes');
+Route::resource('solicitudes','SolicitudEnviadasController');
+Route::get('pdf/{id}','SolicitudRecibidasController@pdf')->name('solicitud.pdf');
+Route::get('verSolicitudes/{id}','SolicitudRecibidasController@verSolicitudes')->name('solicitud.verSolicitudes');
 
-Route::get('tipoUnidad/{id}', 'SolicitudController@tipoUnidad')->name('solicitud.tipo');
+Route::get('tipoUnidad/{id}', 'SolicitudRecibidasController@tipoUnidad')->name('solicitud.tipo');
 
-Route::resource('solicitudes1','Solicitud1Controller');
+Route::resource('solicitudes1','SolicitudEnviadasController');
 
 Route::resource('entradas','EntradasController');
 
@@ -136,7 +136,7 @@ Route::get('adquisinet', function()
 });
 
 
-Route::post('asignarCantidad/{id}', 'SolicitudController@asignarCantidad');
+Route::post('asignarCantidad/{id}', 'SolicitudRecibidasController@asignarCantidad');
 
 
 

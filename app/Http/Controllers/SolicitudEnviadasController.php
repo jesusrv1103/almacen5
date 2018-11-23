@@ -5,10 +5,10 @@ use Almacen\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Almacen\Http\Controllers\Controller;
-use Almacen\Solicitud1;
+use Almacen\SolicitudEnviadas;
 use DB;
 use Maatwebsite\Excel\Facades\Excel;
-class Solicitud1Controller extends Controller
+class SolicitudEnviadasController extends Controller
 {
 
     /**
@@ -32,13 +32,12 @@ class Solicitud1Controller extends Controller
      */
     public function index()
     {
-         $solicitudes1s= DB::table('solicitudes')
-        ->join('users as u', 'solicitudes.idUsuario', '=', 'u.id')
-        ->join('direcciones as d', 'solicitudes.idDireccion', '=', 'd.id')
-        ->select('solicitudes.*','u.name','solicitudes.*','d.nombre')
-
-        ->where('solicitudes.estado','Activo')->get();
-        return view('solicitud1.index',['solicitudes1s' => $solicitudes1s]);
+         $solicitudesEnviadas= DB::table('solicitudes_recibidas')
+        ->join('users as u', 'solicitudes_recibidas.idUsuario', '=', 'u.id')
+        ->join('direcciones as d', 'solicitudes_recibidas.idDireccion', '=', 'd.id')
+        ->select('solicitudes_recibidas.*','u.name','solicitudes_recibidas.*','d.nombre')
+        ->where('solicitudes_recibidas.estado','Activo')->get();
+        return view('solicitudEnviadas.index',['solicitudesEnviadas' => $solicitudesEnviadas]);
     }
     /**
      * Show the form for creating a new resource.
@@ -47,7 +46,7 @@ class Solicitud1Controller extends Controller
      */
     public function create()
     {
-        return view('solicitud1.create');
+        return view('solicitudEnviadas.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -88,14 +87,14 @@ class Solicitud1Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $solicitudes1s=Solicitud1::findOrFail($id);
+        $solicitudes1s=SolicitudEnviadas::findOrFail($id);
        $solicitudes1s->numeroSolicitud=$request->get('numeroSolicitud');
        $solicitudes1s->fechaS=$request->get('fechaS');
        $solicitudes1s->idDireccion=$request->get('idUsuario');
        $solicitudes1s->usuario=$request->get('idDireccion');
        $solicitudes1s->UsoDestinado=$request->get('UsoDestinado');
        $solicitudes1s->update();
-       return Redirect::to('solicitudes1s');
+       return Redirect::to('solicitudesEnviadas');
    }
     /**
      * Remove the specified resource from storage.

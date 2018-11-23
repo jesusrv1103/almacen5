@@ -4,7 +4,7 @@ namespace Almacen;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Solicitud extends Model
+class SolicitudRecibidas extends Model
 {
      protected $table="solicitudes";
 }

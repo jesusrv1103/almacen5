@@ -8,7 +8,7 @@ use Almacen\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Almacen\Http\Controllers\Controller;
-use Almacen\Solicitud;
+use Almacen\SolicitudRecibidas;
 use Almacen\DetalleSolicitud;
 use Almacen\Articulos;
 use DB;
@@ -20,7 +20,7 @@ use Illuminate\Http\Resources\Json\Resource;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
-class SolicitudController extends Controller
+class SolicitudRecibidasController extends Controller
 {
 
     /**
@@ -56,7 +56,7 @@ class SolicitudController extends Controller
         return view('solicitud.index',['solicitudes' => $solicitudes]);
 
 
-
+        
     }
 
 

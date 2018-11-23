@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSolicitudes1sTable extends Migration
+class CreateSolicitudesRecibidasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,24 +12,23 @@ class CreateSolicitudes1sTable extends Migration
      */
     public function up()
     {
-        Schema::create('solicitudes1s', function (Blueprint $table) {
+        Schema::create('solicitudes_recibidas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('numeroSolicitud');
             $table->string('fechaS');
-
             $table->integer('idUsuario')->unsigned();
             $table->foreign('idUsuario')->references('id')->on('users');
-
             $table->integer('idDireccion')->unsigned();
             $table->foreign('idDireccion')->references('id')->on('direcciones');
-
             $table->string('UsoDestinado');
-
             $table->string('estado');
             $table->timestamps();
+
+
+
+
         });
-
-
+        DB::statement("ALTER TABLE solicitudes_recibidas AUTO_INCREMENT = 14000;");
     }
 
     /**
@@ -39,6 +38,6 @@ class CreateSolicitudes1sTable extends Migration
      */
     public function down()
     {
-        Schema::drop('solicitudes1s');
+        Schema::drop('solicitudes');
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSolicitudesTable extends Migration
+class CreateSolicitudesEnviadasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateSolicitudesTable extends Migration
      */
     public function up()
     {
-        Schema::create('solicitudes', function (Blueprint $table) {
+        Schema::create('solicitudes_enviadas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('numeroSolicitud');
             $table->string('fechaS');
@@ -23,12 +23,9 @@ class CreateSolicitudesTable extends Migration
             $table->string('UsoDestinado');
             $table->string('estado');
             $table->timestamps();
-
-
-
-
         });
-        DB::statement("ALTER TABLE solicitudes AUTO_INCREMENT = 14000;");
+
+
     }
 
     /**
@@ -38,6 +35,6 @@ class CreateSolicitudesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('solicitudes');
+        Schema::drop('solicitudes_enviadas');
     }
 }
