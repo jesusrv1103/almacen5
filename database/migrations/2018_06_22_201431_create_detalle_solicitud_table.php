@@ -15,7 +15,7 @@ class CreateDetalleSolicitudTable extends Migration
         Schema::create('detalle_solicitud', function (Blueprint $table) {
             $table->increments('id',500);
             $table->integer('idSolicitud')->unsigned();
-            $table->foreign('idSolicitud')->references('id')->on('solicitudes_recibidas');
+            $table->foreign('idSolicitud')->references('id')->on('solicitudes_enviadas');
             $table->integer('idArticulo')->unsigned();
             $table->foreign('idArticulo')->references('id')->on('articulos');
             $table->integer('cantidad');
