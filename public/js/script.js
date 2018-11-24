@@ -105,3 +105,33 @@ function validarFecha1(){
 
 }
 
+
+///VALIDAR URL
+function URL(path,arg=''){
+  var url =window.location.href;
+  if(url.includes("public/")){
+    route=url.replace(url.substring(url.indexOf("public")+6,url.length),'/'+path+((arg!='')?('/'+arg):''));
+        //alert(route);
+      }else{
+        //alert(window.location.pathname);
+        
+        /*FORM1*/
+        route=url.replace(window.location.pathname,'/'+path+((arg!='')?('/'+arg):''));
+        /*FIN FORM1*/
+
+        /*FORM2*/
+        /*var routi = "prot//hostport/patharg"
+
+        route = routi.replace("prot",window.location.protocol).replace("host",window.location.hostname)
+        .replace("port",(window.location.port!='')?(':'+window.location.port):'').replace("path",path).replace("arg",((arg!='')?('/'+arg):''));*/
+        /*FIN FORM2*/
+
+      }
+
+      return route;
+
+    }
+
+
+
+
