@@ -182,7 +182,7 @@
 
     var cantidad = document.getElementById("cantidad").value;
    // var route = "http://localhost:8000/tipoUnidad/"+idProducto;
-var route = URL('tipoUnidad',idProducto);
+    var route = URL('tipoUnidad',idProducto);
 
 
     if(!resultado(idProducto)){
@@ -201,9 +201,9 @@ var route = URL('tipoUnidad',idProducto);
 
         var x = select.options[select.selectedIndex].text;
 
-        var fila="<tr><td style=\"display:none;\"><input name=\"idProducto[]\"  readonly style=\"border:none\" value=\""+idProducto+"\"></td>"+
+        var fila="<tr><td style=\"display:none;\"><input name=\"idProducto[]\"  readonly style=\"border:none\" value=\""+idProducto+"\" ></td>"+
         "<td >"+" <button type=\"button\"  onclick=\"myDeleteFunction(this)\" class=\"btn btn-danger btn-icon\"> Quitar<i class=\"fa fa-times\"></i> </button>"+"</td>"+ x 
-        +"<td>"+  "<input name=\"cantidad[]\" readonly value=\""+cantidad+"\">"
+        +"<td>"+  "<input name=\"cantidad[]\" readonly value=\""+cantidad+"\" hidden>"+ cantidad
         +"</td>"
         +"<td>"+res[0].unidad+"</td>";
         var btn = document.createElement("TR");
