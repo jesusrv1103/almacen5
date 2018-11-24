@@ -5,7 +5,8 @@ use Almacen\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Almacen\Http\Controllers\Controller;
-use Almacen\SolicitudEnviadas;
+use Almacen\SolicitudesEnviadas;
+use Almacen\DetalleSolicitud;
 
 use Almacen\Articulos;
 use Carbon\Carbon;
@@ -70,14 +71,14 @@ class SolicitudEnviadasController extends Controller
 
       echo $request->get('UsoDestinado');
       DB::beginTransaction();
-      $solicitudesEnviadas= new SolicitudEnviadas();
+      $solicitudesEnviadas= new SolicitudesEnviadas();
       $solicitudesEnviadas->numeroSolicitud='11';
       $solicitudesEnviadas->fechaS=$fecha;
       $solicitudesEnviadas->idUsuario=$request->get('idUsuario');
       $solicitudesEnviadas->idDireccion=$request->get('idDireccion');
       $solicitudesEnviadas->UsoDestinado=$request->get('UsoDestinado');
       $solicitudesEnviadas->estado='Activo';
-      $solicitudes->save();
+      $solicitudesEnviadas->save();
       $idProducto= $request->get('idProducto');
       $cantidad= $request->get('cantidad');
       $cont = 0;
@@ -85,7 +86,7 @@ class SolicitudEnviadasController extends Controller
       while($cont < count($idProducto))
       {
         $detalles= new DetalleSolicitud;
-        $detalles->idSolicitudEnviada=$idSolicitudEnviada;
+        $detalles->idSolicitud=$idSolicitudEnviada;
         $detalles->idArticulo=$idProducto[$cont];
         $detalles->cantidad=$cantidad[$cont];
         $detalles->cantidadAsignada=0;
