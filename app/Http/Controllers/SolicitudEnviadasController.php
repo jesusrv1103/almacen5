@@ -16,8 +16,8 @@ class SolicitudEnviadasController extends Controller
      *
      * @return void
      */
-     public function __construct()
-     {
+    public function __construct()
+    {
         $this->middleware('auth');
         $this->middleware('permission:solicitudes1.create')->only(['create','store']);
         $this->middleware('permission:solicitudes1.index')->only('index');
@@ -32,13 +32,13 @@ class SolicitudEnviadasController extends Controller
      */
     public function index()
     {
-         $solicitudesEnviadas= DB::table('solicitudes_recibidas')
-        ->join('users as u', 'solicitudes_recibidas.idUsuario', '=', 'u.id')
-        ->join('direcciones as d', 'solicitudes_recibidas.idDireccion', '=', 'd.id')
-        ->select('solicitudes_recibidas.*','u.name','solicitudes_recibidas.*','d.nombre')
-        ->where('solicitudes_recibidas.estado','Activo')->get();
-        return view('solicitudEnviadas.index',['solicitudesEnviadas' => $solicitudesEnviadas]);
-    }
+       $solicitudesEnviadas= DB::table('solicitudes_recibidas')
+       ->join('users as u', 'solicitudes_recibidas.idUsuario', '=', 'u.id')
+       ->join('direcciones as d', 'solicitudes_recibidas.idDireccion', '=', 'd.id')
+       ->select('solicitudes_recibidas.*','u.name','solicitudes_recibidas.*','d.nombre')
+       ->where('solicitudes_recibidas.estado','Activo')->get();
+       return view('solicitudEnviadas.index',['solicitudesEnviadas' => $solicitudesEnviadas]);
+   }
     /**
      * Show the form for creating a new resource.
      *
@@ -46,7 +46,11 @@ class SolicitudEnviadasController extends Controller
      */
     public function create()
     {
-        return view('solicitudEnviadas.create');
+        $usuarios= DB::table('users')->where('estado','Activo')->get();
+      $direcciones= DB::table('direcciones')->where('estado','Activo')->get();
+
+      $productos= DB::table('articulos')->where('estado','Activo')->get();
+      return view('solicitudEnviadas.create',['usuarios'=>$usuarios,'direcciones'=>$direcciones,'productos'=>$productos]);
     }
     /**
      * Store a newly created resource in storage.
@@ -56,7 +60,39 @@ class SolicitudEnviadasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $date = Carbon::now();
+      $fecha = $date->format('d-m-Y');
+
+      echo $request->get('UsoDestinado');
+      DB::beginTransaction();
+      $solicitudesEnviadas= new SolicitudEnviadas();
+      $solicitudesEnviadas->numeroSolicitud='11';
+      $solicitudesEnviadas->fechaS=$fecha;
+      $solicitudesEnviadas->idUsuario=$request->get('idUsuario');
+      $solicitudesEnviadas->idDireccion=$request->get('idDireccion');
+      $solicitudesEnviadas->UsoDestinado=$request->get('UsoDestinado');
+      $solicitudesEnviadas->estado='Activo';
+      $solicitudes->save();
+      $idProducto= $request->get('idProducto');
+      $cantidad= $request->get('cantidad');
+      $cont = 0;
+      $idSolicitudEnviada=$solicitudesEnviadas->id;
+      while($cont < count($idProducto))
+      {
+        $detalles= new DetalleSolicitud;
+        $detalles->idSolicitudEnviada=$idSolicitudEnviada;
+        $detalles->idArticulo=$idProducto[$cont];
+        $detalles->cantidad=$cantidad[$cont];
+        $detalles->cantidadAsignada=0;
+        $detalles->estado='Activo';
+        $cont = $cont+1;
+        $detalles->save();
+
+      }
+
+      DB::commit();
+
+      return Redirect::to('solicitudesEnviadas');
     }
     /**
      * Display the specified resource.
@@ -87,15 +123,15 @@ class SolicitudEnviadasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $solicitudes1s=SolicitudEnviadas::findOrFail($id);
-       $solicitudes1s->numeroSolicitud=$request->get('numeroSolicitud');
-       $solicitudes1s->fechaS=$request->get('fechaS');
-       $solicitudes1s->idDireccion=$request->get('idUsuario');
-       $solicitudes1s->usuario=$request->get('idDireccion');
-       $solicitudes1s->UsoDestinado=$request->get('UsoDestinado');
-       $solicitudes1s->update();
-       return Redirect::to('solicitudesEnviadas');
-   }
+        $solicitudesEnviadas=SolicitudEnviadas::findOrFail($id);
+        $solicitudesEnviadas->numeroSolicitud=$request->get('numeroSolicitud');
+        $solicitudesEnviadas->fechaS=$request->get('fechaS');
+        $solicitudesEnviadas->idDireccion=$request->get('idUsuario');
+        $solicitudesEnviadas->usuario=$request->get('idDireccion');
+        $solicitudesEnviadas->UsoDestinado=$request->get('UsoDestinado');
+        $solicitudesEnviadas->update();
+        return Redirect::to('solicitudesEnviadas');
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -106,4 +142,25 @@ class SolicitudEnviadasController extends Controller
     {
         //
     }
+   public function tipoUnidad($id)
+   {
+
+    $tipoEmpaque=  Articulos::join('unidad_de_medidas as u','articulos.idUnidad','=','u.id')
+    ->select('articulos.*', 'u.nombre as unidad')
+    ->where('articulos.id','=',$id)
+    ->get();
+    return response()->json(
+      $tipoEmpaque->toArray());
+
+  }
+
+  public function asignarCantidad($id){
+    echo "string";
+  }
+
+
+
+
+
+    
 }

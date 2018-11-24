@@ -29,7 +29,7 @@
 
                   @can('solicitudes1.create')
                   <div class="btn-group" style="margin-right: 10px;">
-                    <a class="btn btn-sm btn-success tooltips" href="solicitudes/create" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Realizar Nueva Solicitud"> <i class="fa fa-plus"></i> Realizar Solucitud </a>
+                    <a class="btn btn-sm btn-success tooltips" href="solicitudesEnviadas/create" style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Realizar Nueva Solicitud"> <i class="fa fa-plus"></i> Realizar Solucitud </a>
                   </div>
                   @endcan
 
@@ -60,24 +60,24 @@
                 </tr>
               </thead>
               <tbody>
-               @foreach($solicitudesEnviadas as $solicitud)
+               @foreach($solicitudesEnviadas as $solicitudesEnviadas)
                <tr class="gradeA">
 
-                <td>{{$solicitud->numeroSolicitud}}</td>
-                <td>{{$solicitud->fechaS}}</td>
-                <td>{{$solicitud->name}}</td>
-                <td>{{$solicitud->nombre}}</td>
-                <td>{{$solicitud->UsoDestinado}}</td>
+                <td>{{$solicitudesEnviadas->numeroSolicitud}}</td>
+                <td>{{$solicitudesEnviadas->fechaS}}</td>
+                <td>{{$solicitudesEnviadas->name}}</td>
+                <td>{{$solicitudesEnviadas->nombre}}</td>
+                <td>{{$solicitudesEnviadas->UsoDestinado}}</td>
                 
-                @can('solicitud.verSolicitudes')
+                @can('solicitudesEnviadas.verSolicitudesEnviadas')
                 <th class="center">
-                 <a href="{{URL::action('SolicitudController@verSolicitudes',$solicitud->id)}}" class="btn btn-info btn-sm" role="button"><i class="fa fa-eye"></i></a>    
+                 <a href="{{URL::action('SolicitudEnviadasController@verSolicitudes',$solicitud->id)}}" class="btn btn-info btn-sm" role="button"><i class="fa fa-eye"></i></a>    
                </td>
                @endcan
 
 
              </tr>
-             @include('solicitud1.modal')
+             @include('solicitudEnviadas.modal')
              @endforeach
 
 
@@ -91,7 +91,7 @@
              <th>Área o Dirección</th>
              <th>Uso Destinado</th>
 
-             @can('solicitud.verSolicitudes')
+             @can('solicitudEnviadas.verSolicitudes')
              <td><center><b>Ver</b></center></td>
              @endcan
 

@@ -264,9 +264,9 @@ a {
                      <ul>
                       @endif
 
-                      @can(['solicitudes.index'])
-                      <li> <a href="{{url('solicitudes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i>
-                        @if(str_contains(Route::getCurrentRoute()->getName(),['solicitudes']) && !str_contains(Route::getCurrentRoute()->getName(),['1']))
+                      @can(['solicitudRecibidas.index'])
+                      <li> <a href="{{url('solicitudRecibidas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i>
+                        @if(str_contains(Route::getCurrentRoute()->getName(),['solicitudRecibidas']) && !str_contains(Route::getCurrentRoute()->getName(),['1']))
                         <b class="theme_color">Recibidas</b> </a> 
                         @else 
                         <b>Recibidas</b> </a> 
@@ -274,9 +274,9 @@ a {
                       </li>
                       @endcan
 
-                      @can(['solicitudes1.index'])
-                      <li> <a href="{{url('solicitudes1')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
-                        @if(str_contains(Route::getCurrentRoute()->getName(),['solicitudes1']))
+                      @can(['solicitudesEnviadas.index'])
+                      <li> <a href="{{url('solicitudesEnviadas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> 
+                        @if(str_contains(Route::getCurrentRoute()->getName(),['solicitudesEnviadas']))
                         <b class="theme_color">Enviados</b> </a> 
                         @else 
                         <b>Enviadas</b> </a> 

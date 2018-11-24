@@ -116,13 +116,13 @@ Route::get('descargarConceptoPartidas/{id}','Partida2Controller@descargarConcept
 Route::resource('events','EventController');
 Route::get('event2', 'EventController@index1')->name('event2.index1');
 
-Route::resource('solicitudes','SolicitudEnviadasController');
+Route::resource('solicitudesEnviadas','SolicitudEnviadasController');
 Route::get('pdf/{id}','SolicitudRecibidasController@pdf')->name('solicitud.pdf');
 Route::get('verSolicitudes/{id}','SolicitudRecibidasController@verSolicitudes')->name('solicitud.verSolicitudes');
 
 Route::get('tipoUnidad/{id}', 'SolicitudRecibidasController@tipoUnidad')->name('solicitud.tipo');
 
-Route::resource('solicitudes1','SolicitudEnviadasController');
+Route::resource('solicitudRecibidas','SolicitudRecibidasController');
 
 Route::resource('entradas','EntradasController');
 

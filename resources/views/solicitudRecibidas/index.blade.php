@@ -55,7 +55,7 @@
                 </tr>
               </thead>
               <tbody>
-               @foreach($solicitudes as $solicitud)
+               @foreach($solicitudRecibidas as $solicitud)
                <tr class="gradeA">
 
                 <td>{{$solicitud->numeroSolicitud}}</td>
@@ -66,13 +66,13 @@
 
                 @can('solicitud.verSolicitudes')
                 <td class="center">
-                  <a href="{{URL::action('SolicitudController@verSolicitudes',$solicitud->id)}}" class="btn btn-info btn-sm" role="button"><i class="fa fa-eye"></i></a>   
+                  <a href="{{URL::action('SolicitudRecibidasController@verSolicitudes',$solicitud->id)}}" class="btn btn-info btn-sm" role="button"><i class="fa fa-eye"></i></a>   
                 </td>
                 @endcan
 
 
                 @can('solicitud.pdf')
-                <td> <a href="{{URL::action('SolicitudController@pdf',$solicitud->id)}}" class="btn btn-warning btn-sm" role="button"><i class="fa fa-download"></i></a>
+                <td> <a href="{{URL::action('SolicitudRecibidasController@pdf',$solicitud->id)}}" class="btn btn-warning btn-sm" role="button"><i class="fa fa-download"></i></a>
                 </center></td>
                 @endcan
 

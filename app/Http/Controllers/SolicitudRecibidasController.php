@@ -48,15 +48,15 @@ class SolicitudRecibidasController extends Controller
      */
     public function index()
     {
-     $solicitudes= DB::table('solicitudes')
-        ->join('usuarios as u', 'solicitudes.idUsuario', '=', 'u.id')
-        ->join('direcciones as d', 'solicitudes.idDireccion', '=', 'd.id')
-        ->select('solicitudes.*','u.nombreCompleto','solicitudes.*','d.nombre')
-        ->where('solicitudes.estado','Activo')->get();
-        return view('solicitud.index',['solicitudes' => $solicitudes]);
+      $solicitudRecibidas= DB::table('solicitudes_recibidas')
+      ->join('users as u', 'solicitudes_recibidas.idUsuario', '=', 'u.id')
+      ->join('direcciones as d', 'solicitudes_recibidas.idDireccion', '=', 'd.id')
+      ->select('solicitudes_recibidas.*','u.name','solicitudes_recibidas.*','d.nombre')
+      ->where('solicitudes_recibidas.estado','Activo')->get();
+      return view('solicitudRecibidas.index',['solicitudRecibidas' => $solicitudRecibidas]);
 
 
-        
+      
     }
 
 
@@ -68,11 +68,10 @@ class SolicitudRecibidasController extends Controller
      */
     public function create()
     {
-      $usuarios= DB::table('users')->where('estado','Activo')->get();
-      $direcciones= DB::table('direcciones')->where('estado','Activo')->get();
+      return view('solicitudRecibidas.create');
 
-      $productos= DB::table('articulos')->where('estado','Activo')->get();
-      return view('solicitud.create',['usuarios'=>$usuarios,'direcciones'=>$direcciones,'productos'=>$productos]);
+
+      
     }
 
     /**
@@ -115,7 +114,7 @@ class SolicitudRecibidasController extends Controller
 
       DB::commit();
 
-      return Redirect::to('solicitudes');
+      return Redirect::to('solicitudesRecibidas');
     }
 
     /**
@@ -217,21 +216,7 @@ class SolicitudRecibidasController extends Controller
 
 
 
-   public function tipoUnidad($id)
-   {
 
-    $tipoEmpaque=  Articulos::join('unidad_de_medidas as u','articulos.idUnidad','=','u.id')
-    ->select('articulos.*', 'u.nombre as unidad')
-    ->where('articulos.id','=',$id)
-    ->get();
-    return response()->json(
-      $tipoEmpaque->toArray());
-
-  }
-
-  public function asignarCantidad($id){
-    echo "string";
-  }
 
 
 }
