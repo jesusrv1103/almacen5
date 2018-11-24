@@ -120,7 +120,7 @@ Route::resource('solicitudesEnviadas','SolicitudEnviadasController');
 Route::get('pdf/{id}','SolicitudRecibidasController@pdf')->name('solicitud.pdf');
 Route::get('verSolicitudes/{id}','SolicitudRecibidasController@verSolicitudes')->name('solicitud.verSolicitudes');
 
-Route::get('tipoUnidad/{id}', 'SolicitudRecibidasController@tipoUnidad')->name('solicitud.tipo');
+Route::get('tipoUnidad/{id}', 'SolicitudEnviadasController@tipoUnidad')->name('solicitud.tipo');
 
 Route::resource('solicitudRecibidas','SolicitudRecibidasController');
 
