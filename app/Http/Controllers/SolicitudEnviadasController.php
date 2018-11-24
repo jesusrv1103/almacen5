@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Input;
 use Almacen\Http\Controllers\Controller;
 use Almacen\SolicitudEnviadas;
 use Almacen\Articulos;
-
+use Carbon\Carbon;
 use DB;
 use Maatwebsite\Excel\Facades\Excel;
 class SolicitudEnviadasController extends Controller
