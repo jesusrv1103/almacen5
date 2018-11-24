@@ -6,11 +6,16 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Almacen\Http\Controllers\Controller;
 use Almacen\SolicitudEnviadas;
+
+use Almacen\Articulos;
+
 use DB;
 use Maatwebsite\Excel\Facades\Excel;
 class SolicitudEnviadasController extends Controller
 {
 
+
+///comentario
     /**
      * Create a new controller instance.
      *
