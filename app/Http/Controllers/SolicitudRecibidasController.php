@@ -82,39 +82,7 @@ class SolicitudRecibidasController extends Controller
      */
     public function store(Request $request)
     {
-      $date = Carbon::now();
-      $fecha = $date->format('d-m-Y');
-
-      echo $request->get('UsoDestinado');
-      DB::beginTransaction();
-      $solicitudes= new Solicitud();
-      $solicitudes->numeroSolicitud='11';
-      $solicitudes->fechaS=$fecha;
-      $solicitudes->idUsuario=$request->get('idUsuario');
-      $solicitudes->idDireccion=$request->get('idDireccion');
-      $solicitudes->UsoDestinado=$request->get('UsoDestinado');
-      $solicitudes->estado='Activo';
-      $solicitudes->save();
-      $idProducto= $request->get('idProducto');
-      $cantidad= $request->get('cantidad');
-      $cont = 0;
-      $idSolicitud=$solicitudes->id;
-      while($cont < count($idProducto))
-      {
-        $detalles= new DetalleSolicitud;
-        $detalles->idSolicitud=$idSolicitud;
-        $detalles->idArticulo=$idProducto[$cont];
-        $detalles->cantidad=$cantidad[$cont];
-        $detalles->cantidadAsignada=0;
-        $detalles->estado='Activo';
-        $cont = $cont+1;
-        $detalles->save();
-
-      }
-
-      DB::commit();
-
-      return Redirect::to('solicitudesRecibidas');
+      
     }
 
     /**
@@ -148,14 +116,7 @@ class SolicitudRecibidasController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $solicitudes=Solicitud::findOrFail($id);
-      $solicitudes->numeroSolicitud=$request->get('numeroSolicitud');
-      $solicitudes->fechaS=$request->get('fechaS');
-      $solicitudes->idUsuario=$request->get('idUsuario');
-      $solicitudes->idDireccion=$request->get('idDireccion');
-      $solicitudes->UsoDestinado=$request->get('UsoDestinado');
-      $solicitudes->update(); 
-      return Redirect::to('solicitudes');
+      
     }
 
 

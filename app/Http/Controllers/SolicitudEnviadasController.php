@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Almacen\Http\Controllers\Controller;
 use Almacen\SolicitudEnviadas;
-use Almacen\Articulos;
 use DB;
 use Maatwebsite\Excel\Facades\Excel;
 class SolicitudEnviadasController extends Controller
@@ -132,6 +131,10 @@ class SolicitudEnviadasController extends Controller
         $solicitudesEnviadas->UsoDestinado=$request->get('UsoDestinado');
         $solicitudesEnviadas->update();
         return Redirect::to('solicitudesEnviadas');
+
+
+
+
     }
     /**
      * Remove the specified resource from storage.
