@@ -1,4 +1,4 @@
-<div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-delete-{{$solicitud->id}}">
+<div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-delete-{{$solicitudesEnviadas->id}}">
   <div class="modal-dialog">
     <div class="modal-content panel default blue_border horizontal_border_1">
       <div class="modal-body"> 

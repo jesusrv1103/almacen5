@@ -118,7 +118,7 @@ Route::get('event2', 'EventController@index1')->name('event2.index1');
 
 Route::resource('solicitudesEnviadas','SolicitudEnviadasController');
 Route::get('pdf/{id}','SolicitudRecibidasController@pdf')->name('solicitud.pdf');
-Route::get('verSolicitudes/{id}','SolicitudRecibidasController@verSolicitudes')->name('solicitud.verSolicitudes');
+Route::get('verSolicitudes/{id}','SolicitudEnviadasController@verSolicitudes')->name('solicitud.verSolicitudes');
 
 Route::get('tipoUnidad/{id}', 'SolicitudEnviadasController@tipoUnidad')->name('solicitud.tipo');
 

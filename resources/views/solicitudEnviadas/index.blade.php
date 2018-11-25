@@ -71,7 +71,7 @@
                 
                 @can('solicitudesEnviadas.verSolicitudesEnviadas')
                 <th class="center">
-                 <a href="{{URL::action('SolicitudEnviadasController@verSolicitudes',$solicitud->id)}}" class="btn btn-info btn-sm" role="button"><i class="fa fa-eye"></i></a>    
+                 <a href="{{URL::action('SolicitudEnviadasController@verSolicitudes',$solicitudesEnviadas->id)}}" class="btn btn-info btn-sm" role="button"><i class="fa fa-eye"></i></a>    
                </td>
                @endcan
 

@@ -38,11 +38,11 @@ class SolicitudEnviadasController extends Controller
      */
     public function index()
     {
-       $solicitudesEnviadas= DB::table('solicitudes_recibidas')
-       ->join('users as u', 'solicitudes_recibidas.idUsuario', '=', 'u.id')
-       ->join('direcciones as d', 'solicitudes_recibidas.idDireccion', '=', 'd.id')
-       ->select('solicitudes_recibidas.*','u.name','solicitudes_recibidas.*','d.nombre')
-       ->where('solicitudes_recibidas.estado','Activo')->get();
+       $solicitudesEnviadas= DB::table('solicitudes_enviadas')
+       ->join('users as u', 'solicitudes_enviadas.idUsuario', '=', 'u.id')
+       ->join('direcciones as d', 'solicitudes_enviadas.idDireccion', '=', 'd.id')
+       ->select('solicitudes_enviadas.*','u.name','solicitudes_enviadas.*','d.nombre')
+       ->where('solicitudes_enviadas.estado','Activo')->get();
        return view('solicitudEnviadas.index',['solicitudesEnviadas' => $solicitudesEnviadas]);
    }
     /**
@@ -142,12 +142,32 @@ class SolicitudEnviadasController extends Controller
 
 
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ public function verSolicitudes($id)
+
+    {
+
+      $solicitudesEnviadas=SolicitudEnviadas::findOrFail($id);
+      $idSolicitud=$solicitudes->id;
+
+      $verSolicitud=DB::table('detalle_solicitud')
+      ->join('articulos','detalle_solicitud.idArticulo','=','articulos.id')
+      ->select('detalle_solicitud.*','articulos.nombre','articulos.idUnidad')
+      ->join('unidad_de_medidas','unidad_de_medidas.id','=','articulos.id')
+      ->select('detalle_solicitud.id as idDetalleSolicitud','detalle_solicitud.idSolicitud','detalle_solicitud.idArticulo',
+        'detalle_solicitud.cantidad as cantidadDetalleSolicitud',
+        'detalle_solicitud.cantidadAsignada','articulos.id as idMaterial',
+        'articulos.nombre','unidad_de_medidas.nombre as unidad')
+      ->where('articulos.estado','=','Activo')
+      ->where('idSolicitud','=',$idSolicitud)
+      ->get();
+      return view('solicitudesEnviadas.verSolicitudes',["solicitudesEnviadas"=>$solicitudesEnviadas,"verSolicitud"=>$verSolicitud]);   
+    }
+
+
+
+
+
+
     public function destroy($id)
     {
         //
