@@ -129,7 +129,7 @@ class SolicitudEnviadasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $solicitudesEnviadas=SolicitudEnviadas::findOrFail($id);
+        $solicitudesEnviadas=SolicitudesEnviadas::findOrFail($id);
         $solicitudesEnviadas->numeroSolicitud=$request->get('numeroSolicitud');
         $solicitudesEnviadas->fechaS=$request->get('fechaS');
         $solicitudesEnviadas->idDireccion=$request->get('idUsuario');
