@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Almacen\Http\Controllers\Controller;
 use Almacen\SolicitudRecibidas;
+use Almacen\SolicitudesEnviadas;
 use Almacen\DetalleSolicitud;
 use Almacen\Articulos;
 use DB;
@@ -48,13 +49,12 @@ class SolicitudRecibidasController extends Controller
      */
     public function index()
     {
-      $solicitudRecibidas= DB::table('solicitudes_recibidas')
-      ->join('users as u', 'solicitudes_recibidas.idUsuario', '=', 'u.id')
-      ->join('direcciones as d', 'solicitudes_recibidas.idDireccion', '=', 'd.id')
-      ->select('solicitudes_recibidas.*','u.name','solicitudes_recibidas.*','d.nombre')
-      ->where('solicitudes_recibidas.estado','Activo')->get();
-      return view('solicitudRecibidas.index',['solicitudRecibidas' => $solicitudRecibidas]);
-
+      $solicitudesRecibidas= DB::table('solicitudes_enviadas')
+      ->join('users as u', 'solicitudes_enviadas.idUsuario', '=', 'u.id')
+      ->join('direcciones as d', 'solicitudes_enviadas.idDireccion', '=', 'd.id')
+      ->select('solicitudes_enviadas.*','u.name','solicitudes_enviadas.*','d.nombre')
+      ->where('solicitudes_enviadas.estado','Activo')->get();
+      return view('solicitudRecibidas.index',['solicitudesRecibidas' => $solicitudesRecibidas]);
 
       
     }
@@ -68,7 +68,16 @@ class SolicitudRecibidasController extends Controller
      */
     public function create()
     {
-      return view('solicitudRecibidas.create');
+      
+
+      $usuarios= DB::table('users')->where('estado','Activo')->get();
+      $direcciones= DB::table('direcciones')->where('estado','Activo')->get();
+
+      $SolicitudesEnviadas= DB::table('solicitudes_enviadas')-where('estado','Activo')->get();
+
+
+      $productos= DB::table('articulos')->where('estado','Activo')->get();
+      return view('solicitudRecibidas.create',['usuarios'=>$usuarios,'direcciones'=>$direcciones,'productos'=>$productos]);
 
 
       
@@ -82,7 +91,7 @@ class SolicitudRecibidasController extends Controller
      */
     public function store(Request $request)
     {
-      
+
     }
 
     /**
@@ -116,7 +125,7 @@ class SolicitudRecibidasController extends Controller
      */
     public function update(Request $request, $id)
     {
-      
+
     }
 
 
@@ -126,7 +135,7 @@ class SolicitudRecibidasController extends Controller
 
     {
 
-      $solicitudes=Solicitud::findOrFail($id);
+      $solicitudes=SolicitudesEnviadas::findOrFail($id);
       $idSolicitud=$solicitudes->id;
 
       $verSolicitud=DB::table('detalle_solicitud')
@@ -157,7 +166,7 @@ class SolicitudRecibidasController extends Controller
     public function pdf($id)
     {
 
-     $solicitudes=Solicitud::findOrFail($id);
+     $solicitudes=SolicitudesEnviadas::findOrFail($id);
      $idSolicitud=$solicitudes->id;
 
      $verSolicitud=DB::table('detalle_solicitud')
@@ -168,7 +177,7 @@ class SolicitudRecibidasController extends Controller
      ->where('articulos.estado','=','Activo')
      ->where('idSolicitud','=',$idSolicitud)
      ->get();
-     $pdf=PDF::loadView("solicitud.invoice",['solicitudes'=>$solicitudes, "verSolicitud"=>$verSolicitud]);
+     $pdf=PDF::loadView("solicitudRecibidas.invoice",['solicitudes'=>$solicitudes, "verSolicitud"=>$verSolicitud]);
      return $pdf->download("archivo.pdf");
    }
 
@@ -180,4 +189,4 @@ class SolicitudRecibidasController extends Controller
 
 
 
-}
+ }

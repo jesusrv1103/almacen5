@@ -146,8 +146,8 @@ class SolicitudEnviadasController extends Controller
 
     {
 
-      $solicitudesEnviadas=SolicitudEnviadas::findOrFail($id);
-      $idSolicitud=$solicitudes->id;
+      $solicitudesEnviadas=SolicitudesEnviadas::findOrFail($id);
+      $idSolicitud=$solicitudesEnviadas->id;
 
       $verSolicitud=DB::table('detalle_solicitud')
       ->join('articulos','detalle_solicitud.idArticulo','=','articulos.id')
@@ -160,7 +160,7 @@ class SolicitudEnviadasController extends Controller
       ->where('articulos.estado','=','Activo')
       ->where('idSolicitud','=',$idSolicitud)
       ->get();
-      return view('solicitudesEnviadas.verSolicitudes',["solicitudesEnviadas"=>$solicitudesEnviadas,"verSolicitud"=>$verSolicitud]);   
+      return view('solicitudRecibidas.verSolicitudes',["solicitudesEnviadas"=>$solicitudesEnviadas,"verSolicitud"=>$verSolicitud]);   
     }
 
 

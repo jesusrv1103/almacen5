@@ -28,7 +28,7 @@
                 <b>
 
                   <div class="btn-group" style="margin-right: 10px;">
-                    <a class="btn btn-sm btn-warning tooltips"  style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" href="{{URL::action('SolicitudController@pdf',$solicitudes->id)}}" title="" data-original-title="Descargar solicitudes"> <i class="fa fa-download"  ></i> Descargar </a>
+                    <a class="btn btn-sm btn-warning tooltips"  style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" href="" title="" data-original-title="Descargar solicitudes"> <i class="fa fa-download"  ></i> Descargar </a>
 
 
 
@@ -48,25 +48,30 @@
               <thead>
                 <tr>
                   <th>Nombre del Artículo</th>
-                  <th>Cantidad Pedida</th>
                   <th>U. Medida</th>
+                  <th>Cantidad Disponible</th>
+                  <th>Cantidad Pedida</th>
                   <th>Cantidad Asignada</th>
                   <th>Asignar Cantidad</th>
 
                 </tr>
               </thead>
               <tbody>
-                @foreach($verSolicitud as $solicitud)
+      
+
+      @foreach($verSolicitud as $solicitud)
+              
                 <tr class="gradeA">
 
-                  <td>{{$solicitud->nombre}}</td>
-                  <td>{{$solicitud->cantidadDetalleSolicitud}}</td>
-                  <td>{{$solicitud->unidad}}</td>
-                  <td>{{$solicitud->cantidadAsignada}}</td>
+                  <td>lapíz</td>
+                  <td>PZA</td>
+                  <td>1000</td>
+                  <td>100</td>
+                  <td></td>
                   <td> 
                     <center>
                       <a class="btn btn-success btn-sm" 
-                      data-target="#modal-asignar-{{$solicitud->idSolicitud}}"
+                      data-target="#modal-asignar-{{}}"
                       data-toggle="modal" style="margin-right: 10px;" 
                       role="button"><i class="fa fa-plus"></i></a>
                     </center>
@@ -74,8 +79,7 @@
 
 
                 </tr>
-                @include('solicitud.modal')
-                @endforeach
+            
 
 
 
@@ -83,8 +87,9 @@
               <tfoot>
                 <tr>
                   <th>Nombre del Artículo</th>
-                  <th>Cantidad Pedida</th>
                   <th>U. Medida</th>
+                  <th>Cantidad Disponible</th>
+                  <th>Cantidad Pedida</th>
                   <th>Cantidad Asignada</th>
                   <th>Asignar Cantidad</th>
 

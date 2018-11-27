@@ -1,4 +1,4 @@
-<div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-asignar-{{$solicitud->idSolicitud}}">
+<div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-asignar-{{$solicitud->numeroSolicitud}}">
   <div class="modal-dialog">
     <div class="modal-content panel default blue_border horizontal_border_1">
       <div class="modal-body"> 
@@ -9,12 +9,12 @@
             </div>
             <div class="porlets-content" style="margin-bottom: -50px;">
               <div class="form-group">
-                <form  action="{{url('asignarCantidad', [$solicitud->idDetalleSolicitud])}}" method="post" class="form-horizontal row-border" parsley-validate novalidate files="true" enctype="multipart/form-data" accept-charset="UTF-8">
+                <form  action="" method="post" class="form-horizontal row-border" parsley-validate novalidate files="true" enctype="multipart/form-data" accept-charset="UTF-8">
                   {{csrf_field()}}
                  
                   <label class="col-sm-4 control-label">Cantidad Artículo: <strog class="theme_color">*</strog></label>
                   <div class="col-sm-6">
-                  <input name="idDetalleSolicitud" hidden value="{{$solicitud->idDetalleSolicitud}}"  />
+                  <input name="idDetalleSolicitud" hidden value=""  />
                    <input onkeypress="return soloNumeros(event);" required  type="text" class="form-control"  autofocus name="cantidad" maxlength="12" placeholder="Ingrese la cantidad a Asignar">
                  
                  </div>

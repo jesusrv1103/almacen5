@@ -28,11 +28,19 @@
 								<b>
 
 									<div class="btn-group" style="margin-right: 10px;">
-										<a class="btn btn-sm btn-warning tooltips"  style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" href="{{URL::action('SolicitudController@pdf',$solicitudes->id)}}" title="" data-original-title="Descargar solicitudes"> <i class="fa fa-download"  ></i> Descargar </a>
+										<a class="btn btn-sm btn-warning tooltips"  style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" href="{{URL::action('SolicitudRecibidasController@pdf',$solicitudesEnviadas->id)}}" title="" data-original-title="Descargar solicitudes"> <i class="fa fa-download"  ></i> Descargar </a>
+
 
 
 
 									</div>
+
+									<div class="btn-group" style="margin-right: 10px;">
+										<a class="btn btn-sm btn-success tooltips"  style="margin-right: 10px;" data-toggle="tooltip" data-placement="bottom" href="{{URL::action('SolicitudRecibidasController@create')}}" title="" data-original-title="Realizar Pedido"> <i class="fa fa-plus"  ></i> Realizar </a>
+									</div>
+
+
+									
 
 								</b>
 
@@ -56,20 +64,12 @@
 							<tbody>
 								@foreach($verSolicitud as $solicitud)
 								<tr class="gradeA">
-
 									<td>{{$solicitud->nombre}}</td>
 									<td>{{$solicitud->cantidadDetalleSolicitud}}</td>
-									<td>{{$solicitud->unidad}}</td>
-									
-								
-
-
+									<td>{{$solicitud->unidad}}</td>	
 								</tr>
-								@include('solicitud.modal')
+								@include('solicitudEnviadas.modal')
 								@endforeach
-
-
-
 							</tbody>
 							<tfoot>
 								<tr>
