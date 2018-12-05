@@ -36,45 +36,54 @@
           <form action="{{route('solicitudesEnviadas.store')}}" method="POST" class="form-horizontal row-border"  parsley-validate novalidate>
            {{csrf_field()}}
 
+           <div class="row">
 
-           <div class="form-group">
-             <label class="col-sm-3 control-label">Nombre: <strog class="theme_color">*</strog></label>
-             <div class="col-sm-6">
-               <select name="idUsuario" class="form-control" required>
-                @foreach($usuarios as $usuario)
-                <option value="{{$usuario->id}}">
-                  {{$usuario->name}} 
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+             <div class="form-group">
+               <label><strong>Nombre de  Usuario:</strong> <strog class="theme_color">*</strog></label>
+               <div>
+                 <select  class="form-control select" name="idUsuario"  required>
+                  @foreach($usuarios as $usuario)
+                  <option value="{{$usuario->id}}">
+                    {{$usuario->name}} 
+                  </option>
+                  @endforeach
+                </select>
+                <div class="help-block with-errors"></div>
+              </div>
+            </div><!--/form-group-->
+          </div>
+
+
+          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+            <div class="form-group">
+              <label>Area: <strog class="theme_color">*</strog></label>
+              <div >
+                <select name="idDireccion"  required class="form-control select">
+                 @foreach($direcciones as $direccion)
+                 <option value="{{$direccion->id}}">
+                  {{$direccion->nombre}} 
                 </option>
                 @endforeach
               </select>
               <div class="help-block with-errors"></div>
             </div>
           </div><!--/form-group-->
+        </div>
 
+      </div>
 
+      <div class="row">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
           <div class="form-group">
-            <label class="col-sm-3 control-label">Area: <strog class="theme_color">*</strog></label>
-            <div class="col-sm-6">
-              <select name="idDireccion" class="form-control" required>
-               @foreach($direcciones as $direccion)
-               <option value="{{$direccion->id}}">
-                {{$direccion->nombre}} 
-              </option>
-              @endforeach
-            </select>
-            <div class="help-block with-errors"></div>
-          </div>
-        </div><!--/form-group-->
+            <label><strong>Uso destinado:</strong><strog class="theme_color">*</strog></label>
+            <div>
 
-
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Uso destinado:<strog class="theme_color">*</strog></label>
-          <div class="col-sm-6">
-
-           <input onchange="mayus(this);" type="text" class="form-control"  autofocus name="UsoDestinado" id="UsoDestinado" 
-           maxlength="70" required value="" placeholder="Atencion  a empresarios  y publico  en reuniones">
-         </div>
-       </div><!--/form-group-->
+             <input onchange="mayus(this);" type="text" class="form-control"  autofocus name="UsoDestinado" id="UsoDestinado" 
+             maxlength="70" required value="" placeholder="Atencion  a empresarios  y publico  en reuniones">
+           </div>
+         </div><!--/form-group-->
+       </div>
 
 
 
