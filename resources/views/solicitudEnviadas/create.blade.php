@@ -84,96 +84,95 @@
            </div>
          </div><!--/form-group-->
        </div>
+     </div>
+
+
+     <div class="form-group">
+       <label class="col-lg-2 control-label">Producto: <strog class="theme_color">*</strog></label>
+       <div class="col-sm-3">
+         <select name="idProducto" id="idProducto" class="form-control" required>
+           @foreach($productos as $producto)
+
+           <option value="{{$producto->id}}">
+
+            {{$producto->nombre}} 
+          </option>
+          @endforeach
+        </select>
+        <div class="help-block with-errors"></div>
+      </div>
+
+      <label class="col-sm-3 control-label">Cantidad:<strog class="theme_color">*</strog></label>
+      <div class="col-sm-2">
+
+        <input onchange="mayus(this);" type="text" class="form-control"  autofocus name="cantidad" id="cantidad" 
+        maxlength="70" S value="" placeholder="Cantidad" onblur="validarCantidad();" onkeypress="return soloNumeros(event);">
+        <span id="errorcantidad" style="color:#FF0000;"></span>
+
+
+      </div>
+      <button type="button"  onclick="myCreateFunction();" class="btn btn-success btn-icon"> Agregar <i class="fa fa-plus"></i> </button>
+    </div><!--/form-group-->
 
 
 
 
-       <div class="form-group">
-         <label class="col-lg-2 control-label">Producto: <strog class="theme_color">*</strog></label>
-         <div class="col-sm-3">
-           <select name="idProducto" id="idProducto" class="form-control" required>
-             @foreach($productos as $producto)
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+      <div class="form-group"> 
+        <table id="detalles" name="detalles[]" value="" class="table table-striped table-bordered table-condensed table-hover">
+          <thead style="background-color:#A9D0F5">
+            <th>Opciones</th>
+            <th>Descripcion</th>
+            <th>Cantidad</th>
+            <th>Unidad de Medida</th>
 
-             <option value="{{$producto->id}}">
 
-              {{$producto->nombre}} 
-            </option>
-            @endforeach
-          </select>
-          <div class="help-block with-errors"></div>
+          </thead>
+
+          <tbody>
+
+          </tbody id="detalles">
+
+          <tfoot style="background-color:#A9D0F5">
+           <th>Opciones</th>
+           <th>Descripcion</th>
+           <th>Cantidad</th>
+           <th>Unidad de Medida</th>            
+         </tfoot>
+
+       </table>
+
+
+       <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12">
+         <div class="form-group"> 
+          <label for="total">Total de Elementos </label>
+          <input name="total" id="total" type="number"  class="form-control"  readonly/>
+        </div>    
+      </div>  
+
+
+
+      <div class="form-group">
+        <div class="col-sm-6">
+          <input  id="codigo2" value="" name="codigo2[]" type="hidden"  maxlength="50"  class="form-control"  placeholder="Ingrese el Codigo de Barras"/>
         </div>
-
-        <label class="col-sm-3 control-label">Cantidad:<strog class="theme_color">*</strog></label>
-        <div class="col-sm-2">
-
-          <input onchange="mayus(this);" type="text" class="form-control"  autofocus name="cantidad" id="cantidad" 
-          maxlength="70" S value="" placeholder="Cantidad" onblur="validarCantidad();" onkeypress="return soloNumeros(event);">
-          <span id="errorcantidad" style="color:#FF0000;"></span>
-
-
-        </div>
-        <button type="button"  onclick="myCreateFunction();" class="btn btn-success btn-icon"> Agregar <i class="fa fa-plus"></i> </button>
-      </div><!--/form-group-->
-
-
-
-
-      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-        <div class="form-group"> 
-          <table id="detalles" name="detalles[]" value="" class="table table-striped table-bordered table-condensed table-hover">
-            <thead style="background-color:#A9D0F5">
-              <th>Opciones</th>
-              <th>Descripcion</th>
-              <th>Cantidad</th>
-              <th>Unidad de Medida</th>
-
-
-            </thead>
-
-            <tbody>
-
-            </tbody id="detalles">
-
-            <tfoot style="background-color:#A9D0F5">
-             <th>Opciones</th>
-             <th>Descripcion</th>
-             <th>Cantidad</th>
-             <th>Unidad de Medida</th>            
-           </tfoot>
-
-         </table>
-
-
-         <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12">
-           <div class="form-group"> 
-            <label for="total">Total de Elementos </label>
-            <input name="total" id="total" type="number"  class="form-control"  readonly/>
-          </div>    
-        </div>  
-
-
-
-        <div class="form-group">
-          <div class="col-sm-6">
-            <input  id="codigo2" value="" name="codigo2[]" type="hidden"  maxlength="50"  class="form-control"  placeholder="Ingrese el Codigo de Barras"/>
-          </div>
-        </div>
-
       </div>
 
     </div>
 
-    <div id="loco"></div>
+  </div>
 
-    <div class="form-group">
-      <div class="col-sm-offset-7 col-sm-5">
-        <button type="submit" class="btn btn-primary">Guardar</button>
-        <a href="{{url('/partidas')}}" class="btn btn-default"> Cancelar</a>
+  <div id="loco"></div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-7 col-sm-5">
+      <button type="submit" class="btn btn-primary">Guardar</button>
+      <a href="{{url('/partidas')}}" class="btn btn-default"> Cancelar</a>
 
 
-      </div>
-    </div><!--/form-group-->
-  </form>
+    </div>
+  </div><!--/form-group-->
+</form>
 </div><!--/porlets-content-->
 </div><!--/block-web-->
 </div><!--/col-md-12-->
