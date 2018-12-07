@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="porlets-content">
-          <form action="{{route('solicitudesEnviadas.store')}}" method="POST"   parsley-validate novalidate>
+          <form action="{{route('solicitudesEnviadas.store')}}" method="POST" class="form-horizontal row-border"  parsley-validate novalidate>
            {{csrf_field()}}
 
            <div class="row">
@@ -84,120 +84,96 @@
            </div>
          </div><!--/form-group-->
        </div>
-     </div>
 
 
 
-     <div class="row">
 
-       <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-         <div class="form-group">
-           <label><strong>Producto:</strong> <strog class="theme_color">*</strog></label>
-           <div>
-             <select name="idProducto" id="idProducto" class="form-control" required>
-               @foreach($productos as $producto)
+       <div class="form-group">
+         <label class="col-lg-2 control-label">Producto: <strog class="theme_color">*</strog></label>
+         <div class="col-sm-3">
+           <select name="idProducto" id="idProducto" class="form-control" required>
+             @foreach($productos as $producto)
 
-               <option value="{{$producto->id}}">
+             <option value="{{$producto->id}}">
 
-                {{$producto->nombre}} 
-              </option>
-              @endforeach
-            </select>
-            <div class="help-block with-errors"></div>
+              {{$producto->nombre}} 
+            </option>
+            @endforeach
+          </select>
+          <div class="help-block with-errors"></div>
+        </div>
+
+        <label class="col-sm-3 control-label">Cantidad:<strog class="theme_color">*</strog></label>
+        <div class="col-sm-2">
+
+          <input onchange="mayus(this);" type="text" class="form-control"  autofocus name="cantidad" id="cantidad" 
+          maxlength="70" S value="" placeholder="Cantidad" onblur="validarCantidad();" onkeypress="return soloNumeros(event);">
+          <span id="errorcantidad" style="color:#FF0000;"></span>
+
+
+        </div>
+        <button type="button"  onclick="myCreateFunction();" class="btn btn-success btn-icon"> Agregar <i class="fa fa-plus"></i> </button>
+      </div><!--/form-group-->
+
+
+
+
+      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+        <div class="form-group"> 
+          <table id="detalles" name="detalles[]" value="" class="table table-striped table-bordered table-condensed table-hover">
+            <thead style="background-color:#A9D0F5">
+              <th>Opciones</th>
+              <th>Descripcion</th>
+              <th>Cantidad</th>
+              <th>Unidad de Medida</th>
+
+
+            </thead>
+
+            <tbody>
+
+            </tbody id="detalles">
+
+            <tfoot style="background-color:#A9D0F5">
+             <th>Opciones</th>
+             <th>Descripcion</th>
+             <th>Cantidad</th>
+             <th>Unidad de Medida</th>            
+           </tfoot>
+
+         </table>
+
+
+         <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12">
+           <div class="form-group"> 
+            <label for="total">Total de Elementos </label>
+            <input name="total" id="total" type="number"  class="form-control"  readonly/>
+          </div>    
+        </div>  
+
+
+
+        <div class="form-group">
+          <div class="col-sm-6">
+            <input  id="codigo2" value="" name="codigo2[]" type="hidden"  maxlength="50"  class="form-control"  placeholder="Ingrese el Codigo de Barras"/>
           </div>
         </div>
+
       </div>
 
+    </div>
+
+    <div id="loco"></div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-7 col-sm-5">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="{{url('/partidas')}}" class="btn btn-default"> Cancelar</a>
 
 
-
-      <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-        <div class="form-group">
-         <label><strong>Cantidad:</strong> <strog class="theme_color">*</strog></label>
-         <div>
-           <input onchange="mayus(this);" type="text"   autofocus name="cantidad" id="cantidad" 
-           maxlength="70" S class="form-control" placeholder="Cantidad" onblur="validarCantidad();" onkeypress="return soloNumeros(event);">
-           <span id="errorcantidad" style="color:#FF0000;"></span>
-           <div class="help-block with-errors"></div>
-         </div>
-       </div>
-     </div>
-
-
-     <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-     <label>&nbsp;</label>
-      <div class="form-group">
-        <button type="button"   onclick="myCreateFunction();" class="btn btn-success btn-icon"> Agregar <i class="fa fa-plus"></i> </button>
       </div>
-    </div>
-  </div>
-
-
-
-</div>
-
-
-
-
-
-
-
-<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-  <div class="form-group"> 
-    <table id="detalles" name="detalles[]" value="" class="table table-striped table-bordered table-condensed table-hover">
-      <thead style="background-color:#A9D0F5">
-        <th>Opciones</th>
-        <th>Descripcion</th>
-        <th>Cantidad</th>
-        <th>Unidad de Medida</th>
-
-
-      </thead>
-
-      <tbody>
-
-      </tbody id="detalles">
-
-      <tfoot style="background-color:#A9D0F5">
-       <th>Opciones</th>
-       <th>Descripcion</th>
-       <th>Cantidad</th>
-       <th>Unidad de Medida</th>            
-     </tfoot>
-
-   </table>
-
-
-   <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12">
-     <div class="form-group"> 
-      <label for="total">Total de Elementos </label>
-      <input name="total" id="total" type="number"  class="form-control"  readonly/>
-    </div>    
-  </div>  
-
-
-
-  <div class="form-group">
-    <div class="col-sm-6">
-      <input  id="codigo2" value="" name="codigo2[]" type="hidden"  maxlength="50"  class="form-control"  placeholder="Ingrese el Codigo de Barras"/>
-    </div>
-  </div>
-
-</div>
-
-</div>
-
-<div id="loco"></div>
-
-<div class="form-group">
-  <div class="col-sm-offset-7 col-sm-5">
-    <button type="submit" class="btn btn-primary">Guardar</button>
-    <a href="{{url('/partidas')}}" class="btn btn-default"> Cancelar</a>
-
-
-  </div>
-</div><!--/form-group-->
-</form>
+    </div><!--/form-group-->
+  </form>
 </div><!--/porlets-content-->
 </div><!--/block-web-->
 </div><!--/col-md-12-->

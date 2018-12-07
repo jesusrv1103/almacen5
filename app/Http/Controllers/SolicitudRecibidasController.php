@@ -73,8 +73,7 @@ class SolicitudRecibidasController extends Controller
       $usuarios= DB::table('users')->where('estado','Activo')->get();
       $direcciones= DB::table('direcciones')->where('estado','Activo')->get();
 
-      $SolicitudesEnviadas= DB::table('solicitudes_enviadas')-where('estado','Activo')->get();
-
+      
 
       $productos= DB::table('articulos')->where('estado','Activo')->get();
       return view('solicitudRecibidas.create',['usuarios'=>$usuarios,'direcciones'=>$direcciones,'productos'=>$productos]);
