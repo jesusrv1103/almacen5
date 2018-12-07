@@ -38,7 +38,7 @@
 
            <div class="row">
 
-            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+            <div class="col-lg-6 .col-md-offset-6"> 
              <div class="form-group">
                <label><strong>Nombre de  Usuario:</strong> <strog class="theme_color">*</strog></label>
                <div>
@@ -55,7 +55,7 @@
           </div>
 
 
-          <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+          <div class="col-lg-6 .col-md-offset-6">
             <div class="form-group">
               <label>Area: <strog class="theme_color">*</strog></label>
               <div >
@@ -121,7 +121,7 @@
       <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
         <div class="form-group"> 
           <table id="detalles" name="detalles[]" value="" class="table table-striped table-bordered table-condensed table-hover">
-            <thead style="background-color:#A9D0F5">
+            <thead style="background-color:#B6F5A9">
               <th>Opciones</th>
               <th>Descripcion</th>
               <th>Cantidad</th>
@@ -134,7 +134,7 @@
 
             </tbody id="detalles">
 
-            <tfoot style="background-color:#A9D0F5">
+            <tfoot style="background-color:#B6F5A9">
              <th>Opciones</th>
              <th>Descripcion</th>
              <th>Cantidad</th>
@@ -163,12 +163,12 @@
 
     </div>
 
-    <div id="loco"></div>
+    <div id=""></div>
 
     <div class="form-group">
       <div class="col-sm-offset-7 col-sm-5">
         <button type="submit" class="btn btn-primary">Guardar</button>
-        <a href="{{url('/partidas')}}" class="btn btn-default"> Cancelar</a>
+        <a href="{{url('/solicitudesEnviadas')}}" class="btn btn-default"> Cancelar</a>
 
 
       </div>

@@ -59,7 +59,7 @@
               <tbody>
       
 
-      @foreach($verSolicitud as $solicitud)
+      
               
                 <tr class="gradeA">
 
